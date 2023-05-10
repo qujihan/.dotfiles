@@ -32,11 +32,10 @@ end
 
 
 
-
 local function get_default_prog()
     local default_prog = {}
     if is_win() then
-        default_prog = { 'pwsh','--nologo'}
+        default_prog = { 'pwsh', '--nologo' }
     end
 
     if is_mac() then
@@ -50,20 +49,54 @@ local function get_default_launch()
     local default_launch = {}
     if is_win() then
         default_launch = {
-            { label = "Powershell",    args = { "pwsh.exe", "-nol", "-noe" }, },
+            { label = "Powershell", args = { "pwsh.exe", "-nol", "-noe" }, },
+            { label = "Ubuntu",     args = { "wsl.exe", "-d", "Ubuntu" }, },
         }
     end
     if is_mac() then
         default_launch = {
-            { label = "Zsh",    args = { "/bin/zsh", "-l" }, },
+            { label = "Zsh", args = { "/bin/zsh", "-l" }, },
         }
     end
     return default_launch
 end
 
+local function get_default_window_decorations()
+    local default_window_decorations = ""
+    if is_win() then
+        default_window_decorations = "INTEGRATED_BUTTONS | RESIZE"
+    end
+    if is_mac() then
+        default_window_decorations = " MACOS_FORCE_DISABLE_SHADOW | RESIZE"
+    end
+    return default_window_decorations
+end
+
+
+local function get_special_settings()
+    local special_settings = {}
+    if is_win() then
+        special_settings = {
+            window_background_opacity = 0.80
+            -- waiting for wezterm's new future https://wezfurlong.org/wezterm/config/lua/config/win32_system_backdrop.html?h=acrylic
+            -- window_background_opacity = 0,
+            -- win32_system_backdrop = 'Acrylic',
+        }
+    end
+
+    if is_mac() then
+        special_settings = {
+            window_background_opacity = 0.5,
+            macos_window_background_blur = 80,
+        }
+    end
+    return special_settings
+end
 
 cp.font_size = get_font_size()
 cp.default_prog = get_default_prog()
 cp.default_launch = get_default_launch()
+cp.default_window_decorations = get_default_window_decorations()
+cp.special_settings = get_special_settings()
 
 return cp

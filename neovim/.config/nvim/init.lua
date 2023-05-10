@@ -1,4 +1,4 @@
-require("settings.basic")
+require("settings.options")
 
 -- https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -19,3 +19,13 @@ require("lazy").setup({
   },
   checker = { enabled = false },
 })
+
+
+
+
+
+-- ╭──────────────────────────────────────────────────────────────────────────────╮
+-- │  For Plugind dev                                                             │
+-- ╰──────────────────────────────────────────────────────────────────────────────╯
+vim.o.runtimepath = vim.o.runtimepath .. ',/Users/qujihan/Desktop/nvim-tools'
+-- require("nvim-tools")

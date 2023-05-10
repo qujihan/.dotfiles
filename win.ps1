@@ -3,7 +3,9 @@ function ForceDelete {
     param(
         [string] $path
     )
-    Remove-Item -Force -Recurse $path
+    if (Test-Path $path) {
+        Remove-Item -Force -Recurse $path
+    }
 }
 
 function TouchSymbolicLink{
@@ -12,7 +14,14 @@ function TouchSymbolicLink{
         [string] $path,
         [string] $target
     )
-    New-Item -Path $path -ItemType Junction  -Target $target  
+
+    if(Test-Path -Path $target -PathType Container){
+        # if path is a dir
+        New-Item -ItemType Junction -Path $path -Target $target  
+    } else {
+        # if path is a file
+        New-Item -ItemType SymbolicLink -Path $path -Target $target
+    }
 } 
 
 
@@ -29,8 +38,15 @@ function ConfigApp{
 
 
 $CurrentLocation = Get-Location
-Write-Host "Config Rime"
-ConfigApp -path ~\AppData\Roaming\Rime -target $CurrentLocation\rime\Library\Rime
+
+Write-Host "Config VSCode keybindings"
+ConfigApp -path ~\AppData\Roaming\Code\User\keybindings.json -target "$CurrentLocation\vscode\Library\Application Support\Code\User\keybindings.json"
+Write-Host "Config VSCode snippets"
+ConfigApp -path ~\AppData\Roaming\Code\User\snippets -target "$CurrentLocation\vscode\Library\Application Support\Code\User\snippets"
+Write-Host "Config VSCodeVim"
+ConfigApp -path ~\.vscodevimrc -target $CurrentLocation\vscode\.config\.vscodevimrc
+Write-Host "Config IdeaVim"
+ConfigApp -path ~\.ideavimrc -target $CurrentLocation\ideavim\.config\.ideavimrc
 Write-Host "Config Powershell"
 ConfigApp -path ~\Documents\PowerShell -target $CurrentLocation\powershell\
 Write-Host "Config Neovim"

@@ -1,0 +1,18 @@
+"╭─────────────────────────────────────────────────────────────────╮"
+"│  Keymaps (more keymaps at keybindings.json)                     │"
+"╰─────────────────────────────────────────────────────────────────╯"
+" Set Windows Keymaps "
+nmap <Leader>ff actions.find
+nmap <Leader><Leader><Leader> workbench.action.toggleFullScreen
+nmap <Leader>wa workbench.action.toggleActivityBarVisibility
+nmap <Leader>wb workbench.action.toggleSidebarVisibility
+nmap <Leader>wt workbench.action.toggleMenuBar
+nmap <Leader>wz workbench.action.toggleZenMode
+nmap <Leader>b debug.toggleBreakpoint
+
+" Set LSP Keymaps "
+nmap <Leader>lf editor.action.formatDocument
+nmap <Leader>la editor.action.quickFix
+nmap [d editor.action.marker.prev
+nmap ]d editor.action.marker.next
+nmap K editor.action.showHover

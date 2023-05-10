@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packages=(alacritty git neovim rime weztrem zsh) 
+packages=(alacritty git neovim wezterm zsh ideavim vscode hammerspoon) 
 
 if [ "$1" == "-install" ]; then
   for package in "${packages[@]}"; do

@@ -1,6 +1,59 @@
-local keys = require("keymap.keys")
-local map = keys.map
+local keys = require("settings.keymaps")
+
 return {
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      local dap = require("dap")
+      local dapvt = require("nvim-dap-virtual-text")
+      local dap_config = require("settings.dap-config")
+      -- local dap_delve = require("settings.dap-delve")
+      -- local dap_codelldb = require("settings.dap-codelldb")
+
+      dapvt.setup()
+
+      -- config dap-go
+      dap.adapters.delve = dap_config.delve.delve
+      dap.configurations.go = dap_config.delve.go
+
+      -- config c/cpp/rust
+      dap.adapters.codelldb = dap_config.codelldb.codelldb
+      dap.configurations.cpp = dap_config.codelldb.cpp
+      dap.configurations.c = dap.configurations.cpp
+      dap.configurations.rust = dap.configurations.cpp
+
+      -- set keymap
+      vim.keymap.set("n", keys.dap_continue, function()
+        require("dap").continue()
+      end)
+      vim.keymap.set("n", keys.dap_step_over, function()
+        require("dap").step_over()
+      end)
+      vim.keymap.set("n", keys.dap_step_into, function()
+        require("dap").step_into()
+      end)
+      vim.keymap.set("n", keys.dap_step_out, function()
+        require("dap").step_out()
+      end)
+      vim.keymap.set("n", keys.dap_toggle_breakpoint, function()
+        require("dap").toggle_breakpoint()
+      end)
+      vim.keymap.set("n", keys.dap_set_breakpoint, function()
+        require("dap").set_breakpoint()
+      end)
+      vim.keymap.set("n", keys.dap_repl_open, function()
+        require("dap").repl.open()
+      end)
+      vim.keymap.set("n", keys.dap_run_last, function()
+        require("dap").run_last()
+      end)
+    end,
+  },
+
+  -- Fot dap-ui, it will delelt
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
@@ -10,9 +63,6 @@ return {
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
-      local dapvt = require("nvim-dap-virtual-text")
-      local dap_delve = require("settings.dap-delve")
-      local dap_codelldb = require("settings.dap-codelldb")
 
       -- this snippets from https://github.com/nshen/InsisVim/blob/main/lua/insis/dap/nvim-dap/init.lua
       dapui.setup({
@@ -55,8 +105,6 @@ return {
         },
       })
 
-      dapvt.setup()
-
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
@@ -66,42 +114,6 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-
-      -- config dap-go
-      dap.adapters.delve = dap_delve.delve
-      dap.configurations.go = dap_delve.go
-
-      -- config c/cpp/rust
-      dap.adapters.codelldb = dap_codelldb.codelldb
-      dap.configurations.cpp = dap_codelldb.cpp
-      dap.configurations.c = dap.configurations.cpp
-      dap.configurations.rust = dap.configurations.cpp
-
-      -- keymap
-      map("n", keys.dap_continue, function()
-        require("dap").continue()
-      end)
-      map("n", keys.dap_step_over, function()
-        require("dap").step_over()
-      end)
-      map("n", keys.dap_step_into, function()
-        require("dap").step_into()
-      end)
-      map("n", keys.dap_step_out, function()
-        require("dap").step_out()
-      end)
-      map("n", keys.dap_toggle_breakpoint, function()
-        require("dap").toggle_breakpoint()
-      end)
-      map("n", keys.dap_set_breakpoint, function()
-        require("dap").set_breakpoint()
-      end)
-      map("n", keys.dap_repl_open, function()
-        require("dap").repl.open()
-      end)
-      map("n", keys.dap_run_last, function()
-        require("dap").run_last()
-      end)
     end,
   },
 }

@@ -3,7 +3,7 @@
     "diagnostics": {
         "enable": true,
         "globals": [
-          "vim"
+          "hs"
         ]
     },
     "workspace": {

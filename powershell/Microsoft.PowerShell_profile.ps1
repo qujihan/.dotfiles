@@ -6,6 +6,9 @@ $Env:https_proxy = "http://127.0.0.1:7890"
 
 #-------------------------------   Set Alias BEGIN   -------------------------------
 Set-Alias -Name vi -Value nvim 
+function ee {exit}
+function cl {clear}
+function ser {ssh qujihan@121.48.161.203}
 #-------------------------------   Set Alias END     -------------------------------
 
 

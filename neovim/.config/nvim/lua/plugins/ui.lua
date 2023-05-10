@@ -1,5 +1,5 @@
-local keys = require("keymap.keys")
-local map, nor_opts = keys.map, keys.normal_opts
+local keys = require("settings.keymaps")
+local opt = { noremap = true, silent = true }
 
 return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -19,10 +19,27 @@ return {
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("bufferline").setup()
-      map("n", keys.buffer_prev, ":bprev<CR>", nor_opts)
-      map("n", keys.buffer_next, ":bnext<CR>", nor_opts)
-      map("n", keys.buffer_close, ":bdelete<CR>", nor_opts)
+      vim.keymap.set("n", keys.buffer_prev, ":bprev<CR>", opt)
+      vim.keymap.set("n", keys.buffer_next, ":bnext<CR>", opt)
+      vim.keymap.set("n", keys.buffer_close, ":bdelete<CR>", opt)
+      vim.keymap.set("n", keys.buffer_pick, ":BufferLinePick<CR>", opt)
+      require("bufferline").setup({
+        options = {
+          diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(count, level)
+            local icon = level:match("error") and " " or ""
+            return " " .. icon .. count
+          end,
+          offsets = {
+            {
+              filetype = "NvimTree",
+              text = "File Explorer",
+              text_align = "center",
+              separator = true,
+            },
+          },
+        },
+      })
     end,
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -38,8 +55,8 @@ return {
           component_separators = { left = "", right = "" },
           section_separators = { left = "", right = "" },
           disabled_filetypes = {
-            statusline = {"NvimTree"},
-            winbar = {"NvimTree"},
+            statusline = { "NvimTree" },
+            winbar = { "NvimTree" },
           },
           ignore_focus = {},
           always_divide_middle = true,

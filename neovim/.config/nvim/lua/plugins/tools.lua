@@ -1,15 +1,18 @@
-local keys = require("keymap.keys")
-local map, nor_opts = keys.map, keys.normal_opts
+local keys = require("settings.keymaps")
+local opt = { noremap = true, silent = true }
 return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  Which key                                                                   │
+  -- │  Nvim-tree                                                                   │
+  -- │  https://github.com/nvim-tree/nvim-tree.lua                                  │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     config = function()
-      --set timeout in /options/init.lua
-      require("which-key").setup({})
+      require("nvim-tree").setup()
+      vim.keymap.set("n", keys.tree_toggle, ":NvimTreeToggle<CR>", opt)
     end,
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -33,20 +36,14 @@ return {
       require("leap").add_default_mappings()
     end,
   },
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- ╭─────────────────────────────────────────────────────────────────────────────╮
   -- │  Comment                                                                     │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
     "echasnovski/mini.comment",
     event = "VeryLazy",
     config = function()
-      require("mini.comment").setup({
-        mappings = {
-          comment = keys.comment,
-          comment_line = keys.comment_line,
-          textobject = keys.comment_textobject,
-        },
-      })
+      require("mini.comment").setup()
     end,
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -67,6 +64,19 @@ return {
         },
       })
     end,
+  },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Indentline                                                                  │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      char = "│",
+      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+      show_trailing_blankline_indent = false,
+      show_current_context = false,
+    },
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Autopairs                                                                   │
@@ -94,8 +104,6 @@ return {
           highlight = keys.surround_highlight, -- Highlight surrounding
           replace = keys.surround_replace, -- Replace surrounding
           update_n_lines = keys.surround_update_n_lines, -- Update `n_lines`
-          suffix_last = keys.surround_suffix_last, -- Suffix to search with "prev" method
-          suffix_next = keys.surround_suffix_next, -- Suffix to search with "next" method
         },
       })
     end,
@@ -121,8 +129,8 @@ return {
           width = 0.9,
         },
       })
-      map("n", keys.term_open, '<CMD>lua require("FTerm").toggle()<CR>', nor_opts)
-      map("t", keys.term_open, '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', nor_opts)
+      vim.keymap.set("n", keys.term_open, '<CMD>lua require("FTerm").toggle()<CR>', opt)
+      vim.keymap.set("t", keys.term_open, '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opt)
     end,
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -133,7 +141,31 @@ return {
     event = "VeryLazy",
     config = function()
       require("persistence").setup()
-      map("n", keys.persistence_load, [[<cmd>lua require("persistence").load()<cr>]])
+      vim.keymap.set("n", keys.persistence_load, [[<cmd>lua require("persistence").load()<cr>]])
     end,
   },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Trouble                                                                     │
+  -- │  https://github.com/folke/trouble.nvim                                       │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  {
+    "folke/trouble.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("trouble").setup()
+    end,
+  },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Which key                                                                   │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  -- {
+  --   "folke/which-key.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     --set timeout in /options/init.lua
+  --     require("which-key").setup({})
+  --   end,
+  -- },
 }

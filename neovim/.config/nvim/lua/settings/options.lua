@@ -1,5 +1,5 @@
-local keys = require("keymap.keys")
-local map, nor_opts, buf_opts = keys.map, keys.normal_opts, keys.buffer_opts
+local keys = require("settings.keymaps")
+local opt = { noremap = true, silent = true }
 require("tool.autocmds")
 
 -- basic
@@ -19,7 +19,7 @@ vim.o.termguicolors = true
 -- backup and swap
 vim.o.backup = false
 vim.o.writebackup = false
-vim.o.noswapfile = false
+vim.o.noswapfile = true
 -- indent
 vim.o.expandtab = true -- 空格代替tab
 vim.o.shiftwidth = 4
@@ -50,57 +50,14 @@ vim.o.timeoutlen = 1000
 vim.o.loaded_netrw = 1 --disable netrw
 vim.o.loaded_netrwPlugin = 1
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  For DAP                                                                     │
--- │  https://github.com/mfussenegger/nvim-dap/discussions/355                    │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
--- change point color
-vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
-vim.fn.sign_define("DapBreakpoint", {
-  text = "",
-  texthl = "DapBreakpoint",
-  linehl = "DapBreakpoint",
-  numhl = "DapBreakpoint",
-})
-vim.fn.sign_define("DapBreakpointCondition", {
-  text = "ﳁ",
-  texthl = "DapBreakpoint",
-  linehl = "DapBreakpoint",
-  numhl = "DapBreakpoint",
-})
-vim.fn.sign_define("DapBreakpointRejected", {
-  text = "",
-  texthl = "DapBreakpoint",
-  linehl = "DapBreakpoint",
-  numhl = "DapBreakpoint",
-})
-vim.fn.sign_define("DapLogPoint", {
-  text = "",
-  texthl = "DapLogPoint",
-  linehl = "DapLogPoint",
-  numhl = "DapLogPoint",
-})
-vim.fn.sign_define("DapStopped", {
-  text = "",
-  texthl = "DapStopped",
-  linehl = "DapStopped",
-  numhl = "DapStopped",
-})
--- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │  Set Basic keymaps                                                                 │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
--- 上下移动选中文本
-map("v", "J", ":move '>+1<CR>gv-gv", nor_opts)
-map("v", "K", ":move '<-2<CR>gv-gv", nor_opts)
--- 在visual 模式里粘贴不要复制
--- map("v", "p", '"_dP', nor_opts)
-map("v", keys.yank_to_system, '"+y', nor_opts)
-map("n", keys.paste_to_vim, '"+p', nor_opts)
--- buffer
-map("n", keys.buffer_hop_up, "<c-w>k", nor_opts)
-map("n", keys.buffer_hop_down, "<c-w>j", nor_opts)
-map("n", keys.buffer_hop_left, "<c-w>h", nor_opts)
-map("n", keys.buffer_hop_right, "<c-w>l", nor_opts)
-map("n", keys.buffer_resize_left, ":vertical resize -2<CR>", nor_opts)
-map("n", keys.buffer_resize_right, ":vertical resize +2<CR>", nor_opts)
+-- vim.keymap.set("v", "p", '"_dP', opt)
+vim.keymap.set("v", keys.yank_to_system, '"+y', opt)
+vim.keymap.set("n", keys.paste_to_vim, '"+p', opt)
+vim.keymap.set("n", keys.buffer_hop_up, "<c-w>k", opt)
+vim.keymap.set("n", keys.buffer_hop_down, "<c-w>j", opt)
+vim.keymap.set("n", keys.buffer_hop_left, "<c-w>h", opt)
+vim.keymap.set("n", keys.buffer_hop_right, "<c-w>l", opt)
+vim.keymap.set("n", keys.buffer_resize_left, ":vertical resize -2<CR>", opt)
+vim.keymap.set("n", keys.buffer_resize_right, ":vertical resize +2<CR>", opt)

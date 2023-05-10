@@ -11,20 +11,22 @@ cd ~/.dotfiles
 ```shell
 git clone --recurse-submodules https://github.com/qujihan/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-./win.bat
+# sudo should install, or start powershell with administrator privileges.
+# scoop install sudo
+sudo ./win.bat
 ```
-Note: wezterm and neovim use the font of `FiraCode Nerd Font Mono`, it can download at [Firacode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FantasqueSansMono.zip)
+Note: wezterm and neovim use the font of `FiraCode Nerd Font Mono`, it can download at [Firacode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip)
 
 # dependencies
 
 ## neovim
-detail see [neovim](https://github.com/qujihan/nvim)
+detail see [neovim](https://github.com/qujihan/.dotfiles/blob/main/neovim/.config/nvim/README.md)
 
 ## alacritty
-detail see [alcritty](https://github.com/qujihan/dotfiles/blob/main/alacritty/.config/alacritty/README.md)
+detail see [alcritty](https://github.com/qujihan/.dotfiles/blob/main/alacritty/.config/alacritty/README.md)
 
 ## wezterm
-detail see [wezterm](https://github.com/qujihan/dotfiles/blob/main/wezterm/.config/wezterm/README.md)
+detail see [wezterm](https://github.com/qujihan/.dotfiles/blob/main/wezterm/.config/wezterm/README.md)
 
 ## zsh
-detail see [zsh](https://github.com/qujihan/dotfiles/blob/main/zsh/.zshrc) top
+detail see [zsh](https://github.com/qujihan/.dotfiles/blob/main/zsh/.zshrc) top

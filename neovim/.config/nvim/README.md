@@ -2,7 +2,7 @@
 1. curl wget git unzip
 2. gcc g++ 
 3. ripgrep fd-find(for telescope)
-4. [Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases)(i use [Firacode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FantasqueSansMono.zip))
+4. [Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases)(i use [Firacode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip))
 
 **Note:option**
 1. If you use Golang, you'll also need to install Golang and delve using `apt install golang gopls devle` and `go install github.com/go-delve/delve/cmd/dlv@latest`
@@ -12,3 +12,8 @@
 
 # TODO
 1. add telescope function
+
+
+
+# Delete
+at this page, can change the debug's point ui [this](https://github.com/mfussenegger/nvim-dap/discussions/355)
