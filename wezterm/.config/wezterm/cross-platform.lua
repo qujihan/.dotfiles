@@ -49,8 +49,8 @@ local function get_default_launch()
     local default_launch = {}
     if is_win() then
         default_launch = {
-            { label = "Powershell", args = { "pwsh.exe", "-nol", "-noe" }, },
-            { label = "Ubuntu",     args = { "wsl.exe", "-d", "Ubuntu" }, },
+            { label = "Powershell", args = { "pwsh", "-nol", "-noe" }, },
+            { label = "WSL",        args = { "wsl", "-d", "Ubuntu", "--cd", "~" }, },
         }
     end
     if is_mac() then
