@@ -1,4 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
+-- local usercmd = vim.api.nvim_create_user_command
 local keys = require("settings.keymaps")
 
 -- ╭──────────────────────────────────────────────────────────────────────────────╮

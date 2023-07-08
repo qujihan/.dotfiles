@@ -4,27 +4,5 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "c",
-        "cpp",
-        "lua",
-        "vim",
-        "markdown",
-        "python",
-        "java",
-        "rust",
-        "go",
-        "json",
-        "toml",
-        "dockerfile",
-      },
-      auto_install = false,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-      },
-    })
-  end,
+  opts = {},
 }

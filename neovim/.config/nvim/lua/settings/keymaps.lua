@@ -1,5 +1,4 @@
--- local keys = require("keymap")
-local keys = {
+return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Yank to system                                                              │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -19,8 +18,6 @@ local keys = {
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   buffer_prev = "<A-,>",
   buffer_next = "<A-.>",
-  -- buffer_reorder_prev = "<A-<>",
-  -- buffer_reorder_next = "<A->>",
   buffer_close = "<A-w>",
   buffer_pick = "<leader>bp",
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -33,18 +30,6 @@ local keys = {
   cmp_scroll_doc_down = "<C-d>",
   cmp_select_prev_item = "<C-p>",
   cmp_select_next_item = "<C-n>",
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  For surround                                                                │
-  -- │  Note:Module mappings. Use `''` (empty string) to disable one.               │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  -- Module mappings. Use `''` (empty string) to disable one.
-  surround_add = "gza", -- Add surrounding in Normal and Visual modes
-  surround_delete = "gzd", -- Delete surrounding
-  surround_find = "gzf", -- Find surrounding (to the right)
-  surround_find_left = "gzF", -- Find surrounding (to the left)
-  surround_highlight = "gzh", -- Highlight surrounding
-  surround_replace = "gzr", -- Replace surrounding
-  surround_update_n_lines = "gzn", -- Update `n_lines`
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  For lspsage                                                                 │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -95,10 +80,14 @@ local keys = {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  For term                                                                    │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  term_open = "<C-`>",
+  term_open = "<A-`>",
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  For Persistence                                                             │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  persistence_load = "<leader>ll",
+  persistence_load = "Load",
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  For flash                                                                   │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  flash_jump = "s",
+  flash_treesitter = "S",
 }
-return keys

@@ -3,68 +3,19 @@ local opt = { noremap = true, silent = true }
 return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Nvim-tree                                                                   │
-  -- │  https://github.com/nvim-tree/nvim-tree.lua                                  │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  -- vim.keymap.set("n", keys.tree_toggle, ":NvimTreeToggle<CR>", opt)
   {
     "nvim-tree/nvim-tree.lua",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup()
-      vim.keymap.set("n", keys.tree_toggle, ":NvimTreeToggle<CR>", opt)
+    init = function()
+      vim.keymap.set("n", keys.tree_toggle, ":NvimTreeToggle<cr>", opt)
     end,
+    opts = {},
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Gitsigns                                                                    │
-  -- │  https://github.com/lewis6991/gitsigns.nvim                                  │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({})
-    end,
-  },
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  Leap                                                                        │
-  -- │  https://github.com/ggandor/leap.nvim                                        │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "ggandor/leap.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("leap").add_default_mappings()
-    end,
-  },
-  -- ╭─────────────────────────────────────────────────────────────────────────────╮
-  -- │  Comment                                                                     │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    config = function()
-      require("mini.comment").setup()
-    end,
-  },
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  Indentscope                                                                 │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "echasnovski/mini.indentscope",
-    event = "VeryLazy",
-    config = function()
-      local indentscope = require("mini.indentscope")
-      indentscope.gen_animation.none()
-      indentscope.setup({
-        mappings = {
-          object_scope = "",
-          object_scope_with_border = "",
-          goto_top = "",
-          goto_bottom = "",
-        },
-      })
-    end,
-  },
+  { "lewis6991/gitsigns.nvim", opts = {} },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Indentline                                                                  │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -81,91 +32,67 @@ return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Autopairs                                                                   │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "echasnovski/mini.pairs",
-    event = "VeryLazy",
-    config = function()
-      require("mini.pairs").setup()
-    end,
-  },
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Surround                                                                    │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  {
-    "echasnovski/mini.surround",
-    event = "VeryLazy",
-    config = function()
-      require("mini.surround").setup({
-        mappings = {
-          add = keys.surround_add, -- Add surrounding in Normal and Visual modes
-          delete = keys.surround_delete, -- Delete surrounding
-          find = keys.surround_find, -- Find surrounding (to the right)
-          find_left = keys.surround_find_left, -- Find surrounding (to the left)
-          highlight = keys.surround_highlight, -- Highlight surrounding
-          replace = keys.surround_replace, -- Replace surrounding
-          update_n_lines = keys.surround_update_n_lines, -- Update `n_lines`
-        },
-      })
-    end,
-  },
+  { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opts = {} },
+  -- ╭─────────────────────────────────────────────────────────────────────────────╮
+  -- │  Comment                                                                     │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  { "numToStr/Comment.nvim", event = "VeryLazy", opts = {} },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  FTerm                                                                       │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
     "numToStr/FTerm.nvim",
-    config = function()
-      require("FTerm").setup({
-        cmd = function()
-          if vim.loop.os_uname().sysname == "Windows_NT" then
-            return "pwsh --nologo"
-          elseif vim.loop.os_uname().sysname == "Darwin" then
-            return "/bin/zsh -l"
-          elseif vim.loop.os_uname().sysname == "Linux" then
-            return "/usr/bin/bash"
-          end
-        end,
-        dimensions = {
-          height = 0.9,
-          width = 0.9,
-        },
-      })
+    event = "VeryLazy",
+    init = function()
       vim.keymap.set("n", keys.term_open, '<CMD>lua require("FTerm").toggle()<CR>', opt)
       vim.keymap.set("t", keys.term_open, '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opt)
     end,
+    opts = {},
   },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Flash                                                                       │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.keymap.set({ "n", "x", "o" }, keys.flash_jump, [[<cmd>lua require("flash").jump()<cr>]])
+      vim.keymap.set({ "n", "x", "o" }, keys.flash_treesitter, [[<cmd>lua require("flash").treesitter()<cr>]])
+    end,
+    opts = {},
+  },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Which key                                                                   │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Persistence                                                                 │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
     "folke/persistence.nvim",
     event = "VeryLazy",
-    config = function()
-      require("persistence").setup()
-      vim.keymap.set("n", keys.persistence_load, [[<cmd>lua require("persistence").load()<cr>]])
+    init = function()
+      vim.api.nvim_create_user_command(keys.persistence_load, function()
+        require("persistence").load()
+      end, { desc = "load persisted session" })
     end,
+    opts = {},
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Trouble                                                                     │
-  -- │  https://github.com/folke/trouble.nvim                                       │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  { "folke/trouble.nvim", opts = {} },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Noice                                                                       │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
-    "folke/trouble.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("trouble").setup()
-    end,
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    opts = {},
   },
-  -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  Which key                                                                   │
-  -- ╰──────────────────────────────────────────────────────────────────────────────╯
-  -- {
-  --   "folke/which-key.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     --set timeout in /options/init.lua
-  --     require("which-key").setup({})
-  --   end,
-  -- },
 }

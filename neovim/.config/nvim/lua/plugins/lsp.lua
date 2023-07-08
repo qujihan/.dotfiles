@@ -2,8 +2,7 @@ local lsp_config = require("settings.lsp-config")
 
 return {
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
-  -- │  LSP-ZERO                                                                    │
-  -- │  https://github.com/VonHeikemen/lsp-zero.nvim                                │
+  -- │  lsp-zero                                                                    │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -28,7 +27,6 @@ return {
   },
   -- ╭──────────────────────────────────────────────────────────────────────────────╮
   -- │  Null-ls                                                                     │
-  -- │  https://github.com/jose-elias-alvarez/null-ls.nvim                          │
   -- ╰──────────────────────────────────────────────────────────────────────────────╯
   {
     "jay-babu/mason-null-ls.nvim",
@@ -49,12 +47,14 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
-          -- for lua
           null_ls.builtins.formatting.stylua,
-          -- for golang
           null_ls.builtins.formatting.gofmt,
         },
       })
     end,
   },
+  -- ╭──────────────────────────────────────────────────────────────────────────────╮
+  -- │  Treesitter                                                                  │
+  -- ╰──────────────────────────────────────────────────────────────────────────────╯
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", opts = {} },
 }

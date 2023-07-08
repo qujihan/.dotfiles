@@ -6,13 +6,13 @@ require("tool.autocmds")
 vim.o.scrolloff = 8
 vim.o.sidescrolloff = 8
 vim.o.encoding = "UTF-8"
-vim.o.number = true -- 显示行号
-vim.o.relativenumber = true
-vim.o.cursorline = true -- 高亮所在行
-vim.o.ignorecase = true -- 忽略大小写
+vim.o.number = true
+vim.o.relativenumber = false
+vim.o.cursorline = true
+vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.wrap = false -- 禁止折行
-vim.o.showtabline = 2 -- 永远显示tabline
+vim.o.wrap = false
+vim.o.showtabline = 2
 vim.o.signcolumn = "yes"
 -- color
 vim.o.termguicolors = true
@@ -43,7 +43,7 @@ vim.g.maplocalleader = " "
 -- │  For which-key                                                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯
 vim.o.timeout = true
-vim.o.timeoutlen = 1000
+vim.o.timeoutlen = 300
 -- ╭──────────────────────────────────────────────────────────────────────────────╮
 -- │  For nvim tree                                                               │
 -- ╰──────────────────────────────────────────────────────────────────────────────╯

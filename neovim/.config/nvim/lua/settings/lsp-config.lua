@@ -11,7 +11,7 @@ M.lsp_list = function()
   elseif vim.loop.os_uname().sysname == "Darwin" then
     list = { "lua_ls", "cmake", "clangd", "gopls" }
   elseif vim.loop.os_uname().sysname == "Linux" then
-    list = { "lua_ls", "cmake", "clangd", "gopls" }
+    list = { "lua_ls", "cmake", "clangd" }
   end
   return list
 end

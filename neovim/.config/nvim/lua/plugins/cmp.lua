@@ -14,6 +14,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "lukas-reineke/cmp-under-comparator",
     },
     config = function()
       local has_words_before = function()
@@ -28,36 +29,33 @@ return {
       cmp.setup({
         snippet = {
           expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body)
           end,
         },
+
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
+
         formatting = {
           format = require("lspkind").cmp_format({
-            mode = "symbol_text",
-            --mode = 'symbol', -- show only symbol annotations
-
-            maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            -- The function below will be called before any actual modifications from lspkind
-            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+            mode = "symbol",
+            maxwidth = 50,
+            ellipsis_char = "...",
             before = function(entry, vim_item)
-              -- Source 显示提示来源
               vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
               return vim_item
             end,
           }),
         },
+
         mapping = {
           [keys.cmp_complete] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
           [keys.cmp_abort] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
           }),
-          -- Accept currently selected item. If none selected, `select` first item.
-          -- Set `select` to `false` to only confirm explicitly selected items.
           [keys.cmp_confirm] = cmp.mapping.confirm({
             select = false,
             behavior = cmp.ConfirmBehavior.Replace,
@@ -85,23 +83,27 @@ return {
             end
           end, { "i", "s" }),
         },
+
         sources = {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "nvim_lsp" },
         },
+
+        sorting = {
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            require("cmp-under-comparator").under,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
       })
 
-      -- You can specify the `cmp_git` source if you were installed it.
-      cmp.setup.filetype("gitcommit", {
-        sources = cmp.config.sources({ { name = "cmp_git" } }, { { name = "buffer" } }),
-      })
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = { { name = "buffer" } },
-      })
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),

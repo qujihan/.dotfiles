@@ -19,13 +19,3 @@ require("lazy").setup({
   },
   checker = { enabled = false },
 })
-
-
-
-
-
--- ╭──────────────────────────────────────────────────────────────────────────────╮
--- │  For Plugind dev                                                             │
--- ╰──────────────────────────────────────────────────────────────────────────────╯
-vim.o.runtimepath = vim.o.runtimepath .. ',/Users/qujihan/Desktop/nvim-tools'
--- require("nvim-tools")
