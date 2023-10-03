@@ -1,0 +1,14 @@
+{
+    "name": "snippets",
+    "engines": {
+        "vscode": "^0.0.1"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "go",
+                "path": "./snippets/go.json"
+            }
+        ]
+    }
+}
