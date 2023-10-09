@@ -1,3 +1,12 @@
+# zsh_config
+
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Ignore lower upper                                                          │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+autoload -Uz compinit && compinit -u
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Theme                                                                       │
 #│  brew install starship                                                       │
@@ -7,26 +16,48 @@ eval "$(starship init zsh)"
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Clash proxy                                                                 │  
 #╰──────────────────────────────────────────────────────────────────────────────╯
-export https_proxy=http://127.0.0.1:7890 
-export http_proxy=http://127.0.0.1:7890 
-export all_proxy=socks5://127.0.0.1:7890
+proxy(){
+    export https_proxy=http://127.0.0.1:7890 
+    export http_proxy=http://127.0.0.1:7890 
+    export all_proxy=http://127.0.0.1:7890
+}
+
+unproxy(){
+    unset https_proxy
+    unset http_proxy
+    unset all_proxy
+}
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Cargo and Go                                                                │  
 #╰──────────────────────────────────────────────────────────────────────────────╯
-export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/go/bin
+export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:~/.rustup/toolchains/stable-aarch64-apple-darwin/bin 
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Alias                                                                       │  
 #╰──────────────────────────────────────────────────────────────────────────────╯
+alias pp="proxy"
+alias up="unproxy"
 alias vi="nvim"
 alias ndev="nvim +\"set rtp+=./\""
 alias ee="exit"
 alias cl="clear"
 alias la="ls -a"
 alias ll="ls -l"
+#python
 alias python="python3"
 alias pip="python3 -m pip"
-alias pod="podman"
-alias ser="ssh qujihan@121.48.161.203"
+# rust
+alias cb="cargo build"
+alias cr="cargo run"
+# golang
+alias gb="go build"
+alias gr="go run"
+# podman
+alias docker="podman"
+# tmux 
+alias t="tmux"
+alias tr="tmux source-file ~/.tmux.conf"
+alias ta="tmux attach -t"

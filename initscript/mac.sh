@@ -1,0 +1,1 @@
+ghproxy="https://mirror.ghproxy.com/"

@@ -25,7 +25,7 @@ local function get_font_size()
     end
 
     if is_mac() then
-        font_size = 15
+        font_size = 17
     end
     return font_size
 end
@@ -51,13 +51,13 @@ local function get_default_launch()
         default_launch = {
             { label = "Powershell", args = { "pwsh", "-nol", "-noe" }, },
             { label = "WSL",        args = { "wsl", "-d", "Ubuntu", "--cd", "~" }, },
-            { label = "Nushell",    args = { "nu" }, },
+            -- { label = "Nushell",    args = { "nu" }, },
         }
     end
     if is_mac() then
         default_launch = {
             { label = "Zsh",     args = { "/bin/zsh", "-l" }, },
-            { label = "Nushell", args = { "/opt/homebrew/bin/nu" }, },
+            -- { label = "Nushell", args = { "/opt/homebrew/bin/nu" }, },
         }
     end
     return default_launch
@@ -80,9 +80,11 @@ local function get_special_settings()
     local special_settings = {}
     if is_win() then
         special_settings = {
-            window_background_opacity = 0.8,
+            window_background_opacity = 0.9,
             -- win32_system_backdrop = 'Tabbed',
             -- win32_system_backdrop = 'Acrylic',
+            win32_system_backdrop = 'Mica'
+
         }
     end
 

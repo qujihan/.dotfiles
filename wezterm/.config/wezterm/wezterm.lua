@@ -3,6 +3,12 @@ local act = wezterm.action
 local cp = require("cross-platform")
 local color = require("color")
 
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():set_position(200, 200)
+	-- window:gui_window():set_inner_size(1000, 750)
+end)
+
 wezterm.on('format-tab-title', function(tab, _, _, _, _, _)
 	local pom_away = wezterm.nerdfonts.pom_away
 	local index = string.format(" %s ", tab.tab_index + 1)
@@ -47,13 +53,15 @@ local ret = {
 	-- ╭──────────────────────────────────────────────────────────────────────────────╮
 	-- │  UI                                                                          │
 	-- ╰──────────────────────────────────────────────────────────────────────────────╯
+	initial_cols = 90,
+	initial_rows = 30,
 	window_decorations = cp.default_window_decorations,
 	window_close_confirmation = "NeverPrompt",
 	window_padding = {
-		left = 0,
-		right = 0,
-		top = 0,
-		bottom = 0,
+		left = 10,
+		right = 10,
+		top = 10,
+		bottom = 10,
 	},
 	window_frame = {
 		active_titlebar_bg = color.all_bg,
@@ -77,8 +85,8 @@ local ret = {
 	-- ╭──────────────────────────────────────────────────────────────────────────────╮
 	-- │  Tab                                                                         │
 	-- ╰──────────────────────────────────────────────────────────────────────────────╯
-	tab_bar_at_bottom = true,
-	-- tab_bar_at_bottom = false,
+	-- tab_bar_at_bottom = true,
+	tab_bar_at_bottom = false,
 	show_tab_index_in_tab_bar = false,
 	enable_tab_bar = true,
 	hide_tab_bar_if_only_one_tab = true,
@@ -99,21 +107,21 @@ local ret = {
 		tab_bar = {
 			background = color.all_bg,
 			active_tab = {
-				fg_color = color.active_title_fg,
-				bg_color = color.active_title_bg,
+				fg_color = color.active_title_fg:lighten(0.2),
+				bg_color = color.active_title_bg:lighten(0.2),
 				intensity = "Bold",
 				underline = 'None',
 				italic = false,
-				strikethrough = false,
+				-- strikethrough = false,
 			},
 			inactive_tab = {
-				bg_color = color.inactive_title_bg,
-				fg_color = color.inactive_title_fg,
+				bg_color = color.inactive_title_bg:lighten(0.2),
+				fg_color = color.inactive_title_fg:lighten(0.2),
 				intensity = "Half",
 			},
 			inactive_tab_hover = {
-				bg_color = color.active_title_bg,
-				fg_color = color.active_title_fg,
+				bg_color = color.active_title_bg:lighten(0.1),
+				fg_color = color.active_title_fg:lighten(0.1),
 				italic = false,
 			},
 
