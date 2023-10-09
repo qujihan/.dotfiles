@@ -1,0 +1,31 @@
+# import = ["~/.config/alacritty/themes/hyper.toml"]
+# import = ["~/.config/alacritty/themes/iterm.toml"]
+import = ["~/.config/alacritty/themes/github_dark_default.toml"]
+live_config_reload = true
+
+[window]
+dimensions = { columns = 120, lines = 35 }
+padding = { x = 10, y = 10 }
+decorations = "full"
+opacity = 0.9
+startup_mode = "Windowed"
+title = "Alacritty"
+dynamic_title = false
+option_as_alt = "Both"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono" }
+bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
+italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "FiraCode Nerd Font Mono", style = "Bold Italic" }
+size = 12
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[mouse]
+hide_when_typing = false

@@ -1,0 +1,35 @@
+[
+  {
+    "context": "Terminal || Editor || Zed || Workspace",
+    "bindings": {
+      "alt-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "alt-,": "pane::ActivatePrevItem",
+      "alt-.": "pane::ActivateNextItem",
+      "ctrl-j": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      "space space l": "workspace::ToggleLeftDock",
+      "space space t": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "d": "project_panel::Delete",
+      "r": "project_panel::Rename",
+      "h": "project_panel::CollapseSelectedEntry",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "project_panel::OpenPermanent",
+      "p": "project_panel::Open",
+      "x": "project_panel::RevealInFinder"
+    }
+  }
+]

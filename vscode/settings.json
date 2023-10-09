@@ -1,0 +1,83 @@
+{
+    // Workbench and Editor
+    "window.zoomLevel": 1,
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Default Light Modern",
+    "editor.largeFileOptimizations": false, // 大文件优化 关
+    "editor.minimap.enabled": false, // 缩略图 关
+    "editor.cursorSmoothCaretAnimation": "on", // 平滑移动 开
+    "editor.stickyScroll.enabled": true, // 移动中固定函数 开
+    "editor.semanticHighlighting.enabled": true, // 语义高亮
+    "editor.inlayHints.enabled": "off", // inlay
+    "editor.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono",
+    // VSCodeVim
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<space>",
+    "vim.vimrc.enable": true,
+    "vim.surround": true,
+    "vim.sneak": true,
+    "vim.easymotion": true,
+    "vim.foldfix": true,
+    "vim.scroll": 5,
+    "vim.timeout": 2000,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "w"
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "b"
+            ],
+        }
+    ],
+    // Git
+    "git.openRepositoryInParentFolders": "always",
+    "files.exclude": {
+        // 显示 .git 文件夹
+        "**/.git": false
+    },
+    // CMake
+    "cmake.showOptionsMovedNotification": false,
+    "cmake.configureOnOpen": false,
+    // Golang
+    "go.buildFlags": [
+        "-v"
+    ],
+    "go.generateTestsFlags": [
+        "-v "
+    ],
+    "go.toolsManagement.autoUpdate": true,
+    // Rust
+    "rust-analyzer.completion.callable.snippets": "none",
+    // Typst
+    "typst-lsp.exportPdf": "never",
+    // copilot
+    "github.copilot.editor.enableAutoCompletions": true,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    // gitlens
+    "gitlens.graph.minimap.additionalTypes": [
+        "localBranches",
+        "stashes",
+        "tags",
+        "remoteBranches"
+    ],
+}

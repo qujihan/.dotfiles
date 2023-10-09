@@ -1,18 +1,62 @@
-"╭─────────────────────────────────────────────────────────────────╮"
-"│  Keymaps (more keymaps at keybindings.json)                     │"
-"╰─────────────────────────────────────────────────────────────────╯"
-" Set Windows Keymaps "
-nmap <Leader>ff actions.find
-nmap <Leader><Leader><Leader> workbench.action.toggleFullScreen
-nmap <Leader>wa workbench.action.toggleActivityBarVisibility
-nmap <Leader>wb workbench.action.toggleSidebarVisibility
-nmap <Leader>wt workbench.action.toggleMenuBar
-nmap <Leader>wz workbench.action.toggleZenMode
-nmap <Leader>b debug.toggleBreakpoint
+; VSCode Setting
+; 
+; "vim.useSystemClipboard": true,
+; "vim.leader": "<space>",
+; "vim.vimrc.enable": true,
+; "vim.surround": true,
+; "vim.sneak": true,
+; "vim.easymotion": true,
+; "vim.foldfix": true,
+; "vim.scroll": 5,
+; "vim.timeout": 2000,
+; "vim.normalModeKeyBindingsNonRecursive": [
+;     {
+;         "before": [
+;             "<leader>",
+;             "w"
+;         ],
+;         "after": [
+;             "<leader>",
+;             "<leader>",
+;             "w"
+;         ],
+;     },
+;     {
+;         "before": [
+;             "<leader>",
+;             "b"
+;         ],
+;         "after": [
+;             "<leader>",
+;             "<leader>",
+;             "b"
+;         ],
+;     }
+; ],
 
-" Set LSP Keymaps "
+
+; ╭──────────────────────────────────────────────────────────────────╮
+; │  Keymaps (another keymaps at keybindings.json)                   │
+; ╰──────────────────────────────────────────────────────────────────╯
+; Basic
+nmap j gj
+nmap k gk
+
+; Set Windows Keymaps
+nmap <C-f> actions.find
+
+nmap <Leader><Leader>a workbench.action.toggleActivityBarVisibility
+nmap <Leader><Leader>l workbench.action.toggleSidebarVisibility
+nmap <Leader><Leader>t workbench.action.togglePanel
+
+; Set LSP Keymaps
+nmap <Leader>lr editor.action.rename
 nmap <Leader>lf editor.action.formatDocument
 nmap <Leader>la editor.action.quickFix
+; gb adds another cursor on the next word it finds which is the same as the word under the cursor.
+; gd jump to definition
+; gh similar to mouse hover
+nmap gu editor.action.goToReferences
+nmap gU editor.action.goToReferences
 nmap [d editor.action.marker.prev
 nmap ]d editor.action.marker.next
-nmap K editor.action.showHover

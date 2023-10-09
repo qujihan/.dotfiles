@@ -1,0 +1,16 @@
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
+[user]
+	name = qujihan
+	email = qujihan@163.com
+[alias]
+    st = status
+    co = commit
+    br = branch
+    ch = checkout
+    lo = log --oneline
+    lala = commit --amend --no-edit -n -a 
+[core]
+    editor=vim
+[pull]
+	rebase = false

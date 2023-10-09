@@ -1,0 +1,140 @@
+{
+    "mac": {
+        "alacritty": [
+            {
+                "source": "alacritty",
+                "linkto": ".config/alacritty"
+            }
+        ],
+        "git": [
+            {
+                "source": "git",
+                "linkto": ".config/git"
+            }
+        ],
+        "hammerspoon": [
+            {
+                "source": "hammerspoon",
+                "linkto": ".hammerspoon"
+            }
+        ],
+        "ideavim": [
+            {
+                "source": "ideavim/.ideavimrc",
+                "linkto": ".ideavimrc"
+            }
+        ],
+        "starship": [
+            {
+                "source": "starship/starship.toml",
+                "linkto": ".config/starship.toml"
+            }
+        ],
+        "snipaste": [
+            {
+                "source": "snipaste/config.ini",
+                "linkto": ".snipaste/config.ini"
+            }
+        ],
+        "tmux": [
+            {
+                "source": "tmux",
+                "linkto": ".config/tmux"
+            }
+        ],
+        "vscode": [
+            {
+                "source": "vscode/snippets",
+                "linkto": "Library/Application Support/Code/User/snippets"
+            },
+            {
+                "source": "vscode/keybindings.json",
+                "linkto": "Library/Application Support/Code/User/keybindings.json"
+            },
+            {
+                "source": "vscode/settings.json",
+                "linkto": "Library/Application Support/Code/User/settings.json"
+            },
+            {
+                "source": "vscode/.vscodevimrc",
+                "linkto": ".vscodevimrc"
+            }
+        ],
+        "zed": [
+            {
+                "source": "zed/settings.json",
+                "linkto": ".config/zed/settings.json"
+            },
+            {
+                "source": "zed/keymap.json",
+                "linkto": ".config/zed/keymap.json"
+            }
+        ],
+        "zsh": [
+            {
+                "source": "shell/.zshrc",
+                "linkto": ".zshrc"
+            },
+            {
+                "source": "shell",
+                "linkto": ".config/shell"
+            }
+        ]
+    },
+    "win": {
+        "alacritty": [
+            {
+                "source": "alacritty",
+                "linkto": "AppData/Roaming/alacritty"
+            }
+        ],
+        "git": [
+            {
+                "source": "git",
+                "linkto": ".config/git"
+            }
+        ],
+        "ideavim": [
+            {
+                "source": "ideavim/.ideavimrc",
+                "linkto": ".ideavimrc"
+            }
+        ],
+        "starship": [
+            {
+                "source": "starship/starship.toml",
+                "linkto": ".config/starship.toml"
+            }
+        ],
+        "vscode": [
+            {
+                "source": "vscode/snippets",
+                "linkto": "AppData/Roaming/Code/User/snippets"
+            },
+            {
+                "source": "vscode/keybindings.json",
+                "linkto": "AppData/Roaming/Code/User/keybindings.json"
+            },
+            {
+                "source": "vscode/settings.json",
+                "linkto": "AppData/Roaming/Code/User/settings.json"
+            },
+            {
+                "source": "vscode/.vscodevimrc",
+                "linkto": ".vscodevimrc"
+            }
+        ],
+        "powershell": [
+            {
+                "source": "powershell/Microsoft.PowerShell_profile.ps1",
+                "linkto": "Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+            }
+        ],
+        "wsl": [
+            {
+                "source": "wsl/.wslconfig",
+                "linkto": ".wslconfig"
+            }
+        ]
+    }
+}
