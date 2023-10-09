@@ -40,20 +40,32 @@ function ConfigApp{
 $CurrentLocation = Get-Location
 
 Write-Host "Config VSCode keybindings"
-ConfigApp -path ~\AppData\Roaming\Code\User\keybindings.json -target "$CurrentLocation\vscode\Library\Application Support\Code\User\keybindings.json"
+ConfigApp -path "$env:USERPROFILE\AppData\Roaming\Code\User\keybindings.json" -target "$CurrentLocation\vscode\Library\Application Support\Code\User\keybindings.json"
+
 Write-Host "Config VSCode snippets"
-ConfigApp -path ~\AppData\Roaming\Code\User\snippets -target "$CurrentLocation\vscode\Library\Application Support\Code\User\snippets"
+ConfigApp -path "$env:USERPROFILE\AppData\Roaming\Code\User\snippets" -target "$CurrentLocation\vscode\Library\Application Support\Code\User\snippets"
+
 Write-Host "Config VSCodeVim"
-ConfigApp -path ~\.vscodevimrc -target $CurrentLocation\vscode\.config\.vscodevimrc
+ConfigApp -path "$env:USERPROFILE\.vscodevimrc" -target $CurrentLocation\vscode\.vscodevimrc
+
 Write-Host "Config IdeaVim"
-ConfigApp -path ~\.ideavimrc -target $CurrentLocation\ideavim\.config\.ideavimrc
+ConfigApp -path "$env:USERPROFILE\.ideavimrc" -target $CurrentLocation\ideavim\.config\.ideavimrc
+
 Write-Host "Config Powershell"
-ConfigApp -path ~\Documents\PowerShell -target $CurrentLocation\powershell\
-Write-Host "Config Neovim"
-ConfigApp -path ~\AppData\Local\nvim -target $CurrentLocation\neovim\.config\nvim\
-Write-Host "Config WezTerm"
-ConfigApp -path ~\.config\wezterm -target $CurrentLocation\wezterm\.config\wezterm\
+ConfigApp -path "$env:USERPROFILE\Documents\PowerShell" -target $CurrentLocation\powershell\
+
+# Write-Host "Config WezTerm"
+# ConfigApp -path ~\.config\wezterm" -target $CurrentLocation\wezterm\.config\wezterm\
+
+Write-Host "Config Alacritty"
+ConfigApp -path "$env:USERPROFILE\.config\alacritty" -target $CurrentLocation\alacritty\.config\alacritty
+ConfigApp -path "$env:USERPROFILE\AppData\Roaming\alacritty" -target $CurrentLocation\alacritty\.config\alacritty
+
 Write-Host "Config Git"
-ConfigApp -path ~\.config\git -target $CurrentLocation\git\.config\git\
+ConfigApp -path "$env:USERPROFILE\.config\git" -target $CurrentLocation\git\.config\git\
+
 Write-Host "Config Starship"
-ConfigApp -path ~\.config\starship.toml -target $CurrentLocation\starship\.config\starship.toml
+ConfigApp -path "$env:USERPROFILE\.config\starship.toml" -target $CurrentLocation\starship\.config\starship.toml
+
+Write-Host "Config WSL"
+ConfigApp -path "$env:USERPROFILE\.wslconfig" -target $CurrentLocation\wsl\.wslconfig

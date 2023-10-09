@@ -1,0 +1,57 @@
+" ╭──────────────────────────────────────────────────────────────────╮
+" │  Plugins                                                         │
+" ╰──────────────────────────────────────────────────────────────────╯
+set sneak
+set surround
+set easymotion
+set nerdtree
+set commentary
+set which-key
+set ideamarks
+set ideajoin
+
+" ╭──────────────────────────────────────────────────────────────────╮
+" │  Settings                                                        │
+" ╰──────────────────────────────────────────────────────────────────╯
+set clipboard+=unnamed
+set clipboard+=ideaput
+set number
+set history=1000
+set undolevels=200
+set scroll=10
+set scrolloff=5
+
+" ╭──────────────────────────────────────────────────────────────────╮
+" │  Keymap                                                          │
+" ╰──────────────────────────────────────────────────────────────────╯
+" :actionlist，查询 IDEA 中所有 action
+" leader
+let mapleader=' '
+
+" 窗口相关快捷键
+nmap <A-h> <C-w>h
+nmap <A-l> <C-w>l
+nmap <A-j> <C-w>j
+nmap <A-k> <C-w>k
+nmap <A-.> :action NextTab<CR>
+nmap <A-,> :action PreviousTab<CR>
+nmap <A-e> :NERDTree<CR>
+
+nmap <leader>f  :action Find<CR>
+nmap <leader>t  :action ActivateTerminalToolWindow<CR>
+nmap <leader>wh :action HideSideWindows<CR>
+nmap <leader>wz :action ToggleZenMode<CR>
+
+" LSP相关
+" K is default
+nmap <leader>lr :action RenameElement<CR>
+nmap <leader>lf :action ReformatCode<CR>
+nmap <leader>la :action ShowIntentionActions<CR>
+" gb :not find
+" gh :not find
+nmap gd :action GotoDeclaration<CR>
+nmap gh :action ShowErrorDescription<CR>
+nmap gu :action ShowUsages<CR>
+nmap gU :action FindUsages<CR>
+nmap [d :action GotoPreviousError<CR>
+nmap ]d :action GotoNextError<CR>

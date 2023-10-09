@@ -20,6 +20,7 @@ $package
 $character"""
 
 add_newline = true
+command_timeout = 1500
 
 [username]
 style_user = 'green'

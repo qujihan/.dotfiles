@@ -3,8 +3,9 @@ Available context keys at
 https://code.visualstudio.com/api/references/when-clause-contexts#available-context-keys
 */
 [
-
-    /* Window Management */
+    /* 
+        Window Management 
+    */
     {
         "key": "alt+h",
         "command": "workbench.action.navigateLeft",
@@ -33,20 +34,9 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "key": "alt+e",
         "command": "workbench.view.explorer"
     },
-    {
-        "key": "ctrl+j",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen"
-    },
-   
-
-    /* FileExplorer */
-    // open file or folder
+    /*
+        FileExplorer
+    */
     {
         "key": "o",
         "command": "explorer.openAndPassFocus",
@@ -57,52 +47,52 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "command": "list.select",
         "when": "listFocus && !inputFocus"
     },
-    // open to side
     {
         "key": "ctrl+o",
         "command": "explorer.openToSide",
         "when": "explorerViewletFocus && foldersViewVisible && !inputFocus"
     },
-    // delete
     {
         "key": "d",
         "command": "deleteFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
-    // create new file
     {
         "key": "a",
         "command": "explorer.newFile",
         "when": "filesExplorerFocus && foldersViewVisible && !inputFocus"
     },
-    // cut
     {
         "key": "x",
         "command": "filesExplorer.cut",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
-    // copy
     {
         "key": "y",
         "command": "filesExplorer.copy",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !inputFocus"
     },
-    // paste
     {
         "key": "p",
         "command": "filesExplorer.paste",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
-    // fresh
     {
         "key": "R",
         "command": "workbench.files.action.refreshFilesExplorer",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
-    // rename
     {
         "key": "r",
         "command": "renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    },
+    /*
+        Terminal
+    */
+    {
+        "key": "alt+j",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
     },
 ]

@@ -5,8 +5,12 @@
 	email = qujihan@163.com
 [alias]
     st = status
-    ci = commit
+    co = commit
     br = branch
-    co = checkout
+    ch = checkout
+    lo = log --oneline
+    lala = commit --amend --no-edit -n -a 
 [core]
     editor=vim
+[pull]
+	rebase = false
