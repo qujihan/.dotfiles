@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 magic_str="# zsh_config"
 
 filename="/.bashrc"
