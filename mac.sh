@@ -1,7 +1,16 @@
 #!/bin/bash
 
-# packages=(alacritty git wezterm zsh ideavim vscode starship nushell) 
-packages=(git zsh vscode starship tmux hammerspoon ideavim) 
+packages=(
+  alacritty 
+  git 
+  hammerspoon 
+  ideavim 
+  starship 
+  tmux 
+  vscode 
+  # wezterm
+  zsh
+) 
 
 if [ "$1" == "--install" ]; then
   for package in "${packages[@]}"; do

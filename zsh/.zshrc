@@ -1,5 +1,7 @@
 # zsh_config
 
+# use vim
+set -o vi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Ignore lower upper                                                          │
@@ -29,11 +31,18 @@ unproxy(){
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Cargo and Go                                                                │  
+#│  Rust                                                                        │  
 #╰──────────────────────────────────────────────────────────────────────────────╯
-export PATH=$PATH:~/go/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.rustup/toolchains/stable-aarch64-apple-darwin/bin 
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Golang                                                                      │  
+#╰──────────────────────────────────────────────────────────────────────────────╯
+export PATH=$PATH:~/go/bin
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOSUMDB=sum.golang.google.cn
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Alias                                                                       │  

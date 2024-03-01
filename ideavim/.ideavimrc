@@ -8,6 +8,7 @@ set nerdtree
 set commentary
 set which-key
 set ideamarks
+set ideajoin
 
 " ╭──────────────────────────────────────────────────────────────────╮
 " │  Settings                                                        │
