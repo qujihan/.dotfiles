@@ -66,7 +66,9 @@ alias gb="go build"
 alias gr="go run"
 # podman
 alias docker="podman"
+# deprecated function -_-
+alias rm="trash -F"
 # tmux 
-alias t="tmux"
+alias tm="tmux"
 alias tr="tmux source-file ~/.tmux.conf"
 alias ta="tmux attach -t"
