@@ -8,6 +8,7 @@
     ci = commit
     br = branch
     co = checkout
+    lo = log --oneline
 [core]
     editor=vim
 [pull]

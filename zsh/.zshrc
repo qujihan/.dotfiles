@@ -35,6 +35,7 @@ unproxy(){
 #╰──────────────────────────────────────────────────────────────────────────────╯
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.rustup/toolchains/stable-aarch64-apple-darwin/bin 
+alias cargoc="rm -rf ~/.cargo/.package-cache"
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Golang                                                                      │  
