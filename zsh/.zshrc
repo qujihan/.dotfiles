@@ -48,6 +48,7 @@ go env -w GOSUMDB=sum.golang.google.cn
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Alias                                                                       │  
 #╰──────────────────────────────────────────────────────────────────────────────╯
+# basic
 alias pp="proxy"
 alias up="unproxy"
 alias vi="nvim"
@@ -56,7 +57,9 @@ alias ee="exit"
 alias cl="clear"
 alias la="ls -a"
 alias ll="ls -l"
-#python
+# facility
+alias dotf="code ~/.dotfiles"
+# python
 alias python="python3"
 alias pip="python3 -m pip"
 # rust
@@ -69,7 +72,7 @@ alias gr="go run"
 alias docker="podman"
 # deprecated function -_-
 alias rm="trash -F"
-# tmux 
+# tmux
 alias tm="tmux"
 alias tr="tmux source-file ~/.tmux.conf"
 alias ta="tmux attach -t"

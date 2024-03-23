@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
+# 在窗口任意位置按住 ctrl + command 就可以在任意位置拖动窗口
+function setDrag(){
+    defaults write -g NSWindowShouldDragOnGesture -bool "true"
+}
+
+function resetDrag(){
+    defaults delete -g NSWindowShouldDragOnGesture
+}
+
 function help(){
-    ehco " 加载当前脚本 source ./setMac.sh "
+    ehco " 加载当前脚本 source ./mac.sh "
+    ehco "================================="
+    echo " "
+    echo " 任意位置拖动 setDrag"
     ehco " 删除自带的ABC输入法 setABC "
     ehco " 恢复自带的ABC输入法 resetABC "
     ehco " 配置Mac setMac "
@@ -33,10 +45,17 @@ function resetTrackpad(){
 function setDock(){
     # Dock 栏大小
     defaults write com.apple.dock "tilesize" -int 38 
+
     # 不显示最近项目
-    defaults write com.apple.dock "show-recents" -bool false
+    defaults write com.apple.dock "show-recents" -bool "false"
+
     # 神奇缩放
     defaults write com.apple.dock "mineffect" -string "genie"
+
+    # 在 Dock 的应用图标上向下滚动滚轮可以打开这个应用的所有窗口
+    # 在 触控板上两根手指向上滑动
+    defaults write com.apple.dock "scroll-to-open" -bool "true"
+
     # 只显示打开的应用
     defaults write com.apple.dock static-only -boolean true
 
@@ -53,16 +72,22 @@ function resetDock(){
 function setFinder(){
     # 显示所有后缀
     defaults write -g AppleShowAllExtensions -bool true
+
     # 在 Finder 下面显示路径栏
     defaults write com.apple.finder ShowPathbar -bool true
+
     # 边栏图标大小
     defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1" 
+
     # 默认打开 $HOME 目录
     defaults write com.apple.finder NewWindowTarget -string "PfHm"
+
     # 默认使用 List
     defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
     # 默认使用当前目录搜索
     defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
     killall Finder
 }
 
@@ -72,9 +97,9 @@ function resetFinder(){
 }
 
 function setMac(){
-    setDock && setFinder
+    setDock ; setFinder ; setDrag
 }
 
 function resetMac(){
-    resetDock && resetFinder
+    resetDock ; resetFinder ; resetDrag
 }
