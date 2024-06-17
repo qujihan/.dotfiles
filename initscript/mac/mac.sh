@@ -94,15 +94,4 @@ function resetMac(){
     resetDock ; resetFinder ; resetDrag
 }
 
-function setHelp(){
-    ehco " 加载当前脚本 source ./mac.sh "
-    ehco "================================="
-    echo " "
-    echo " 任意位置拖动 setDrag"
-    ehco " 删除自带的ABC输入法 setABC "
-    ehco " 恢复自带的ABC输入法 resetABC "
-    ehco " 配置Mac setMac "
-    ehco " 重置配置 resetMac "
-}
-
-setHelp
+setMac

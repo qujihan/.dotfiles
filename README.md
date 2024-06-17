@@ -2,7 +2,7 @@
 ```shell
 brew install stow
 git clone https://github.com/qujihan/.dotfiles.git ~/.dotfiles
-cd ~/.dotfiles/mac.sh
+cd ~/.dotfiles
 zsh ./mac.sh --install
 zsh ./initscript/mac/mac.sh
 setMac
