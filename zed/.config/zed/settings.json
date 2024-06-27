@@ -1,0 +1,25 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "theme": "One Light",
+  "vim_mode": true,
+  "ui_font_family": "Cascadia Mono",
+  "ui_font_size": 14,
+  "buffer_font_family": "Cascadia Mono",
+  "buffer_font_size": 14,
+  "terminal": {
+    "font_family": "FiraCode Nerd Font"
+  },
+  "inlay_hints": {
+    "enabled": false,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  }
+}

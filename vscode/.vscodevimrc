@@ -61,10 +61,11 @@ nmap <Leader><Leader>wh workbench.action.togglePanel
 nmap K editor.action.showHover
 nmap <Leader>lr editor.action.rename
 nmap <Leader>lf editor.action.formatDocument
-nmap <Leader>la editor.action.quickFix
+
 ; gb adds another cursor on the next word it finds which is the same as the word under the cursor.
 ; gd jump to definition
 ; gh similar to mouse hover
+nmap g. editor.action.quickFix
 nmap gu editor.action.goToReferences
 nmap gU editor.action.goToReferences
 nmap [d editor.action.marker.prev

@@ -24,7 +24,7 @@ set scrolloff=5
 " ╭──────────────────────────────────────────────────────────────────╮
 " │  Keymap                                                          │
 " ╰──────────────────────────────────────────────────────────────────╯
-" :actionlist，查询 IDEA 中所有 action
+" :actionlist, 查询 IDEA 中所有 action
 " leader
 let mapleader=' '
 
@@ -46,9 +46,9 @@ nmap <leader>wz :action ToggleZenMode<CR>
 " K is default
 nmap <leader>lr :action RenameElement<CR>
 nmap <leader>lf :action ReformatCode<CR>
-nmap <leader>la :action ShowIntentionActions<CR>
 " gb :not find
 " gh :not find
+nmap g. :action ShowIntentionActions<CR>
 nmap gd :action GotoDeclaration<CR>
 nmap gh :action ShowErrorDescription<CR>
 nmap gu :action ShowUsages<CR>

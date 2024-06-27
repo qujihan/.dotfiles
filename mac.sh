@@ -1,4 +1,5 @@
 #!/bin/bash
+find . -name ".DS_Store" -type f -exec /bin/rm -f {} +
 
 packages=(
   alacritty 
@@ -9,6 +10,7 @@ packages=(
   tmux 
   vscode 
   # wezterm
+  zed
   zsh
 ) 
 
