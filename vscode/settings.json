@@ -30,7 +30,7 @@
                 "<leader>",
                 "<leader>",
                 "w"
-            ],
+            ]
         },
         {
             "before": [
@@ -41,7 +41,7 @@
                 "<leader>",
                 "<leader>",
                 "b"
-            ],
+            ]
         }
     ],
     // Git
@@ -68,7 +68,7 @@
     // copilot
     "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
-        "*": false,
+        "*": true,
         "plaintext": false,
         "markdown": false,
         "scminput": false
@@ -79,5 +79,5 @@
         "stashes",
         "tags",
         "remoteBranches"
-    ],
+    ]
 }
