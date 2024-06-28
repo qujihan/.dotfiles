@@ -41,6 +41,10 @@ curl ${proxy_url}/${base_url}/initscript/ubuntu/tmux.sh | bash
 # delete backup file
 rm *.backup-*
 ```
-# Note
-- Font
-    - wezterm/alacritty/starship/vscode ... use [FiraCode(font)](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip)
+# Font
+- [FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip)
+    - `brew install font-fira-code-nerd-font`
+    - `scoop install nerd-fonts/FiraCode-NF-Mono`
+- [Cascadia Code](https://github.com/microsoft/cascadia-code)
+    - `brew install font-cascadia-mono`
+    - `scoop install nerd-fonts/CascadiaCode-NF-Mono`
