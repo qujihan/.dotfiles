@@ -38,8 +38,8 @@
         ],
         "tmux": [
             {
-                "source": "tmux",
-                "linkto": ".config/tmux"
+                "source": "tmux/.tmux.conf",
+                "linkto": ".tmux.conf"
             }
         ],
         "vscode": [
