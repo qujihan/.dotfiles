@@ -39,6 +39,9 @@ def remove_link(path):
 
 def touch_symlink(source, linkto):
     remove_link(linkto)
+    directory = os.path.dirname(linkto)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     if os.path.isdir(source):
         os.symlink(source, linkto, target_is_directory=True)
     elif os.path.isfile(source):
