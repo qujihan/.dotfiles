@@ -23,8 +23,5 @@ alias gb="go build"
 alias gr="go run"
 
 # tmux
-if [ -f $HOME/.tmux.conf ]; then
-    alias tr="tmux source-file ${HOME}/.tmux.conf"
-fi
 alias tm="tmux"
 alias ta="tmux attach -t"
