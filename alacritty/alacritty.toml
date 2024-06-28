@@ -22,7 +22,7 @@ normal = { family = "FiraCode Nerd Font Mono" }
 bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
 italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "FiraCode Nerd Font Mono", style = "Bold Italic" }
-size = 12
+size = 15
 
 [cursor]
 style = { shape = "Block", blinking = "On" }
