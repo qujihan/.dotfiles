@@ -46,6 +46,7 @@
     ],
     // Git
     "git.openRepositoryInParentFolders": "always",
+    "git.autofetch": true,
     "files.exclude": {
         // 显示 .git 文件夹
         "**/.git": false
