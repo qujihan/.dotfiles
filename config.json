@@ -70,6 +70,12 @@
                 "linkto": ".config/zed/keymap.json"
             }
         ],
+        "zellij": [
+            {
+                "source": "zellij/config.kdl",
+                "linkto": ".config/zellij/config.kdl"
+            }
+        ],
         "zsh": [
             {
                 "source": "shell/.zshrc",
