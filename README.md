@@ -4,7 +4,7 @@ git clone https://github.com/qujihan/.dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 sudo make install # sudo python config.py --install 
 sudo make uninstall # sudo python config.py --uninstall
-setMac
+./initscript/.macos --set
 ```
 
 # Windows
