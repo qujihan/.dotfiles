@@ -80,5 +80,6 @@
         "stashes",
         "tags",
         "remoteBranches"
-    ]
+    ],
+    "update.mode": "none"
 }
