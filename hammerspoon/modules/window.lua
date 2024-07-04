@@ -1,7 +1,6 @@
-hs.window.animationDuration = 0
+hs.window.animationDuration = 0.3
 
--- move application between screen
 hs.hotkey.bind({"ctrl","cmd"}, "d", function()
-  screen = hs.screen.mainScreen():next()
-  hs.window.focusedWindow():moveToScreen(screen)
+  screen = hs.screen.mainScreen()
+  hs.window.focusedWindow():moveToScreen(screen:next())
 end)
