@@ -1,14 +1,17 @@
 hs.configdir = os.getenv('HOME') .. '/.hammerspoon'
 package.path = hs.configdir .. '/?.lua;' .. hs.configdir .. '/?/init.lua;' .. hs.configdir .. '/Spoons/?.spoon/init.lua;' .. package.path
 
-bd = require "modules/bingdaily"
-bd:init()
+bing_daily = require "modules/bing_daily"
+bing_daily:init()
 
-require "modules/mouse"
+windows_move = require "modules/window_move"
+windows_move:init()
 
-require "modules/vim"
+vim_mode = require "modules/vim_mode"
+vim_mode:init()
 
-require "modules/window"
+monitor_move = require "modules/monitor_move"
+monitor_move:init()
 
 -- reload keymap
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "R", function()

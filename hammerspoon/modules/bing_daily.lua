@@ -1,16 +1,6 @@
 local obj={}
+
 obj.__index = obj
-
--- Metadata
-obj.name = "BingDaily"
-obj.version = "1.1"
-obj.author = "ashfinal <ashfinal@gmail.com>"
-obj.homepage = "https://github.com/Hammerspoon/Spoons"
-obj.license = "MIT - https://opensource.org/licenses/MIT"
-
---- BingDaily.uhd_resolution
---- Variable
---- If `true`, download image in UHD resolution instead of HD. Defaults to `false`.
 obj.uhd_resolution = true
 
 local function curl_callback(exitCode, stdOut, stdErr)
