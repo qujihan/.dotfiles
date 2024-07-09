@@ -4,8 +4,8 @@ package.path = hs.configdir .. '/?.lua;' .. hs.configdir .. '/?/init.lua;' .. hs
 bing_daily = require "modules/bing_daily"
 bing_daily:init()
 
-windows_move = require "modules/window_move"
-windows_move:init()
+window_move = require "modules/window_move"
+window_move:init()
 
 vim_mode = require "modules/vim_mode"
 vim_mode:init()

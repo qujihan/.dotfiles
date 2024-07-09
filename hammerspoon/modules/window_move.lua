@@ -1,5 +1,4 @@
-
-local windows_move = {}
+local window_move = {}
 
 local changSpaceByMouse = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDragged }, function(e)
     local mouseButton = e:getProperty(hs.eventtap.event.properties['mouseEventButtonNumber'])
@@ -10,8 +9,8 @@ local changSpaceByMouse = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDr
     end
 end)
 
-function windows_move:init()
+function window_move:init()
     changSpaceByMouse:start()
 end
 
-return windows_move
+return window_move
