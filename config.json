@@ -30,12 +30,6 @@
                 "linkto": ".config/starship.toml"
             }
         ],
-        "snipaste": [
-            {
-                "source": "snipaste/config.ini",
-                "linkto": ".snipaste/config.ini"
-            }
-        ],
         "tmux": [
             {
                 "source": "tmux/.tmux.conf",
