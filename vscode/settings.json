@@ -2,7 +2,7 @@
     // Workbench and Editor
     "window.zoomLevel": 1,
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Default Light Modern",
+    "workbench.colorTheme": "Quiet Light",
     "editor.largeFileOptimizations": false, // 大文件优化 关
     "editor.minimap.enabled": false, // 缩略图 关
     "editor.cursorSmoothCaretAnimation": "on", // 平滑移动 开
@@ -51,6 +51,19 @@
         // 显示 .git 文件夹
         "**/.git": false
     },
+    // C/CXX
+    "clangd.arguments": [
+        "--clang-tidy",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "-j=8",
+        "--background-index",
+        "--compile-commands-dir=${workspaceFolder}/{relativeFileDirname}/",
+        "--query-driver=**",
+        "--clang-tidy-checks=performance-*,bugprone-*,cppcoreguidelines-*,google-*,llvm-*,modernize-*,readability-*",
+        "--pch-storage=memory"
+    ],
     // CMake
     "cmake.showOptionsMovedNotification": false,
     "cmake.configureOnOpen": false,
@@ -81,5 +94,8 @@
         "tags",
         "remoteBranches"
     ],
-    "update.mode": "none"
+    "update.mode": "none",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    }
 }
