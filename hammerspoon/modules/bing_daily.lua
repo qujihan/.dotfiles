@@ -20,6 +20,7 @@ local function curl_callback(exitCode, stdOut, stdErr)
 end
 
 local function bingRequest()
+    hs.notify.new({title="Bing Daily", informativeText="Bing每日壁纸"}):send()
     local user_agent_str = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
     local json_req_url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
     hs.http.asyncGet(json_req_url, {["User-Agent"]=user_agent_str}, function(stat,body,header)
