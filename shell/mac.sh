@@ -23,3 +23,10 @@ fi
 if [ -f ${config_path}/alias_mac.sh ]; then
     source ${config_path}/alias_mac.sh
 fi
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Plguin                                                                      │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+if [ -f ${config_path}/plugin.sh ]; then
+    source ${config_path}/plugin.sh
+fi
