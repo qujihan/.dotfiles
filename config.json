@@ -72,6 +72,10 @@
         ],
         "zsh": [
             {
+                "source": "shell/.hushlogin",
+                "linkto": ".hushlogin"
+            },
+            {
                 "source": "shell/.zshrc",
                 "linkto": ".zshrc"
             },
