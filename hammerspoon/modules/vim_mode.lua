@@ -54,6 +54,11 @@ function vim_move:init()
 	remap({'ctrl', 'cmd', 'alt', 'shift'}, 'j', pressFn({'cmd', 'alt', 'shift'}, 'down'))
 	remap({'ctrl', 'cmd', 'alt', 'shift'}, 'k', pressFn({'cmd', 'alt', 'shift'}, 'up'))
 	remap({'ctrl', 'cmd', 'alt', 'shift'}, 'l', pressFn({'cmd', 'alt', 'shift'}, 'right'))
+
+	-- ctrl + 0: 句首
+	-- ctrl + $: 句尾
+	remap({'ctrl'}, '0', pressFn({'cmd'}, 'left'))
+	remap({'ctrl', 'shift'}, '4', pressFn({'cmd'}, 'right'))
 end
 
 return vim_move

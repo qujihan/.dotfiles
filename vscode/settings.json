@@ -1,8 +1,6 @@
 {
-    // Workbench and Editor
-    "window.zoomLevel": 1,
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Quiet Light",
+    "workbench.colorTheme": "Default Dark+",
     "editor.largeFileOptimizations": false, // 大文件优化 关
     "editor.minimap.enabled": false, // 缩略图 关
     "editor.cursorSmoothCaretAnimation": "on", // 平滑移动 开
@@ -97,5 +95,7 @@
     "update.mode": "none",
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
-    }
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "window.zoomLevel": 1.25,
 }
