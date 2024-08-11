@@ -13,6 +13,7 @@ export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Rust                                                                        │
 #╰──────────────────────────────────────────────────────────────────────────────╯
+export PATH=$PATH:$(brew --prefix)/opt/rustup/bin
 export PATH=$PATH:${HOME}/.cargo/bin
 export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin 
 export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
