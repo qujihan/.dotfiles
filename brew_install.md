@@ -1,8 +1,8 @@
 latest update:
-2024/8/10 2:05:24
+2024/8/12 4:23:23
   
 hostname:
-qujihandeMacBook-Air.local
+M6HR4QKF4Y
   
 cmake
 go
@@ -16,6 +16,10 @@ typst
 typstyle
 yazi
 zellij
+zsh-autocomplete
+zsh-autopair
+zsh-autosuggestions
+zsh-syntax-highlighting
   
 alacritty
 easydict
