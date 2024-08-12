@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # use debug
 # export DOTFILE_DEBUG=1
 #
