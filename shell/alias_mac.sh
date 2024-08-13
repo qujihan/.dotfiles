@@ -15,8 +15,10 @@ fi
 # facility
 alias dotf="code ${HOME}/.dotfiles"
 alias rime="code ${HOME}/Library/Rime"
+
 # deprecated function -_-
-alias drm="/bin/rm"
-alias rm="trash -F"
+# alias drm="/bin/rm"
+# alias rm="trash -F"
+
 # zellij
 alias z="zellij"

@@ -10,7 +10,6 @@ loc
 ninja
 rustup
 starship
-trash
 tre-command
 typst
 typstyle
