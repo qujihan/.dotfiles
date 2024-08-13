@@ -25,6 +25,7 @@ alacritty
 easydict
 font-cascadia-mono
 font-fira-code-nerd-font
+font-hanamin
 font-lxgw-wenkai
 hammerspoon
 microsoft-edge
