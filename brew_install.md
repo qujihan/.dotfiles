@@ -1,5 +1,5 @@
 latest update:
-2024/8/17 5:25:00
+2024/8/17 7:44:31
   
 hostname:
 qujihandeMacBook-Air.local
@@ -29,6 +29,7 @@ font-fira-code-nerd-font
 font-hanamin
 font-lxgw-wenkai
 hammerspoon
+koodo-reader
 microsoft-auto-update
 microsoft-edge
 microsoft-excel
