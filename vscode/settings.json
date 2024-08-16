@@ -1,6 +1,5 @@
 {
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Default Dark+",
     "editor.largeFileOptimizations": false, // 大文件优化 关
     "editor.minimap.enabled": false, // 缩略图 关
     "editor.cursorSmoothCaretAnimation": "on", // 平滑移动 开
