@@ -9,8 +9,10 @@ brew:
 	@echo "hostname:" >> ${brew_install_file_name}
 	@hostname >> $(brew_install_file_name)
 	@echo "  " >> ${brew_install_file_name}
+	@echo "brew install " >> ${brew_install_file_name}
 	@brew list --installed-on-request >> ${brew_install_file_name}
 	@echo "  " >> ${brew_install_file_name}
+	@echo "brew install --cask" >> ${brew_install_file_name}
 	@brew list --cask >> ${brew_install_file_name}
 
 install:
