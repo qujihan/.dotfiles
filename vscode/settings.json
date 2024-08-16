@@ -75,9 +75,14 @@
     "go.toolsManagement.autoUpdate": true,
     // Rust
     "rust-analyzer.completion.callable.snippets": "none",
-    // Typst
-    "typst-lsp.exportPdf": "never",
-    // copilot
+    // Python(Ruff)
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    // Typst(Tinymist Typst)
+    "tinymist.formatterMode": "typstyle",
+    "tinymist.previewFeature": "disable",
+    // Copilot
     "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
         "*": true,
@@ -85,7 +90,7 @@
         "markdown": false,
         "scminput": false
     },
-    // gitlens
+    // Gitlens
     "gitlens.graph.minimap.additionalTypes": [
         "localBranches",
         "stashes",
@@ -93,9 +98,6 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "window.zoomLevel": 1.25,
+    "window.zoomLevel": 1.25
 }
