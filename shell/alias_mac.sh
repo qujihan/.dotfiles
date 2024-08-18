@@ -16,6 +16,8 @@ fi
 alias dotf="code ${HOME}/.dotfiles"
 alias rime="code ${HOME}/Library/Rime"
 
+alias cle="clear"
+
 # deprecated function -_-
 # alias drm="/bin/rm"
 # alias rm="trash -F"
