@@ -6,9 +6,13 @@ import platform
 
 # const
 config_file_name = "config.json"
-home_dir = os.getenv("HOME")
 dotfile_dir = os.path.dirname(os.path.abspath(__file__))
 
+home_dir = ""
+if platform.system() == "Windows":
+    home_dir = os.path.expanduser('~')
+elif platform.system() == "Darwin":
+    home_dir = os.getenv("HOME")
 
 def get_os_json(path):
     with open(path, "r") as config:
@@ -51,7 +55,9 @@ def install(path):
         for paths in config_path_vec:
             source, linkto = get_pathinfo_from_json(paths)
             touch_symlink(source, linkto)
+            print(f"{source} --> {linkto} \n")
         print(f"Finish config: {app_name}...\n")
+        
 
 def uninstall(path):
     json = get_os_json(path)

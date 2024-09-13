@@ -131,7 +131,7 @@
         "powershell": [
             {
                 "source": "powershell/Microsoft.PowerShell_profile.ps1",
-                "linkto": "Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+                "linkto": "Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
             }
         ],
         "wsl": [
