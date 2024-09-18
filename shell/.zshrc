@@ -17,7 +17,7 @@ common_config(){
     fi
 
     # Alias
-    if [ -f ${config_path}/alias_mac.sh ]; then
+    if [ -f ${config_path}/alias.sh ]; then
         source ${config_path}/alias.sh
     fi
 }
