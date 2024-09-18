@@ -9,11 +9,9 @@ sh_save_path_base="${HOME}/.config/shell/"
 
 mkdir -p "${sh_save_path_base}"
 filelist=(
-    func.sh
     env.sh
-    alias_base.sh
-    alias_unix.sh
-    unix.sh
+    alias.sh
+    .zshrc
 )
 
 for filename in ${filelist[@]}; do
@@ -22,5 +20,5 @@ for filename in ${filelist[@]}; do
     config_backup_and_download "${download_url}" "${save_path}"
 done
 
-echo "source \$HOME/.config/shell/unix.sh" >> "${HOME}/.bashrc"
+echo "source \$HOME/.config/shell/.zshrc" >> "${HOME}/.bashrc"
 source "${HOME}/.bashrc"

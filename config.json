@@ -1,4 +1,38 @@
 {
+    "linux": {
+        "git": [
+            {
+                "source": "git",
+                "linkto": ".config/git"
+            }
+        ],
+        "starship": [
+            {
+                "source": "starship/starship.toml",
+                "linkto": ".config/starship.toml"
+            }
+        ],
+        "tmux": [
+            {
+                "source": "tmux/.tmux.conf",
+                "linkto": ".tmux.conf"
+            }
+        ],
+        "zsh": [
+            {
+                "source": "shell/.hushlogin",
+                "linkto": ".hushlogin"
+            },
+            {
+                "source": "shell/.zshrc",
+                "linkto": ".zshrc"
+            },
+            {
+                "source": "shell",
+                "linkto": ".config/shell"
+            }
+        ]
+    },
     "mac": {
         "alacritty": [
             {

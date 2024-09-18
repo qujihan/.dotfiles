@@ -21,6 +21,8 @@ def get_os_json(path):
             return json_data["win"]
         elif platform.system() == "Darwin":
             return json_data["mac"]
+        elif platform.system() == "Linux":
+            return json_data["linux"]
     return None
 
 

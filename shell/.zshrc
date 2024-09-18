@@ -1,29 +1,44 @@
-zmodload zsh/zprof
-# use debug
+# Debug script
 # export DOTFILE_DEBUG=1
-#
-# disable debug
 # unset DOTFILE_DEBUG
 
-# use vim
+# Vim
 # set -o vi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Ignore lower/upper                                                          │
-#╰──────────────────────────────────────────────────────────────────────────────╯
-autoload -Uz compinit && compinit -u
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-
-#╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Theme                                                                       │
-#│  brew install starship                                                       │
-#╰──────────────────────────────────────────────────────────────────────────────╯
-eval "$(starship init zsh)"
-
-#╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Mac Zsh Config                                                              │
+#│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 config_path="${HOME}/.config/shell"
-if [ -f ${config_path}/mac.sh ]; then 
-    source ${config_path}/mac.sh
+
+common_config(){
+    # Env
+    if [ -f ${config_path}/env.sh ]; then
+        source ${config_path}/env.sh
+    fi
+
+    # Alias
+    if [ -f ${config_path}/alias_mac.sh ]; then
+        source ${config_path}/alias.sh
+    fi
+}
+
+macos_config(){
+    common_config
+
+    # Plugin
+    if [ -f ${config_path}/plugin.sh ]; then
+        source ${config_path}/plugin.sh
+    fi
+}
+
+linux_config(){
+    common_config
+}
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    macos_config
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    linux_config
+else
+    echo "Unknown OS"
 fi
