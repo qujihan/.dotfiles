@@ -25,8 +25,15 @@ homebrew_config(){
 }
 
 # Rust
-rust_config(){
+rust_config_macos(){
     export PATH=$PATH:$(brew --prefix)/opt/rustup/bin
+    export PATH=$PATH:${HOME}/.cargo/bin
+    export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin 
+    export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+    export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+}
+
+rust_config_linux(){
     export PATH=$PATH:${HOME}/.cargo/bin
     export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin 
     export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
@@ -45,11 +52,11 @@ golang_config(){
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     homebrew_config
-    rust_config
+    rust_config_macos
     golang_config
     starship_config
     ignore_config
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    rust_config
+    rust_config_linux
     golang_config
 fi
