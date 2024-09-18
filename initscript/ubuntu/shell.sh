@@ -11,7 +11,6 @@ mkdir -p "${sh_save_path_base}"
 filelist=(
     env.sh
     alias.sh
-    .zshrc
 )
 
 for filename in ${filelist[@]}; do
@@ -20,5 +19,7 @@ for filename in ${filelist[@]}; do
     config_backup_and_download "${download_url}" "${save_path}"
 done
 
+# .zshrc
+config_backup_and_download "${sh_download_url_base}.zshrc" "${sh_save_path_base}.zshrc"
 echo "source \$HOME/.config/shell/.zshrc" >> "${HOME}/.bashrc"
 source "${HOME}/.bashrc"

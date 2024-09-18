@@ -10,7 +10,7 @@ config_backup_and_download() {
         cp "${file_path}" "${file_path}.backup-$(date +%Y%m%d-%H%M%S)"
     fi
     echo "download $(basename "${download_url}")"
-    curl -s ${download_url} -o ${file_path}
+    curl -L -s ${download_url} -o ${file_path}
     if [ $? -ne 0 ]; then
         echo "download ${basename "${download_url}"} failed."
         exit 1

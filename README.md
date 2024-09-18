@@ -28,13 +28,13 @@ curl -Lo ${util_path}/utils.sh ${proxy_url}/${base_url}/initscript/ubuntu/utils.
 
 ```shell
 # git
-curl ${proxy_url}/${base_url}/initscript/ubuntu/git.sh | bash
+curl -L ${proxy_url}/${base_url}/initscript/ubuntu/git.sh | bash
 
 # shell
-curl ${proxy_url}/${base_url}/initscript/ubuntu/shell.sh | bash
+curl -L ${proxy_url}/${base_url}/initscript/ubuntu/shell.sh | bash
 
 # tmux
-curl ${proxy_url}/${base_url}/initscript/ubuntu/tmux.sh | bash
+curl -L ${proxy_url}/${base_url}/initscript/ubuntu/tmux.sh | bash
 ```
 
 ``` shell
