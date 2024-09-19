@@ -94,5 +94,13 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "key": "ctrl+t",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active"
+    },
+    /*
+        For windows(autohotkey close window)
+    */
+    {
+        "key": "ctrl+w",
+        "command": "-extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
     }
 ]
