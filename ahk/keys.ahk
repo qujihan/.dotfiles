@@ -43,3 +43,15 @@ GroupAdd("GroupA", "ahk_exe zotero.exe") ; VS Code
         WinMaximize "A"
     }
 }
+
+; ┌──────────────────────────┐
+; │     Like MacOS           │
+; └──────────────────────────┘
+;ctrl+alt+q: lock screen
+^!q:: DllCall("LockWorkStation")
+
+;alt+c: copy
+!c:: Send("^c")
+
+;alt+v: paste
+!v:: Send("^v")
