@@ -29,6 +29,7 @@
 ; └──────────────────────────┘
 GroupAdd("GroupA", "ahk_exe msedge.exe") ; Edge 浏览器
 GroupAdd("GroupA", "ahk_exe Code.exe") ; VS Code
+GroupAdd("GroupA", "ahk_exe zotero.exe") ; VS Code
 #HotIf WinActive("ahk_group GroupA")
 !w::Send("^w")
 #HotIf
@@ -42,3 +43,15 @@ GroupAdd("GroupA", "ahk_exe Code.exe") ; VS Code
         WinMaximize "A"
     }
 }
+
+; ┌──────────────────────────┐
+; │     Like MacOS           │
+; └──────────────────────────┘
+;ctrl+alt+q: lock screen
+^!q:: DllCall("LockWorkStation")
+
+;alt+c: copy
+!c:: Send("^c")
+
+;alt+v: paste
+!v:: Send("^v")

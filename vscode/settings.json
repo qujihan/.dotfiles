@@ -7,6 +7,8 @@
     "editor.semanticHighlighting.enabled": true, // 语义高亮
     "editor.inlayHints.enabled": "off", // inlay
     "editor.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono, CaskaydiaCove Nerd Font Mono",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono, CaskaydiaCove Nerd Font Mono",
     // VSCodeVim
     "vim.useSystemClipboard": true,
     "vim.leader": "<space>",
@@ -97,7 +99,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1.25,
-    "terminal.integrated.enableMultiLinePasteWarning": false,
-    "terminal.integrated.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono, CaskaydiaCove Nerd Font Mono"
+    "window.zoomLevel": 1,
 }
