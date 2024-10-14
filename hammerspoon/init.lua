@@ -13,6 +13,9 @@ vim_mode:init()
 monitor_move = require "modules/monitor_move"
 monitor_move:init()
 
+mouse_volume = require "modules/mouse_volume"
+mouse_volume:init()
+
 -- reload keymap
 hs.hotkey.bind({"cmd", "ctrl", "shift"}, "R", function()
   hs.notify.new({title="Hammerspoon", informativeText="Reload Config"}):send()
