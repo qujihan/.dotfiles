@@ -5,10 +5,22 @@ fi
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Clash Function                                                              │
 #╰──────────────────────────────────────────────────────────────────────────────╯
+
+# proxy_ip
+if [[ $(uname -a) == *WSL* ]]; then
+    # WSL
+    proxy_ip=$(awk '/nameserver/ {print $2}' /etc/resolv.conf)
+else
+    proxy_ip="127.0.0.1"
+fi
+
+# proxy_port
+proxy_port="7890"
+
 proxy(){
-    export https_proxy=http://127.0.0.1:7897 
-    export http_proxy=http://127.0.0.1:7897 
-    export all_proxy=http://127.0.0.1:7897
+    export https_proxy=${proxy_ip}:${proxy_port}
+    export http_proxy=${proxy_ip}:${proxy_port} 
+    export all_proxy=${proxy_ip}:${proxy_port}
 }
 
 unproxy(){
