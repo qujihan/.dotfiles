@@ -13,6 +13,6 @@
 [core]
     editor=vim
 [pull]
-	rebase = false
+	rebase = true
 [http]
 	sslBackend = openssl
