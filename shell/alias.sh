@@ -15,7 +15,7 @@ else
 fi
 
 # proxy_port
-proxy_port="7890"
+proxy_port="7897"
 
 proxy(){
     export https_proxy=${proxy_ip}:${proxy_port}
