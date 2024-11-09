@@ -1,5 +1,5 @@
 latest update:
-2024/8/17 7:44:31
+2024/11/9 13:02:23
   
 hostname:
 qujihandeMacBook-Air.local
@@ -24,12 +24,13 @@ zsh-syntax-highlighting
 brew install --cask
 alacritty
 easydict
+feishu
 font-cascadia-mono
 font-fira-code-nerd-font
 font-hanamin
 font-lxgw-wenkai
 hammerspoon
-koodo-reader
+keka
 microsoft-auto-update
 microsoft-edge
 microsoft-excel
@@ -38,10 +39,16 @@ microsoft-remote-desktop
 microsoft-word
 obsidian
 orbstack
+qq
 qqmusic
 snipaste
 squirrel
+tabby
 tencent-lemon
 tencent-meeting
+termius
+updf
+utm
 visual-studio-code
 wechat
+zotero
