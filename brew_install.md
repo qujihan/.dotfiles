@@ -1,5 +1,5 @@
 latest update:
-2024/11/9 13:02:23
+2024/11/22 8:33:37
   
 hostname:
 qujihandeMacBook-Air.local
@@ -35,7 +35,6 @@ microsoft-auto-update
 microsoft-edge
 microsoft-excel
 microsoft-powerpoint
-microsoft-remote-desktop
 microsoft-word
 obsidian
 orbstack
@@ -43,12 +42,12 @@ qq
 qqmusic
 snipaste
 squirrel
-tabby
 tencent-lemon
-tencent-meeting
 termius
 updf
 utm
 visual-studio-code
 wechat
+windows-app
+zed
 zotero
