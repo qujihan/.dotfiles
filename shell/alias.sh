@@ -66,15 +66,21 @@ macos_alias(){
 
     alias cle="clear"
 
-    # deprecated function -_-
-    # alias drm="/bin/rm"
-    # alias rm="trash -F"
-
     # zellij
     alias z="zellij"
 
     alias pp="proxy"
     alias up="unproxy"
+
+    alias ls="eza"
+    alias man="tldr --platform osx"
+    alias watch="viddy"
+    alias cloc="loc"
+    alias df="duf"
+
+    alias ols="/bin/ls"
+    alias oman="/usr/bin/man"
+    alias odf="/bin/df"
 }
 
 
