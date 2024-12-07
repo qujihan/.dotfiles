@@ -1,19 +1,25 @@
 latest update:
-2024/11/22 8:33:37
+2024/12/7 10:59:26
   
 hostname:
 qujihandeMacBook-Air.local
   
 brew install 
 cmake
+duf
+eza
+gh
 go
+iperf3
 loc
 ninja
 rustup
 starship
+tlrc
 tre-command
 typst
 typstyle
+viddy
 yazi
 zellij
 zsh-autocomplete
@@ -22,7 +28,9 @@ zsh-autosuggestions
 zsh-syntax-highlighting
   
 brew install --cask
+adobe-creative-cloud
 alacritty
+clash-verge-rev
 easydict
 feishu
 font-cascadia-mono
