@@ -77,6 +77,7 @@ macos_alias(){
     alias watch="viddy"
     alias cloc="loc"
     alias df="duf"
+    alias tree="tre"
 
     alias ols="/bin/ls"
     alias oman="/usr/bin/man"
