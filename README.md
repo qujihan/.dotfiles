@@ -16,31 +16,15 @@ sudo make install # sudo python config.py --install
 sudo make uninstall # sudo python config.py --uninstall
 ```
 
-# Ubuntu
+# *unix
 ```shell
-# export DOTFILE_DEBUG=true
 export proxy_url="https://mirror.ghproxy.com"
 export base_url="https://raw.githubusercontent.com/qujihan/.dotfiles/main"
 export util_path="${HOME}/.config/shell"
 mkdir -p ${util_path}
-curl -Lo ${util_path}/utils.sh ${proxy_url}/${base_url}/initscript/ubuntu/utils.sh 
+curl -Lo ${util_path}/utils.sh ${proxy_url}/${base_url}/script/config.sh | bash --git --shell --tmux
 ```
 
-```shell
-# git
-curl -L ${proxy_url}/${base_url}/initscript/ubuntu/git.sh | bash
-
-# shell
-curl -L ${proxy_url}/${base_url}/initscript/ubuntu/shell.sh | bash
-
-# tmux
-curl -L ${proxy_url}/${base_url}/initscript/ubuntu/tmux.sh | bash
-```
-
-``` shell
-# delete backup file
-rm *.backup-*
-```
 # Font
 - [FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.0/FiraCode.zip)
     - `brew install font-fira-code-nerd-font`
