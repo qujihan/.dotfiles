@@ -26,10 +26,6 @@
             {
                 "source": "shell/.zshrc",
                 "linkto": ".zshrc"
-            },
-            {
-                "source": "shell",
-                "linkto": ".config/shell"
             }
         ]
     },
@@ -112,10 +108,6 @@
             {
                 "source": "shell/.zshrc",
                 "linkto": ".zshrc"
-            },
-            {
-                "source": "shell",
-                "linkto": ".config/shell"
             }
         ]
     },

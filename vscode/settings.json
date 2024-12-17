@@ -81,7 +81,7 @@
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
     // Typst(Tinymist Typst)
-    "tinymist.formatterMode": "typstyle",
+    "tinymist.formatterMode": "typstfmt",
     "tinymist.previewFeature": "disable",
     // Copilot
     "github.copilot.editor.enableAutoCompletions": true,
