@@ -187,10 +187,10 @@ if command -v brew &>/dev/null; then
     fi
 
     # zsh-autocomplete
-    plugin_path="${BREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-    if [ -f ${plugin_path} ]; then
-        source ${plugin_path}
-    fi
+    # plugin_path="${BREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+    # if [ -f ${plugin_path} ]; then
+    #     source ${plugin_path}
+    # fi
 fi
 
 
