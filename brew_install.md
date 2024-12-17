@@ -1,13 +1,15 @@
 latest update:
-2024/12/7 10:59:26
+2024/12/18 0:36:38
   
 hostname:
 qujihandeMacBook-Air.local
   
 brew install 
+bat
 cmake
 duf
 eza
+fzf
 gh
 go
 iperf3
@@ -16,7 +18,6 @@ ninja
 rustup
 starship
 tlrc
-tre-command
 typst
 typstyle
 viddy
