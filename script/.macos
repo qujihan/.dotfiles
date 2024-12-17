@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-# 应该用不到, 但是保留一下
+# 应该用不到了, 但是保留一下
 function setABC(){
     cp ~/Library/Preferences/com.apple.HIToolbox.plist  ~/Library/Preferences/com.apple.HIToolbox.plist.backup
     /usr/libexec/PlistBuddy -c "Delete :AppleEnabledInputSources:0"  ~/Library/Preferences/com.apple.HIToolbox.plist 
@@ -12,10 +12,7 @@ function resetABC(){
 }
 
 function set(){
-    # 
-    # 
     # Dock
-    # 
     # 
     # Dock 栏大小
     defaults write com.apple.dock "tilesize" -int 38 
@@ -31,9 +28,7 @@ function set(){
     defaults delete com.apple.dock persistent-apps
     defaults delete com.apple.dock persistent-others
     # 
-    # 
     # Finder
-    # 
     # 
     # 显示所有后缀
     defaults write -g AppleShowAllExtensions -bool true
@@ -48,22 +43,16 @@ function set(){
     # 默认使用当前目录搜索
     defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
     # 
-    # 
     # 在窗口任意位置按住 ctrl + command 就可以在任意位置拖动窗口
-    # 
     # 
     defaults write -g NSWindowShouldDragOnGesture -bool "true"
     # 
-    # 
     # 三指拖移 以及 点击
-    # 
     # 
     defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
     # 
-    # 
     # 立即生效
-    # 
     # 
     killall Dock
     killall Finder
