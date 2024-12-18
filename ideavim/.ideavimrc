@@ -35,10 +35,11 @@ nmap <A-j> <C-w>j
 nmap <A-k> <C-w>k
 nmap <A-.> :action NextTab<CR>
 nmap <A-,> :action PreviousTab<CR>
-nmap <A-e> :NERDTree<CR>
 
-nmap <leader>f  :action Find<CR>
-nmap <leader>t  :action ActivateTerminalToolWindow<CR>
+nmap <C-e> :NERDTree<CR>
+nmap <C-t> :action ActivateTerminalToolWindow<CR>
+nmap <C-f> :action Find<CR>
+
 nmap <leader>wh :action HideSideWindows<CR>
 nmap <leader>wz :action ToggleZenMode<CR>
 
