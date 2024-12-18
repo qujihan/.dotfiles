@@ -29,7 +29,7 @@
 ; └──────────────────────────┘
 GroupAdd("GroupA", "ahk_exe msedge.exe") ; Edge 浏览器
 GroupAdd("GroupA", "ahk_exe Code.exe") ; VS Code
-GroupAdd("GroupA", "ahk_exe zotero.exe") ; VS Code
+GroupAdd("GroupA", "ahk_exe zotero.exe") ; Zotero
 #HotIf WinActive("ahk_group GroupA")
 !w::Send("^w")
 #HotIf
