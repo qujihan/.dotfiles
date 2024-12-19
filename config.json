@@ -2,8 +2,8 @@
     "linux": {
         "git": [
             {
-                "source": "git",
-                "linkto": ".config/git"
+                "source": "git/.gitconfig",
+                "linkto": ".gitconfig"
             }
         ],
         "starship": [
@@ -38,8 +38,8 @@
         ],
         "git": [
             {
-                "source": "git",
-                "linkto": ".config/git"
+                "source": "git/.gitconfig",
+                "linkto": ".gitconfig"
             }
         ],
         "hammerspoon": [
@@ -120,8 +120,8 @@
         ],
         "git": [
             {
-                "source": "git",
-                "linkto": ".config/git"
+                "source": "git/.gitconfig",
+                "linkto": ".gitconfig"
             }
         ],
         "ideavim": [
