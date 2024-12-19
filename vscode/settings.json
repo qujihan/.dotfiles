@@ -50,22 +50,6 @@
         // 显示 .git 文件夹
         "**/.git": false
     },
-    // C/CXX
-    "clangd.arguments": [
-        "--clang-tidy",
-        "--all-scopes-completion",
-        "--completion-style=detailed",
-        "--header-insertion=iwyu",
-        "-j=8",
-        "--background-index",
-        "--compile-commands-dir=${workspaceFolder}/{relativeFileDirname}/",
-        "--query-driver=**",
-        "--clang-tidy-checks=performance-*,bugprone-*,cppcoreguidelines-*,google-*,llvm-*,modernize-*,readability-*",
-        "--pch-storage=memory"
-    ],
-    // CMake
-    "cmake.showOptionsMovedNotification": false,
-    "cmake.configureOnOpen": false,
     // Golang
     "go.buildFlags": [
         "-v"
@@ -99,5 +83,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 1
 }
