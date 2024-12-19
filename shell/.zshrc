@@ -3,6 +3,20 @@
 # set -o vi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Util Function                                                               │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+bytedance_macos_uuid="C8429192-B5D4-5789-93BB-011FE9953A41"
+is_bytedance_macos() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        hardware_uuid=$(system_profiler SPHardwareDataType | awk '/Hardware UUID:/ { print $3 }')
+        if [[ "$hardware_uuid" == "$bytedance_macos_uuid" ]]; then
+            return true
+        fi
+    fi
+    return false
+}
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Env Set                                                                     │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 # Ignore lower/upper
@@ -47,8 +61,20 @@ rust_config() {
 golang_config() {
     export PATH=$PATH:${HOME}/go/bin
     go env -w GO111MODULE=on
-    go env -w GOPROXY=https://goproxy.cn,direct
+    if is_bytedance_macos; then
+        # todo
+    else
+        go env -w GOPROXY=https://goproxy.cn,direct
+    fi
     go env -w GOSUMDB=sum.golang.google.cn
+}
+
+# Goenv
+goenv_config() {
+    eval "$(goenv init -)"
+    if command -v go &>/dev/null; then
+        golang_config
+    fi
 }
 
 # fzf
@@ -77,7 +103,9 @@ env_set() {
         rust_config
     fi
 
-    if command -v go &>/dev/null; then
+    if command -v goenv &>/dev/null; then
+        goenv_config
+    elif command -v go &>/dev/null; then
         golang_config
     fi
 }
@@ -193,11 +221,10 @@ if command -v brew &>/dev/null; then
     # fi
 fi
 
-
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
-shell_set(){
+shell_set() {
     env_set
     alias_set
 }
