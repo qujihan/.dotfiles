@@ -83,7 +83,7 @@ fzf_config() {
 }
 
 env_set() {
-    if command -v autoload &>/dev/null && command -v compinit &>/dev/null && command -v zstyle &>/dev/null; then
+    if [ -n "$ZSH_VERSION" ]; then
         ignore_config
     fi
 
