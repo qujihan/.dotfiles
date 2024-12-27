@@ -99,7 +99,7 @@ env_set() {
         homebrew_config
     fi
 
-    if command -v rustc &>/dev/null; then
+    if command -v rustup &>/dev/null; then
         rust_config
     fi
 
