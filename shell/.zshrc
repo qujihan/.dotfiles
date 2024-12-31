@@ -82,6 +82,11 @@ fzf_config() {
     source <(fzf --zsh)
 }
 
+# eza
+eza_config() {
+    export EZA_COLORS="di=37"
+}
+
 env_set() {
     if [ -n "$ZSH_VERSION" ]; then
         ignore_config
@@ -89,6 +94,10 @@ env_set() {
 
     if command -v fzf &>/dev/null; then
         fzf_config
+    fi
+
+    if command -v eza &>/dev/null; then
+        eza_config
     fi
 
     if command -v starship &>/dev/null; then
@@ -227,6 +236,9 @@ fi
 shell_set() {
     env_set
     alias_set
+    if [ -f "$HOME/.zsh_temp" ]; then
+        source "$HOME/.zsh_temp"
+    fi
 }
 
 shell_set
