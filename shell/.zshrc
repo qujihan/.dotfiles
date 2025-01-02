@@ -156,6 +156,7 @@ alias_pairs=(
     "df duf"
     "tree eza --tree"
     "cat bat"
+    "top btm -b"
 
     # python
     "python python3"
