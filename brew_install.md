@@ -1,20 +1,23 @@
 latest update:
-2024/12/18-22:52:46
+2025/1/2-20:52:49
   
 hostname:
 qujihandeMacBook-Air.local
   
 brew install 
 bat
+bottom
 cmake
 duf
 eza
 fzf
-gh
 go
+hugo
 iperf3
 loc
+minikube
 ninja
+protobuf
 rustup
 starship
 tlrc
@@ -29,26 +32,19 @@ zsh-autosuggestions
 zsh-syntax-highlighting
   
 brew install --cask
-adobe-creative-cloud
 alacritty
 clash-verge-rev
 easydict
-feishu
 font-cascadia-mono
 font-fira-code-nerd-font
 font-hanamin
 font-lxgw-wenkai
 hammerspoon
 keka
-microsoft-auto-update
 microsoft-edge
-microsoft-excel
-microsoft-powerpoint
-microsoft-word
+notion
 obsidian
 orbstack
-qq
-qqmusic
 snipaste
 squirrel
 tencent-lemon
@@ -56,7 +52,6 @@ termius
 updf
 utm
 visual-studio-code
-wechat
 windows-app
 zed
 zotero
