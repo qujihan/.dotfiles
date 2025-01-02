@@ -1,8 +1,8 @@
-#[url "git@github.com:"]
-#	insteadOf = https://github.com/
+# [url "git@github.com:"]
+#     insteadOf = https://github.com/
 [user]
-	name = qujihan
-	email = qujihan@163.com
+    name = qujihan
+    email = qujihan@163.com
 [alias]
     st = status
     co = commit
@@ -13,12 +13,7 @@
 [core]
     editor=vim
 [pull]
-	rebase = true
-[http]
-	sslBackend = openssl
-[url "gitr"]
-    insteadOf = git@git.byted.org
-[url "git@code.byted.org:"]
-     insteadOf = https://code.byted.org/
-[url "ssh://qujihan@git.byted.org:29418"]
-     insteadOf = https://git.byted.org
+    rebase = true
+# for work config
+[includeIf "gitdir:~/workspace/"]
+    path = .gitconfig-work

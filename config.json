@@ -4,6 +4,10 @@
             {
                 "source": "git/.gitconfig",
                 "linkto": ".gitconfig"
+            },
+            {
+                "source": "git/.gitconfig-work",
+                "linkto": ".gitconfig-work"
             }
         ],
         "starship": [
@@ -40,6 +44,10 @@
             {
                 "source": "git/.gitconfig",
                 "linkto": ".gitconfig"
+            },
+            {
+                "source": "git/.gitconfig-work",
+                "linkto": ".gitconfig-work"
             }
         ],
         "hammerspoon": [
