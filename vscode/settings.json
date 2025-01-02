@@ -50,6 +50,12 @@
         // 显示 .git 文件夹
         "**/.git": false
     },
+    // C/C++
+    "files.associations": {
+        ".clang-tidy": "yaml",
+        ".clang-format": "yaml",
+        ".clangd": "yaml"
+    },
     // Golang
     "go.buildFlags": [
         "-v"
@@ -83,5 +89,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1
+    "window.zoomLevel":1.25 
 }
