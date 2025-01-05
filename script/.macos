@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
+# ref: https://macos-defaults.com/
+
 # 应该用不到了, 但是保留一下
 function setABC(){
     cp ~/Library/Preferences/com.apple.HIToolbox.plist  ~/Library/Preferences/com.apple.HIToolbox.plist.backup
@@ -12,6 +14,9 @@ function resetABC(){
 }
 
 function set(){
+    # 禁止自动生成 .DS_store
+    defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+
     # Dock
     # 
     # Dock 栏大小
@@ -42,6 +47,8 @@ function set(){
     defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
     # 默认使用当前目录搜索
     defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+    # 显示隐藏文件
+    defaults write com.apple.finder AppleShowAllFiles -bool true
     # 
     # 在窗口任意位置按住 ctrl + command 就可以在任意位置拖动窗口
     # 
