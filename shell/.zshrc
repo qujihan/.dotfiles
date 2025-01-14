@@ -61,12 +61,12 @@ rust_config() {
 golang_config() {
     export PATH=$PATH:${HOME}/go/bin
     go env -w GO111MODULE=on
+    go env -w GOSUMDB=sum.golang.google.cn
     if is_bytedance_macos; then
         # todo
     else
         go env -w GOPROXY=https://goproxy.cn,direct
     fi
-    go env -w GOSUMDB=sum.golang.google.cn
 }
 
 # Goenv
