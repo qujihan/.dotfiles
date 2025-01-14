@@ -5,11 +5,12 @@
     email = qujihan@163.com
 [alias]
     st = status
-    co = commit
+    cm = commit
     br = branch
-    ch = checkout
-    lo = log --oneline
-    lala = commit --amend --no-edit -n -a 
+    ck = checkout
+    lo = log --date=format-local:'%Y/%m/%d %H:%M:%S' --pretty=format:'%Cred%h%Creset %Cgreen%an%Creset %Cblue%ad%Creset %s' 
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    la = commit --amend --no-edit -n -a 
 [core]
     editor=vim
 [pull]
