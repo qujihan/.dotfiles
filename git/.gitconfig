@@ -8,6 +8,7 @@
     cm = commit
     br = branch
     ck = checkout
+    re = rebase
     lo = log --date=format-local:'%Y/%m/%d %H:%M:%S' --pretty=format:'%Cred%h%Creset %Cgreen%an%Creset %Cblue%ad%Creset %s' 
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     la = commit --amend --no-edit -n -a 
