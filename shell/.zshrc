@@ -157,6 +157,7 @@ alias_pairs=(
     "tree eza --tree"
     "cat bat"
     "top btm -b"
+    "diff difft"
 
     # python
     "python python3"
