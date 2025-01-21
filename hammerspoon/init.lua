@@ -20,6 +20,9 @@ mouse_volume:init()
 input_set = require "modules/input_set"
 input_set:init()
 
+bytedance = require "modules/bytedance"
+bytedance:init()
+
 -- reload keymap
 hs.hotkey.bind({ "cmd", "ctrl", "shift" }, "R", function()
   hs.notify.new({ title = "Hammerspoon", informativeText = "Reload Config" }):send()
