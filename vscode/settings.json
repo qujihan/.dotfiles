@@ -6,9 +6,9 @@
     "editor.stickyScroll.enabled": true, // 移动中固定函数 开
     "editor.semanticHighlighting.enabled": true, // 语义高亮
     "editor.inlayHints.enabled": "off", // inlay
-    "editor.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono, CaskaydiaCove Nerd Font Mono",
+    "editor.fontFamily": "Cascadia Mono NF, FiraCode Nerd Font Mono",
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    "terminal.integrated.fontFamily": "Cascadia Mono, FiraCode Nerd Font Mono, CaskaydiaCove Nerd Font Mono",
+    "terminal.integrated.fontFamily": "Cascadia Mono NF, FiraCode Nerd Font Mono",
     // VSCodeVim
     "vim.useSystemClipboard": true,
     "vim.leader": "<space>",
@@ -61,7 +61,7 @@
         "-v"
     ],
     "go.generateTestsFlags": [
-        "-v "
+        "-v"
     ],
     "go.toolsManagement.autoUpdate": true,
     // Rust
@@ -89,5 +89,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel":1.25 
+    "window.zoomLevel": 1.25
 }
