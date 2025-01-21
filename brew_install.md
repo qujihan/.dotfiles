@@ -8,6 +8,7 @@ brew install
 bat
 bottom
 cmake
+difftastic
 duf
 eza
 fzf
@@ -33,11 +34,9 @@ zsh-syntax-highlighting
   
 brew install --cask
 alacritty
-clash-verge-rev
 easydict
-font-cascadia-mono
+font-cascadia-mono-nf
 font-fira-code-nerd-font
-font-hanamin
 font-lxgw-wenkai
 hammerspoon
 keka
