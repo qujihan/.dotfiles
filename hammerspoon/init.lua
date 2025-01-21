@@ -1,3 +1,6 @@
+bytedance_uuid = "C8429192-B5D4-5789-93BB-011FE9953A41"
+uuid_helper = require "utils/uuid"
+
 hs.configdir = os.getenv('HOME') .. '/.hammerspoon'
 package.path = hs.configdir ..
 '/?.lua;' .. hs.configdir .. '/?/init.lua;' .. hs.configdir .. '/Spoons/?.spoon/init.lua;' .. package.path
@@ -20,8 +23,10 @@ mouse_volume:init()
 input_set = require "modules/input_set"
 input_set:init()
 
-bytedance = require "modules/bytedance"
-bytedance:init()
+if uuid_helper:get_uuid() == bytedance_uuid then
+  bytedance = require "modules/bytedance"
+  bytedance:init()
+end
 
 -- reload keymap
 hs.hotkey.bind({ "cmd", "ctrl", "shift" }, "R", function()
