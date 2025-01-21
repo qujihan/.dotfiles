@@ -5,7 +5,7 @@
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Util Function                                                               │
 #╰──────────────────────────────────────────────────────────────────────────────╯
-bytedance_macos_uuid="C8429192-B5D4-5789-93BB-011FE9953A41"
+export bytedance_macos_uuid="C8429192-B5D4-5789-93BB-011FE9953A41"
 is_bytedance_macos() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         hardware_uuid=$(system_profiler SPHardwareDataType | awk '/Hardware UUID:/ { print $3 }')
