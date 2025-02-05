@@ -102,5 +102,18 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "key": "ctrl+w",
         "command": "-extension.vim_ctrl+w",
         "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+    /*
+        Pin Viewer
+    */
+    {
+        "key": "ctrl+shift+p",
+        "command": "workbench.action.pinEditor",
+        "when": "!activeEditorIsPinned"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "workbench.action.unpinEditor",
+        "when": "activeEditorIsPinned"
     }
 ]
