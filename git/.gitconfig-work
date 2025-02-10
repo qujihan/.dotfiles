@@ -1,9 +1,0 @@
-[user]
-    name = qujihan
-    email = qujihan@bytedance.com
-[url "gitr"]
-    insteadOf = git@git.byted.org
-[url "git@code.byted.org:"]
-    insteadOf = https://code.byted.org/
-[url "ssh://qujihan@git.byted.org:29418"]
-    insteadOf = https://git.byted.org

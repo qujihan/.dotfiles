@@ -63,7 +63,6 @@
     "go.generateTestsFlags": [
         "-v"
     ],
-    "go.toolsManagement.autoUpdate": true,
     // Rust
     "rust-analyzer.completion.callable.snippets": "none",
     // Python(Ruff)
@@ -81,6 +80,8 @@
         "markdown": false,
         "scminput": false
     },
+    // Marscode
+    "marscode.internal.chatLanguage": "cn",
     // Gitlens
     "gitlens.graph.minimap.additionalTypes": [
         "localBranches",
@@ -89,5 +90,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1.25
+    "window.zoomLevel": 1.25,
 }

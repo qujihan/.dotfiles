@@ -11,9 +11,11 @@
     re = rebase
     lo = log --date=format-local:'%Y/%m/%d %H:%M:%S' --pretty=format:'%Cred%h%Creset %Cgreen%an%Creset %Cblue%ad%Creset %s' 
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    la = commit --amend --no-edit -n -a 
+    # 用于触发流水线
+    p = commit --amend --no-edit -n -a 
 [core]
     editor=vim
+    quotepath=false
 [pull]
     rebase = true
 # for work config

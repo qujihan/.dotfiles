@@ -181,11 +181,13 @@ alias_pairs=(
     # porxy
     "pp proxy"
     "up unproxy"
-
-    # code
-    "dotf code ${HOME}/.dotfiles"
-    "rime code ${HOME}/Library/Rime"
 )
+
+alias cmakeb="cmake -B build -S."
+alias cmakec="cmake --build build"
+alias dotf="code ${HOME}/.dotfiles"
+alias rime="code ${HOME}/Library/Rime"
+alias epath='echo $PATH | tr ":" "\n" | sort'
 
 alias_set() {
     for pair in "${alias_pairs[@]}"; do
