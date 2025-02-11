@@ -15,10 +15,10 @@ fzf
 go
 hugo
 iperf3
+jq
 loc
-minikube
+maccy
 ninja
-protobuf
 rustup
 starship
 tlrc
@@ -52,5 +52,4 @@ updf
 utm
 visual-studio-code
 windows-app
-zed
 zotero
