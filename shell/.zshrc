@@ -1,6 +1,7 @@
 #!/bin/zsh
 # Vim
 # set -o vi
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Util Function                                                               │
@@ -161,7 +162,7 @@ alias_pairs=(
 
     # python
     "python python3"
-    "pip python3 -m pip"
+    "pip pip3"
 
     # rust
     "cb cargo build"
@@ -183,11 +184,15 @@ alias_pairs=(
     "up unproxy"
 )
 
+# c/cpp
 alias cmakeb="cmake -B build -S."
 alias cmakec="cmake --build build"
-alias dotf="code ${HOME}/.dotfiles"
-alias rime="code ${HOME}/Library/Rime"
+# config
+alias dotc="code ${HOME}/.dotfiles"
+alias rimec="code ${HOME}/Library/Rime"
+# env
 alias epath='echo $PATH | tr ":" "\n" | sort'
+alias essh="cat ${HOME}/.ssh/config"
 
 alias_set() {
     for pair in "${alias_pairs[@]}"; do
