@@ -1,7 +1,47 @@
 #!/bin/zsh
 # Vim
 # set -o vi
-export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Homebrew auto update
+# export HOMEBREW_NO_AUTO_UPDATE=1
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Plugin                                                                      │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+# brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
+if command -v brew &>/dev/null; then
+    BREW_PREFIX="/opt/homebrew"
+    BREW_PREFIX=$(brew --prefix)
+
+    # zsh-syntax-highlighting
+    plugin_path="${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    if [ -f ${plugin_path} ]; then
+        source ${plugin_path}
+    fi
+
+    # zsh-autopair
+    plugin_path="${BREW_PREFIX}/share/zsh-autopair/autopair.zsh"
+    if [ -f ${plugin_path} ]; then
+        source ${plugin_path}
+    fi
+
+    # zsh-autosuggestions
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+    plugin_path="${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    if [ -f ${plugin_path} ]; then
+        source ${plugin_path}
+    fi
+
+    # zsh-autocomplete
+    # plugin_path="${BREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+    # if [ -f ${plugin_path} ]; then
+    #     source ${plugin_path}
+    # fi
+
+
+    # ignore letter lower and upper
+    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+fi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Util Function                                                               │
@@ -20,12 +60,6 @@ is_bytedance_macos() {
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Env Set                                                                     │
 #╰──────────────────────────────────────────────────────────────────────────────╯
-# Ignore lower/upper
-ignore_config() {
-    autoload -Uz compinit && compinit -u
-    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
-}
-
 # Starship
 # brew install starship
 starship_config() {
@@ -89,10 +123,6 @@ eza_config() {
 }
 
 env_set() {
-    if [ -n "$ZSH_VERSION" ]; then
-        ignore_config
-    fi
-
     if command -v fzf &>/dev/null; then
         fzf_config
     fi
@@ -207,39 +237,6 @@ alias_set() {
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Plugin                                                                      │
-#╰──────────────────────────────────────────────────────────────────────────────╯
-# brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
-if command -v brew &>/dev/null; then
-    BREW_PREFIX="/opt/homebrew"
-    # BREW_PREFIX=$(brew --prefix)
-
-    # zsh-syntax-highlighting
-    plugin_path="${BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-    if [ -f ${plugin_path} ]; then
-        source ${plugin_path}
-    fi
-
-    # zsh-autopair
-    plugin_path="${BREW_PREFIX}/share/zsh-autopair/autopair.zsh"
-    if [ -f ${plugin_path} ]; then
-        source ${plugin_path}
-    fi
-
-    # zsh-autosuggestions
-    plugin_path="${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-    if [ -f ${plugin_path} ]; then
-        source ${plugin_path}
-    fi
-
-    # zsh-autocomplete
-    # plugin_path="${BREW_PREFIX}/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-    # if [ -f ${plugin_path} ]; then
-    #     source ${plugin_path}
-    # fi
-fi
-
-#╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 shell_set() {
@@ -248,6 +245,7 @@ shell_set() {
     if [ -f "$HOME/.zsh_temp" ]; then
         source "$HOME/.zsh_temp"
     fi
+    autoload -Uz compinit && compinit -u
 }
 
 shell_set
