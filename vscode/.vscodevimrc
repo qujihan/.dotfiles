@@ -53,6 +53,7 @@ nmap <Leader><Leader>t workbench.action.togglePanel
 nmap <Leader>lr editor.action.rename
 nmap <Leader>lf editor.action.formatDocument
 nmap <Leader>la editor.action.quickFix
+vmap <Leader>lf editor.action.formatSelection
 ; gb adds another cursor on the next word it finds which is the same as the word under the cursor.
 ; gd jump to definition
 ; gh similar to mouse hover
