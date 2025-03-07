@@ -8,9 +8,6 @@ brew:
 	@echo "latest update:" > ${brew_install_file_name}
 	@date "+%Y/%-m/%-d-%-H:%M:%S" >> $(brew_install_file_name)
 	@echo "  " >> ${brew_install_file_name}
-	@echo "hostname:" >> ${brew_install_file_name}
-	@hostname >> $(brew_install_file_name)
-	@echo "  " >> ${brew_install_file_name}
 	@echo "brew install " >> ${brew_install_file_name}
 	@brew list --installed-on-request >> ${brew_install_file_name}
 	@echo "  " >> ${brew_install_file_name}
@@ -20,9 +17,6 @@ brew:
 brew_temp:
 	@echo "latest update:" > ${brew_install_file_name_temp}
 	@date "+%Y/%-m/%-d-%-H:%M:%S" >> $(brew_install_file_name_temp)
-	@echo "  " >> ${brew_install_file_name_temp}
-	@echo "hostname:" >> ${brew_install_file_name_temp}
-	@hostname >> $(brew_install_file_name_temp)
 	@echo "  " >> ${brew_install_file_name_temp}
 	@echo "brew install " >> ${brew_install_file_name_temp}
 	@brew list --installed-on-request >> ${brew_install_file_name_temp}
