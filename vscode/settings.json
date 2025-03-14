@@ -91,6 +91,12 @@
         "-v"
     ],
     "go.toolsManagement.autoUpdate": true,
+    "[go]": {
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "never",
+        }
+    },
     /*
         Rust
     */
