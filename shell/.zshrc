@@ -88,8 +88,8 @@ rust_config() {
     fi
     export PATH=$PATH:${HOME}/.cargo/bin
     export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin
-    export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
-    export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+    # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+    # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 }
 
 # Golang
