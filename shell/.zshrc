@@ -8,8 +8,29 @@
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Plugin                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
-# brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
+# apt install -y zsh-syntax-highlighting zsh-autosuggestions
 if command -v brew &>/dev/null; then
+    APT_PREFIX="/usr/share/"
+
+    # zsh-syntax-highlighting
+    plugin_path="${APT_PREFIX}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    if [ -f ${plugin_path} ]; then
+        source ${plugin_path}
+    fi
+
+    # zsh-autosuggestions
+    # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+    plugin_path="${APT_PREFIX}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+    if [ -f ${plugin_path} ]; then
+        source ${plugin_path}
+    fi
+
+    # ignore letter lower and upper
+    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+fi
+
+# brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
+if command -v apt &>/dev/null; then
     BREW_PREFIX="/opt/homebrew"
     BREW_PREFIX=$(brew --prefix)
 
@@ -37,7 +58,6 @@ if command -v brew &>/dev/null; then
     # if [ -f ${plugin_path} ]; then
     #     source ${plugin_path}
     # fi
-
 
     # ignore letter lower and upper
     zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
@@ -86,8 +106,15 @@ rust_config() {
     if command -v brew &>/dev/null; then
         export PATH=$PATH:$(brew --prefix)/opt/rustup/bin
     fi
-    export PATH=$PATH:${HOME}/.cargo/bin
-    export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin
+
+    if [ -d "${HOME}/.rustup" ]; then
+        export PATH=$PATH:${HOME}/.rustup/toolchains/*/bin
+    fi
+
+    if [ -d "${HOME}/.cargo" ]; then
+        export PATH=$PATH:${HOME}/.cargo/bin
+    fi
+
     # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
     # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 }

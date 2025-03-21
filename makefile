@@ -37,14 +37,14 @@ vscode:
 	@echo "  " >> ${vscode_install_extension_file_name}
 	@code --list-extensions | awk '{print "code --force --install-extension";print $0; print " "}' >> ${vscode_install_extension_file_name}
 
-list: brew vscode
-	@echo "Backup Homebrew install list and VSCode extension list."
+download_win:
+	@TODO
 
-install:
-	@python3 config.py --install
+download:
+	@bash download.sh
 
-uninstall:
-	@python3 config.py --uninstall
+link:
+	@cd ${HOME}/.dotfiles; if [ -e dotfiles ]; then ./dotfiles link; fi
 
-clean:
-	@find . -name ".DS_Store" -type f -exec /bin/rm -f {} +
+unlink:
+	@cd ${HOME}/.dotfiles; if [ -e dotfiles ]; then ./dotfiles clean; fi

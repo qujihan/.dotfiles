@@ -1,0 +1,12 @@
+{
+    "alacritty": "~/AppData/Roaming/alacritty",
+    "git/.gitconfig": "~/.gitconfig",
+    "ideavim/.ideavimrc": "~/.ideavimrc",
+    "starship/starship.toml": "~/.config/starship.toml",
+    "vscode/snippets": "~/AppData/Roaming/Code/User/snippets",
+    "vscode/settings.json": "~/AppData/Roaming/Code/User/settings.json",
+    "vscode/keybindings.json": "~/AppData/Roaming/Code/User/keybindings.json",
+    "vscode/.vscodevimrc": "~/.vscodevimrc",
+    "powershell/Microsoft.PowerShell_profile.ps1": "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1",
+    "autohotkey": "~/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/keys.ahk"
+}

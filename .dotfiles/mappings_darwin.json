@@ -1,0 +1,18 @@
+{
+    "alacritty": "~/.config/alacritty",
+    "git/.gitconfig": "~/.gitconfig",
+    "git/.gitconfig-work": "~/.gitconfig-work",
+    "hammerspoon": "~/.hammerspoon",
+    "ideavim/.ideavimrc": "~/.ideavimrc",
+    "starship/starship.toml": "~/.config/starship.toml",
+    "tmux/.tmux.conf": "~/.tmux.conf",
+    "vscode/snippets": "~/Library/Application Support/Code/User/snippets",
+    "vscode/settings.json": "~/Library/Application Support/Code/User/settings.json",
+    "vscode/keybindings.json": "~/Library/Application Support/Code/User/keybindings.json",
+    "vscode/.vscodevimrc": "~/.vscodevimrc",
+    "zed/settings.json": "~/.config/zed/settings.json",
+    "zed/keymap.json": "~/.config/zed/keymap.json",
+    "zellij/config.kdl": "~/.config/zellij/config.kdl",
+    "shell/.hushlogin": "~/.hushlogin",
+    "shell/.zshrc": "~/.zshrc"
+}
