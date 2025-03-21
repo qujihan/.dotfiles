@@ -3,7 +3,7 @@
         Workbench
     */
     "workbench.startupEditor": "none",
-    "workbench.editor.enablePreview": false,
+    // "workbench.editor.enablePreview": false,
     "workbench.editor.wrapTabs": true, // 多行显示Tabs
     /*
         Window
@@ -26,7 +26,7 @@
     "terminal.integrated.enableMultiLinePasteWarning": "always",
     "terminal.integrated.fontFamily": "Cascadia Mono NF, FiraCode Nerd Font Mono",
     "terminal.integrated.initialHint": true,
-    "terminal.integrated.defaultLocation": "editor",
+    // "terminal.integrated.defaultLocation": "editor",
     /*
         VSCodeVim
     */
