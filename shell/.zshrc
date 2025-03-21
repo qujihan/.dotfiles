@@ -9,7 +9,7 @@
 #│  Plugin                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 # apt install -y zsh-syntax-highlighting zsh-autosuggestions
-if command -v brew &>/dev/null; then
+if command -v apt &>/dev/null; then
     APT_PREFIX="/usr/share/"
 
     # zsh-syntax-highlighting
@@ -30,7 +30,7 @@ if command -v brew &>/dev/null; then
 fi
 
 # brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
-if command -v apt &>/dev/null; then
+if command -v brew &>/dev/null; then
     BREW_PREFIX="/opt/homebrew"
     BREW_PREFIX=$(brew --prefix)
 
