@@ -5,8 +5,7 @@ vscode_install_extension_file_name = "vscode_install_extension.md"
 .PHONY: brew vscode list install uninstall clean
 
 brew:
-	@echo "latest update:" > ${brew_install_file_name}
-	@date "+%Y/%-m/%-d-%-H:%M:%S" >> $(brew_install_file_name)
+	@echo "latest update: `date '+%Y/%-m/%-d-%-H:%M:%S'`" > ${brew_install_file_name}
 	@echo "  " >> ${brew_install_file_name}
 	@echo "brew install " >> ${brew_install_file_name}
 	@brew list --installed-on-request >> ${brew_install_file_name}
@@ -15,8 +14,7 @@ brew:
 	@brew list --cask >> ${brew_install_file_name}
 
 brew_temp:
-	@echo "latest update:" > ${brew_install_file_name_temp}
-	@date "+%Y/%-m/%-d-%-H:%M:%S" >> $(brew_install_file_name_temp)
+	@echo "latest update: `date '+%Y/%-m/%-d-%-H:%M:%S'`" > ${brew_install_file_name}
 	@echo "  " >> ${brew_install_file_name_temp}
 	@echo "brew install " >> ${brew_install_file_name_temp}
 	@brew list --installed-on-request >> ${brew_install_file_name_temp}
@@ -29,8 +27,7 @@ brew_diff:
 	@difft ${brew_install_file_name} ${brew_install_file_name_temp}
 
 vscode:
-	@echo "latest update:" > ${vscode_install_extension_file_name}
-	@date "+%Y/%-m/%-d-%-H:%M:%S" >> $(vscode_install_extension_file_name)
+	@echo "latest update: `date '+%Y/%-m/%-d-%-H:%M:%S'`" > ${brew_install_file_name}
 	@echo "  " >> ${vscode_install_extension_file_name}
 	@echo "hostname:" >> ${vscode_install_extension_file_name}
 	@hostname >> $(vscode_install_extension_file_name)
@@ -38,7 +35,7 @@ vscode:
 	@code --list-extensions | awk '{print "code --force --install-extension";print $0; print " "}' >> ${vscode_install_extension_file_name}
 
 download_win:
-	@TODO
+	@echo "TODO"
 
 download:
 	@bash download.sh
