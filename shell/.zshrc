@@ -4,6 +4,10 @@
 
 # Homebrew auto update
 # export HOMEBREW_NO_AUTO_UPDATE=1
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+if [ ! "${OS}" = "darwin" ]; then
+    export LC_ALL="C.utf8"
+fi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Plugin                                                                      │
