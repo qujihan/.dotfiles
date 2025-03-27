@@ -1,19 +1,26 @@
-latest update: 2025/3/26-18:50:35
+latest update: 2025/3/27-23:32:42
   
 brew install 
+bat
 bottom
 cmake
 difftastic
+duf
 eza
+fzf
 go
+hugo
+iperf3
 jq
 loc
-mupdf-tools
 ninja
+redis
 rustup
 starship
+tlrc
 typst
 uv
+viddy
 zellij
 zsh-autocomplete
 zsh-autopair
@@ -22,10 +29,8 @@ zsh-syntax-highlighting
   
 brew install --cask
 alacritty
-docker
 drawio
-font-cascadia-code-nf
-font-cascadia-mono
+easydict
 font-cascadia-mono-nf
 font-fira-code-nerd-font
 font-lxgw-wenkai
@@ -33,15 +38,12 @@ font-noto-sans-cjk
 font-noto-serif-cjk
 hammerspoon
 inkscape
-iterm2
-kap
 maccy
 microsoft-edge
-qq
-qqmusic
+orbstack
 snipaste
 squirrel
-updf
+tencent-lemon
 visual-studio-code
-wechat
+windows-app
 zotero
