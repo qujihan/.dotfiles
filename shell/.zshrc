@@ -281,12 +281,12 @@ alias_set() {
 #│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 shell_set() {
+    autoload -Uz compinit && compinit -u
     env_set
     alias_set
     if [ -f "$HOME/.zsh_temp" ]; then
         source "$HOME/.zsh_temp"
     fi
-    autoload -Uz compinit && compinit -u
 }
 
 shell_set
