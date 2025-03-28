@@ -153,6 +153,12 @@ eza_config() {
     export EZA_COLORS="di=37"
 }
 
+kubectl_config() {
+    if [ -n "$ZSH_VERSION" ]; then
+        source <(kubectl completion zsh)
+    fi
+}
+
 env_set() {
     if command -v fzf &>/dev/null; then
         fzf_config
@@ -178,6 +184,10 @@ env_set() {
         goenv_config
     elif command -v go &>/dev/null; then
         golang_config
+    fi
+
+    if command -v kubectl &>/dev/null; then
+        kubectl_config
     fi
 }
 
