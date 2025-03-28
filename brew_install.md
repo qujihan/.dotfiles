@@ -1,4 +1,4 @@
-latest update: 2025/3/27-23:32:42
+latest update: 2025/3/28-21:10:14
   
 brew install 
 bat
@@ -34,10 +34,12 @@ easydict
 font-cascadia-mono-nf
 font-fira-code-nerd-font
 font-lxgw-wenkai
+font-maple-mono-nf-cn
 font-noto-sans-cjk
 font-noto-serif-cjk
 hammerspoon
 inkscape
+kap
 maccy
 microsoft-edge
 orbstack
