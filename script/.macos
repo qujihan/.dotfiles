@@ -4,43 +4,55 @@ set -ex
 # ref: https://macos-defaults.com/
 
 # 应该用不到了, 但是保留一下
-function setABC(){
-    cp ~/Library/Preferences/com.apple.HIToolbox.plist  ~/Library/Preferences/com.apple.HIToolbox.plist.backup
-    /usr/libexec/PlistBuddy -c "Delete :AppleEnabledInputSources:0"  ~/Library/Preferences/com.apple.HIToolbox.plist 
+function setABC() {
+    cp ~/Library/Preferences/com.apple.HIToolbox.plist ~/Library/Preferences/com.apple.HIToolbox.plist.backup
+    /usr/libexec/PlistBuddy -c "Delete :AppleEnabledInputSources:0" ~/Library/Preferences/com.apple.HIToolbox.plist
 }
-function resetABC(){
-    rm -rf  ~/Library/Preferences/com.apple.HIToolbox.plist 
-    mv  ~/Library/Preferences/com.apple.HIToolbox.plist.backup  ~/Library/Preferences/com.apple.HIToolbox.plist
+function resetABC() {
+    rm -rf ~/Library/Preferences/com.apple.HIToolbox.plist
+    mv ~/Library/Preferences/com.apple.HIToolbox.plist.backup ~/Library/Preferences/com.apple.HIToolbox.plist
 }
 
-function set(){
+function set() {
     # 禁止自动生成 .DS_store
     defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
-
+    #
     # Dock
-    # 
+    #
     # Dock 栏大小
-    defaults write com.apple.dock "tilesize" -int 38 
+    defaults write com.apple.dock "tilesize" -int 38
+    # Launch 栏大小 (8 * 7)
+    defaults write com.apple.dock springboard-columns -int 8
+    defaults write com.apple.dock springboard-rows -int 7
     # 不显示最近项目
-    defaults write com.apple.dock "show-recents" -bool "false"
+    defaults write com.apple.dock "show-recents" -bool false
     # 神奇缩放
     defaults write com.apple.dock "mineffect" -string "genie"
     # 在 Dock 的应用图标上向下滚动滚轮可以打开这个应用的所有窗口
     # 在 触控板上两根手指向上滑动
-    defaults write com.apple.dock "scroll-to-open" -bool "true"
+    defaults write com.apple.dock "scroll-to-open" -bool true
     # 只显示打开的应用
     defaults write com.apple.dock static-only -boolean true
+    # 显示隐藏的应用
+    defaults write com.apple.dock showhidden -bool true
+    # 隐藏 Dock 并且在鼠标划过时立刻显示 Dock
+    defaults write com.apple.dock "autohide" -bool true
+    defaults write com.apple.dock autohide-delay -float 0
+    # 从不自动排列 space
+    defaults write com.apple.dock "mru-spaces" -bool false
+    # 不显示应用程序图标
     defaults delete com.apple.dock persistent-apps
     defaults delete com.apple.dock persistent-others
-    # 
+    #
+    #
     # Finder
-    # 
+    #
     # 显示所有后缀
     defaults write -g AppleShowAllExtensions -bool true
     # 在 Finder 下面显示路径栏
     defaults write com.apple.finder ShowPathbar -bool true
     # 边栏图标大小
-    defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1" 
+    defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1"
     # 默认打开 $HOME 目录
     defaults write com.apple.finder NewWindowTarget -string "PfHm"
     # 默认使用 List
@@ -49,24 +61,26 @@ function set(){
     defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
     # 显示隐藏文件
     defaults write com.apple.finder AppleShowAllFiles -bool true
-    # 
+    # 修改文件后缀名时 不 显示警告框
+    defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool false
+    #
+    #
     # 在窗口任意位置按住 ctrl + command 就可以在任意位置拖动窗口
-    # 
-    defaults write -g NSWindowShouldDragOnGesture -bool "true"
-    # 
+    defaults write -g NSWindowShouldDragOnGesture -bool true
+    #
+    #
     # 三指拖移 以及 点击
-    # 
     defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
-    # 
+    #
+    #
     # 立即生效
-    # 
     killall Dock
     killall Finder
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 }
 
-function reset(){
+function reset() {
     # dock 重置
     defaults delete com.apple.dock
     # finder 重置
@@ -76,16 +90,18 @@ function reset(){
     # 取消三指拖移
     defaults delete com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag"
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
-
+    #
+    #
+    # 立即生效
     killall Dock
     killall Finder
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 }
 
 if [ "$1" = "--set" ]; then
-    set  # 这里调用了内置命令set，用于设置Shell的一些属性
+    set
 elif [ "$1" = "--reset" ]; then
-    reset  # 这里调用了内置命令reset，用于重置Shell的属性
+    reset
 else
     echo "Usage: $0 -- {set|reset}"
 fi
