@@ -20,30 +20,37 @@ function set() {
     # Dock
     #
     # Dock 栏大小
-    defaults write com.apple.dock "tilesize" -int 38
+    title_size=50
+    if [[ $(hostname) == *"mini"* ]]; then
+        title_size=100
+    fi
+    defaults write com.apple.dock "tilesize" -int ${title_size}
+    #
     # Launch 栏大小 (8 * 7)
-    defaults write com.apple.dock springboard-columns -int 8
-    defaults write com.apple.dock springboard-rows -int 7
+    columns_num=8
+    rows_num=7
+    if [[ $(hostname) == *"mini"* ]]; then
+        columns_num=9
+        rows_num=8
+    fi
+    defaults write com.apple.dock springboard-columns -int ${columns_num}
+    defaults write com.apple.dock springboard-rows -int ${rows_num}
     # 不显示最近项目
-    defaults write com.apple.dock "show-recents" -bool false
+    defaults write com.apple.dock show-recents -bool false
     # 神奇缩放
-    defaults write com.apple.dock "mineffect" -string "genie"
+    defaults write com.apple.dock mineffect -string genie
     # 在 Dock 的应用图标上向下滚动滚轮可以打开这个应用的所有窗口
     # 在 触控板上两根手指向上滑动
-    defaults write com.apple.dock "scroll-to-open" -bool true
+    defaults write com.apple.dock scroll-to-open -bool true
     # 只显示打开的应用
     defaults write com.apple.dock static-only -boolean true
     # 显示隐藏的应用
     defaults write com.apple.dock showhidden -bool true
     # 隐藏 Dock 并且在鼠标划过时立刻显示 Dock
-    defaults write com.apple.dock "autohide" -bool true
+    defaults write com.apple.dock autohide -bool true
     defaults write com.apple.dock autohide-delay -float 0
     # 从不自动排列 space
-    defaults write com.apple.dock "mru-spaces" -bool false
-    # 不显示应用程序图标
-    defaults delete com.apple.dock persistent-apps
-    defaults delete com.apple.dock persistent-others
-    #
+    defaults write com.apple.dock mru-spaces -bool false
     #
     # Finder
     #
@@ -52,17 +59,17 @@ function set() {
     # 在 Finder 下面显示路径栏
     defaults write com.apple.finder ShowPathbar -bool true
     # 边栏图标大小
-    defaults write NSGlobalDomain "NSTableViewDefaultSizeMode" -int "1"
+    defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
     # 默认打开 $HOME 目录
-    defaults write com.apple.finder NewWindowTarget -string "PfHm"
+    defaults write com.apple.finder NewWindowTarget -string PfHm
     # 默认使用 List
-    defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+    defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
     # 默认使用当前目录搜索
-    defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+    defaults write com.apple.finder FXDefaultSearchScope -string SCcf
     # 显示隐藏文件
     defaults write com.apple.finder AppleShowAllFiles -bool true
     # 修改文件后缀名时 不 显示警告框
-    defaults write com.apple.finder "FXEnableExtensionChangeWarning" -bool false
+    defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
     #
     #
     # 在窗口任意位置按住 ctrl + command 就可以在任意位置拖动窗口
@@ -88,7 +95,7 @@ function reset() {
     # drag 重置
     defaults delete -g NSWindowShouldDragOnGesture
     # 取消三指拖移
-    defaults delete com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag"
+    defaults delete com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag
     defaults write com.apple.AppleMultitouchTrackpad Clicking -bool false
     #
     #
