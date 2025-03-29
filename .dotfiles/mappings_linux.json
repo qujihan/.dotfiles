@@ -3,6 +3,7 @@
     "git/.gitconfig-work": "~/.gitconfig-work",
     "starship/starship.toml": "~/.config/starship.toml",
     "tmux/.tmux.conf": "~/.tmux.conf",
+    "vim/.vimrc": "~/.vimrc",
     "shell/.hushlogin": "~/.hushlogin",
     "shell/.zshrc": "~/.zshrc"
 }

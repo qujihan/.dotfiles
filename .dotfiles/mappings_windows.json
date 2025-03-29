@@ -3,6 +3,7 @@
     "git/.gitconfig": "~/.gitconfig",
     "ideavim/.ideavimrc": "~/.ideavimrc",
     "starship/starship.toml": "~/.config/starship.toml",
+    "vim/.vimrc": "~/.vimrc",
     "vscode/snippets": "~/AppData/Roaming/Code/User/snippets",
     "vscode/settings.json": "~/AppData/Roaming/Code/User/settings.json",
     "vscode/keybindings.json": "~/AppData/Roaming/Code/User/keybindings.json",

@@ -6,6 +6,7 @@
     "ideavim/.ideavimrc": "~/.ideavimrc",
     "starship/starship.toml": "~/.config/starship.toml",
     "tmux/.tmux.conf": "~/.tmux.conf",
+    "vim/.vimrc": "~/.vimrc",
     "vscode/snippets": "~/Library/Application Support/Code/User/snippets",
     "vscode/settings.json": "~/Library/Application Support/Code/User/settings.json",
     "vscode/keybindings.json": "~/Library/Application Support/Code/User/keybindings.json",
