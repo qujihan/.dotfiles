@@ -1,5 +1,7 @@
 # [url "git@github.com:"]
 #     insteadOf = https://github.com/
+[init]
+    defaultBranch = main
 [user]
     name = qujihan
     email = qujihan@163.com
