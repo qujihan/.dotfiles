@@ -1,5 +1,6 @@
 #!/bin/zsh
 [[ "$(basename "$SHELL")" != "zsh" ]] && echo "ONLY Support Zsh" && exit 1
+BYTEDANCE_SCRIPT_PATH="${HOME}/.bytedance"
 
 # Vim
 # set -o vi
@@ -23,8 +24,7 @@ is_bytedance_macos() {
 # apt install -y zsh-syntax-highlighting zsh-autosuggestions
 # brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
 zsh_plugins_source() {
-    local PLUGIN_DIR="/usr/share/"
-    command_exists apt || command_exists brew && PLUGIN_DIR=${brew--prefix} || return
+    command_exists apt && PLUGIN_DIR="/usr/share/" || command_exists brew && PLUGIN_DIR=$(brew --prefix) || return
 
     # zsh-syntax-highlighting
     source_if_exists "${PLUGIN_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -65,7 +65,7 @@ env_set() {
         go env -w GO111MODULE=on &&
         go env -w GOSUMDB=sum.golang.google.cn &&
         go env -w GOPROXY=https://goproxy.cn,direct &&
-        source_if_exists ${HOME}/.zshrc.work
+        is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
