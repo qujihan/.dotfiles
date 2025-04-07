@@ -2,6 +2,7 @@
 set -ex
 
 # ref: https://macos-defaults.com/
+# diff: https://github.com/yannbertrand/macos-defaults/blob/main/diff.sh
 
 # 应该用不到了, 但是保留一下
 function setABC() {
