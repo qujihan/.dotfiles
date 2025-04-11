@@ -1,9 +1,5 @@
 #!/bin/zsh
-[[ "$(basename "$SHELL")" != "zsh" ]] && echo "ONLY Support Zsh" && exit 1
 BYTEDANCE_SCRIPT_PATH="${HOME}/.bytedance"
-
-# Vim
-# set -o vi
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Util Function                                                               │
@@ -24,7 +20,7 @@ is_bytedance_macos() {
 # apt install -y zsh-syntax-highlighting zsh-autosuggestions
 # brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
 zsh_plugins_source() {
-    command_exists apt && PLUGIN_DIR="/usr/share/" || command_exists brew && PLUGIN_DIR=$(brew --prefix) || return
+    command_exists apt && PLUGIN_DIR="/usr/share/" || (command_exists brew && PLUGIN_DIR=$(brew --prefix)) || return
 
     # zsh-syntax-highlighting
     source_if_exists "${PLUGIN_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -42,6 +38,7 @@ zsh_plugins_source() {
 #│  Env Set                                                                     │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 env_set() {
+    is_macos && export EDITOR=vim
     ! is_macos && export LC_ALL="C.utf8"
     command_exists fzf && source <(fzf --zsh)
     command_exists eza && export EZA_COLORS="di=37"
@@ -49,6 +46,7 @@ env_set() {
     command_exists docker && source <(docker completion zsh)
     command_exists kubectl && source <(kubectl completion zsh)
     command_exists helm && source <(helm completion zsh)
+    command_exists direnv && eval "$(direnv hook zsh)"
     command_exists brew &&
         export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api" &&
         export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles" &&
@@ -87,7 +85,7 @@ local alias_pairs=(
     # program language
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
     # tmux && zellij
-    "tm tmux" "ta tmux attach -t" "z zellij"
+    "tm tmux" "ta tmux attach -t" "ze zellij"
 )
 
 alias_set() {
