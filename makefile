@@ -27,7 +27,7 @@ brew_diff:
 	@difft ${brew_install_file_name} ${brew_install_file_name_temp}
 
 vscode:
-	@echo "latest update: `date '+%Y/%-m/%-d-%-H:%M:%S'`" > ${brew_install_file_name}
+	@echo "latest update: `date '+%Y/%-m/%-d-%-H:%M:%S'`" > ${vscode_install_extension_file_name}
 	@echo "  " >> ${vscode_install_extension_file_name}
 	@echo "hostname:" >> ${vscode_install_extension_file_name}
 	@hostname >> $(vscode_install_extension_file_name)
