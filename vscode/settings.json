@@ -19,7 +19,6 @@
     "editor.stickyScroll.enabled": true, // 移动中固定函数
     "editor.semanticHighlighting.enabled": true, // 语义高亮
     "editor.inlayHints.enabled": "on", // inlay
-    // "editor.fontFamily": "Cascadia Mono NF, FiraCode Nerd Font Mono",
     "editor.fontFamily": "Maple Mono NF CN",
     "editor.rulers": [
         120
@@ -111,7 +110,7 @@
     /*
         Typst
     */
-    "tinymist.formatterMode": "typstfmt",
+    "tinymist.formatterMode": "typstyle",
     "tinymist.previewFeature": "disable",
     "[typst]": {
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
@@ -129,10 +128,6 @@
         "markdown": false,
         "scminput": false
     },
-    /*
-        Marscode
-    */
-    "marscode.internal.chatLanguage": "cn",
     /*
         Gitlens
     */
