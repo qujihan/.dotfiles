@@ -1,31 +1,23 @@
-local bytedance_kinit={}
-
--- for test
--- local command = "date | tee -a /Users/bytedance/test.txt"
+local bytedance_kinit = {}
 local command = "kinit --keychain qujihan@BYTEDANCE.COM"
 
-
-
-local KinitOnwakeTask = hs.caffeinate.watcher.new(
-    function()
-        if eventType == hs.caffeinate.watcher.systemDidWask then
-            hs.execute(command)  
-        end
-    end
-)
-
-local KinitTimerTask = hs.timer.doEvery(
-    -- 3 hours
-    1 * 60 * 60 * 3, 
-    function()
-        hs.execute(command)
-    end
-)
-
 function bytedance_kinit:init()
+    local KinitOnwakeTask = hs.caffeinate.watcher.new(
+        function()
+            if eventType == hs.caffeinate.watcher.systemDidWask then
+                hs.execute(command)
+            end
+        end
+    )
     KinitOnwakeTask:start()
+
+    local KinitTimerTask = hs.timer.doEvery(
+        1 * 60 * 60 * 3, -- 3 hours
+        function()
+            hs.execute(command)
+        end
+    )
     KinitTimerTask:start()
 end
-
 
 return bytedance_kinit
