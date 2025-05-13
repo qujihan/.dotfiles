@@ -60,6 +60,12 @@ function keymaps:init()
 	-- ctrl + $: 句尾
 	remap({ 'ctrl' }, '0', pressFn({ 'cmd' }, 'left'))
 	remap({ 'ctrl', 'shift' }, '4', pressFn({ 'cmd' }, 'right'))
+
+	-- ctrl + shift + esc 打开活动监视器
+	remap({'ctrl', 'shift'}, 'escape', function ()
+		-- hs.execute("open /System/Applications/Utilities/Activity\\ Monitor.app")
+		hs.application.launchOrFocus("/System/Applications/Utilities/Activity Monitor.app")
+	end)
 end
 
 return keymaps
