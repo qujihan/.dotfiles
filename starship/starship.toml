@@ -1,21 +1,25 @@
 # log/error file at ~/.cache/starship/session_${xxx}.log
 # config doc at https://starship.rs/config/
+# style https://i.sstatic.net/KTSQa.png
 
 format = """ \
-$shell\
+$os\
 $username\
 $sudo\
 $time\
+$direnv\
 $directory\
 $git_branch\
 $git_commit\
 $git_metrics\
 $c\
+$cpp\
 $cmake\
 $python\
 $golang\
 $lua\
 $rust\
+$typst\
 $package
 $character"""
 
@@ -23,59 +27,123 @@ add_newline = true
 command_timeout = 1500
 
 [username]
+disabled = false
 style_user = 'green'
 style_root = 'red bold'
 format = '[$user]($style) '
-disabled = false
 show_always = true
 
-[shell]
+[os]
 disabled = false
-fish_indicator = "󰈺"
-bash_indicator = ""
-zsh_indicator = ""
-powershell_indicator = ""
-nu_indicator = "NuShell"
-unknown_indicator = "󰟢"
-format = "[$indicator](cyan) "
+format = "[$symbol](cyan)"
+
+[os.symbols]
+Macos = " "
+Windows = " "
+Debian = " "
+Ubuntu = " "
 
 [sudo]
 disabled = false
 
 [time]
 disabled = false
-style = 'green'
+style = 'blue'
+format = "[$time]($style) "
 
 [directory]
-truncation_length = 5
-home_symbol = ""
+truncation_length = 3
+home_symbol = " "
+
+[git_branch]
+disabled = false
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_metrics]
 disabled = false
 added_style = 'bold blue'
 deleted_style = 'bold red'
-format = '[+$added]($added_style) / [-$deleted]($deleted_style) '
+format = '[+$added]($added_style) [-$deleted]($deleted_style) '
+
+[direnv]
+disabled = false
+symbol = " "
+allowed_msg = " "
+denied_msg = " "
+loaded_msg = "󰄴 "
+unloaded_msg = "󰄰 "
+format = "[$allowed$loaded]($style)"
+
+[cpp]
+disabled = false
+symbol = " "
+version_format = "${raw}"
+style = "3"
+detect_extensions = [
+    'cpp',
+    'cc',
+    'cxx',
+    'c++',
+    'hpp',
+    'hh',
+    'hxx',
+    'h++',
+    'tcc',
+]
+format = "[$symbol($name $version )]($style)"
 
 [c]
-symbol = "󰙱 "
-detect_extensions = ['cc', 'cpp', 'c', 'hpp', 'h']
+disabled = false
+symbol = " "
+version_format = "${raw}"
+style = "3"
+# detect_extensions = ['c', 'h']
+detect_extensions = ['c']
+format = "[$symbol($name $version )]($style)"
+
+[cmake]
+disabled = false
+symbol = " "
+style = "13"
+format = "[$symbol($version )]($style)"
 
 [python]
+disabled = false
 symbol = '󰌠 '
+style = "3"
 pyenv_version_name = true
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [golang]
+disabled = false
 symbol = "󰟓 "
+style = "149"
+format = "[$symbol($version )]($style)"
 
 [lua]
+disabled = false
 symbol = "󰢱 "
+style = "149"
+format = "[$symbol($version )]($style)"
 
 [rust]
+disabled = false
 symbol = "󱘗 "
+style = "149"
+format = "[$symbol($version )]($style)"
+
+[typst]
+disabled = false
+symbol = " "
+version_format = "${raw}"
+style = "#2e8eb7"
+detect_extensions = ["typ"]
+format = "[$symbol($version )]($style)"
 
 [package]
 disabled = false
 
 [character]
+disabled = false
 success_symbol = '[ ➜](bold green) '
 error_symbol = '[ ➜](bold red) '
