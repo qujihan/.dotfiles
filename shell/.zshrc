@@ -20,7 +20,7 @@ is_bytedance_macos() {
 # apt install -y zsh-syntax-highlighting zsh-autosuggestions
 # brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
 zsh_plugins_source() {
-    command_exists brew && PLUGIN_DIR=$(brew --prefix) || {command_exists apt && PLUGIN_DIR="/usr/share/" || return}
+    command_exists brew && PLUGIN_DIR=$(brew --prefix) || {command_exists apt && PLUGIN_DIR="/usr" || return}
 
     # zsh-syntax-highlighting
     source_if_exists "${PLUGIN_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -118,8 +118,8 @@ alias_set() {
 #╰──────────────────────────────────────────────────────────────────────────────╯
 shell_set() {
     autoload -Uz compinit && compinit -u
-    zsh_plugins_source
     env_set
+    zsh_plugins_source
     alias_set
 }
 
