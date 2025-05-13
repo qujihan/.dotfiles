@@ -73,7 +73,7 @@
         "**/.git": false
     },
     /*
-        C/C++
+        C/C++ and CMake
     */
     "files.associations": {
         ".clang-tidy": "yaml",
@@ -81,6 +81,8 @@
         ".clangd": "yaml",
         "Doxyfile": "shellscript"
     },
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false,
     /*
         Golang
     */
