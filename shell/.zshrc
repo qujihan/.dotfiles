@@ -54,11 +54,16 @@ env_set() {
         export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git" &&
         export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git" &&
         export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+
+    # install rust by rustup, and rustup installed by homebrew
     command_exists rustup &&
         # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup &&
         # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup &&
         export_path_if_exists $(brew --prefix)/opt/rustup/bin &&
         export_path_if_exists ${HOME}/.cargo/bin
+    # install rust by rust homepage
+    source_if_exists ${HOME}/.cargo/env
+
     command_exists go &&
         export_path_if_exists ${HOME}/go/bin &&
         go env -w GO111MODULE=on &&
