@@ -2,6 +2,7 @@ syntax on
 set number
 set ignorecase
 set nocompatible
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set encoding=utf-8
@@ -15,7 +16,7 @@ set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
 " autopair
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
+:inoremap { {}<ESC>i
 :inoremap } <c-r>=ClosePair('}')<CR>
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
