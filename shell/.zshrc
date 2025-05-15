@@ -10,8 +10,7 @@ export_path_if_exists() { [ -d "$1" ] && export PATH="$PATH:$1"; }
 command_exists() { command -v "$1" &>/dev/null; }
 is_bytedance_macos() {
     is_macos || return false
-    local bytedance_macos_uuid="C8429192-B5D4-5789-93BB-011FE9953A41"
-    [[ $(system_profiler SPHardwareDataType | awk '/Hardware UUID:/ { print $3 }') == "$bytedance_macos_uuid" ]]
+    [[ $(echo "$(id -un)" | tr '[:upper:]' '[:lower:]') == *bytedance* ]]
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
