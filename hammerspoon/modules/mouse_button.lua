@@ -1,8 +1,9 @@
 local mouseButton = {}
 
-local threshold = 3
+local threshold = 5
 local coefficient = 2
 local offset = 3
+IsRightDrag = false
 
 -- ctrl
 local function CtrlPressed(modifiers)
@@ -49,9 +50,15 @@ local function CtrlWithUp()
         { "-e", 'tell application "System Events" to key code 126 using control down' }):start()
 end
 
-local function StopAndStart(Event)
+local function StopThenStartWithTime(Event)
     Event:stop()
     os.execute("sleep 0.15")
+    Event:start()
+end
+
+local function StopThenStartWithFunc(Event, func)
+    Event:stop()
+    func()
     Event:start()
 end
 
@@ -91,11 +98,7 @@ local function middleButtonScrollEventFunc(event)
     return false
 end
 
-local function middleButtonDragEventFunc(event)
-    if event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber) ~= 2 then
-        return false -- ButtonNumber == 2 表示鼠标滚轮
-    end
-
+local function MiddleButtonDragEventFunc(event)
     local dx = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
     local dy = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
     if dx > threshold then
@@ -109,20 +112,27 @@ local function middleButtonDragEventFunc(event)
     else
         return false
     end
-    StopAndStart(MiddleClickWatch)
+    StopThenStartWithTime(MiddleClickWatch)
     return true
 end
 
+local function otherButtonEventFunc(event)
+    if event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber) == 2 then
+        return MiddleButtonDragEventFunc(event)
+    end
+    return false
+end
+
+
 local function rightButtonDragEventFunc(event)
     local direction = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
-
     if direction > 0 and direction < threshold then
         return false
     end
-
     if direction < 0 and direction > -threshold then
         return false
     end
+    IsRightDrag = true
 
     local mousePoint = hs.mouse.absolutePosition()
     local allScreens = hs.screen.allScreens()
@@ -144,15 +154,19 @@ local function rightButtonDragEventFunc(event)
     hs.window.animationDuration = 0.3
     if direction > 0 then
         hs.window.focusedWindow():moveToScreen(currScreen:next())
-        StopAndStart(LeftButtonForMoveAppWatcher)
+        StopThenStartWithTime(RightButtonDragForMoveAppWatcher)
         return true
     else
         hs.window.focusedWindow():moveToScreen(currScreen:previous())
-        StopAndStart(LeftButtonForMoveAppWatcher)
+        StopThenStartWithTime(RightButtonDragForMoveAppWatcher)
         return true
     end
 end
 
+-- return true: 表示我这里处理了, 不要触发系统的按键了
+-- 表示信号到我这就结束了, 不接着往下传了
+-- return false: 表示我这里处理不了, 原来咋处理就咋处理吧
+-- 表示我处理不了, 信号接着往下传
 function mouseButton:init()
     -- 当滚轮滚动时触发事件
     ScrollWatch = hs.eventtap.new(
@@ -163,14 +177,14 @@ function mouseButton:init()
     )
     ScrollWatch:start()
 
-    -- 当滚轮被点击时触发事件
+    -- 当其他按键被点击以及拖拽时
     MiddleClickWatch = hs.eventtap.new(
         {
-            -- hs.eventtap.event.types.otherMouseDown,
-            -- hs.eventtap.event.types.otherMouseUp,
+            hs.eventtap.event.types.otherMouseDown,
+            hs.eventtap.event.types.otherMouseUp,
             hs.eventtap.event.types.otherMouseDragged
         },
-        middleButtonDragEventFunc
+        otherButtonEventFunc
     )
     MiddleClickWatch:start()
 
@@ -190,13 +204,44 @@ function mouseButton:init()
     LeftButtonForInputWatcher:start()
 
     -- 右键将窗口移动到另一个屏幕
-    LeftButtonForMoveAppWatcher = hs.eventtap.new(
+    RightButtonDragForMoveAppWatcher = hs.eventtap.new(
         {
-            hs.eventtap.event.types.rightMouseDragged
+            hs.eventtap.event.types.rightMouseDragged,
+            -- hs.eventtap.event.types.rightMouseUp,
+            -- hs.eventtap.event.types.rightMouseDown,
         },
         rightButtonDragEventFunc
     )
-    LeftButtonForMoveAppWatcher:start()
+    RightButtonDragForMoveAppWatcher:start()
+
+    RightButtonUpWatcher = hs.eventtap.new(
+        {
+            hs.eventtap.event.types.rightMouseUp,
+        },
+        function(event)
+            if not IsRightDrag then
+                StopThenStartWithFunc(RightButtonDownWatcher, function()
+                    hs.eventtap.event.newMouseEvent(
+                        hs.eventtap.event.types.rightMouseDown,
+                        hs.mouse.absolutePosition()
+                    ):post()
+                end)
+            end
+            return false
+        end
+    )
+    RightButtonUpWatcher:start()
+
+    RightButtonDownWatcher = hs.eventtap.new(
+        {
+            hs.eventtap.event.types.rightMouseDown,
+        },
+        function(event)
+            IsRightDrag = false
+            return true
+        end
+    )
+    RightButtonDownWatcher:start()
 end
 
 return mouseButton

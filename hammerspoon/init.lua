@@ -9,12 +9,9 @@ ModuleMap = {
   ["modules.mouse_button"] = true,
   ["modules.bytedance"] = false,
 }
-
-local bytedance_uuid = ""
-if require "utils.uuid":get_uuid() == bytedance_uuid then
+if string.find(string.lower(hs.execute("id -un"):gsub("\n", "")), "bytedance") then
   ModuleMap["modules.bytedance"] = true
 end
-
 for name, enabled in pairs(ModuleMap) do
   if enabled then
     Module = require(name)
