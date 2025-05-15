@@ -91,7 +91,7 @@ local alias_pairs=(
     # program language
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
     # tmux && zellij
-    "tm tmux" "ta tmux attach -t" "ze zellij"
+    "tm tmux" "ta tmux attach -t" "tn tmux new -s" "ze zellij"
 )
 
 alias_set() {
