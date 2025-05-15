@@ -121,6 +121,10 @@
         "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?"
     },
     /*
+        Zig
+    */
+    "zig.zls.enabled": "on",
+    /*
         Copilot
     */
     "github.copilot.editor.enableAutoCompletions": true,
