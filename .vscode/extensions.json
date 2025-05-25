@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "vscodevim.vim",
+        "foxundermoon.shell-format",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-pylance",
+        "ms-vscode.makefile-tools",
+        "sumneko.lua",
+        "tamasfe.even-better-toml"
+    ]
+}
