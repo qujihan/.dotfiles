@@ -3,7 +3,6 @@ local mouseButton = {}
 local threshold = 5
 local coefficient = 2
 local offset = 3
-IsRightDrag = false
 
 -- ctrl
 local function CtrlPressed(modifiers)
@@ -123,46 +122,6 @@ local function otherButtonEventFunc(event)
     return false
 end
 
-
-local function rightButtonDragEventFunc(event)
-    local direction = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
-    if direction > 0 and direction < threshold then
-        return false
-    end
-    if direction < 0 and direction > -threshold then
-        return false
-    end
-    IsRightDrag = true
-
-    local mousePoint = hs.mouse.absolutePosition()
-    local allScreens = hs.screen.allScreens()
-    local currScreen = nil
-
-    for _, screen in ipairs(allScreens) do
-        local screenFrame = screen:frame()
-        if mousePoint.x >= screenFrame.x and mousePoint.x <= (screenFrame.x + screenFrame.w) and
-            mousePoint.y >= screenFrame.y and mousePoint.y <= (screenFrame.y + screenFrame.h) then
-            -- 鼠标在当前窗口中 记录下来
-            currScreen = screen
-        end
-    end
-
-    if currScreen == nil then
-        return false
-    end
-
-    hs.window.animationDuration = 0.3
-    if direction > 0 then
-        hs.window.focusedWindow():moveToScreen(currScreen:next())
-        StopThenStartWithTime(RightButtonDragForMoveAppWatcher)
-        return true
-    else
-        hs.window.focusedWindow():moveToScreen(currScreen:previous())
-        StopThenStartWithTime(RightButtonDragForMoveAppWatcher)
-        return true
-    end
-end
-
 -- return true: 表示我这里处理了, 不要触发系统的按键了
 -- 表示信号到我这就结束了, 不接着往下传了
 -- return false: 表示我这里处理不了, 原来咋处理就咋处理吧
@@ -178,6 +137,7 @@ function mouseButton:init()
     ScrollWatch:start()
 
     -- 当其他按键被点击以及拖拽时
+    -- 主要是滚轮键
     MiddleClickWatch = hs.eventtap.new(
         {
             hs.eventtap.event.types.otherMouseDown,
@@ -188,60 +148,21 @@ function mouseButton:init()
     )
     MiddleClickWatch:start()
 
-    -- 左键被点击时触发事件
+    -- 左键被点击时触发事件: 切换为Rime输入法
     RIME_ID = "im.rime.inputmethod.Squirrel.Hans"
     LeftButtonForInputWatcher = hs.eventtap.new(
         {
             hs.eventtap.event.types.leftMouseDown
         },
-        function(event)
+        function()
             local source_id = hs.keycodes.currentSourceID()
             if source_id ~= RIME_ID then
                 hs.keycodes.currentSourceID(RIME_ID)
             end
             return false
-        end)
+        end
+    )
     LeftButtonForInputWatcher:start()
-
-    -- 右键将窗口移动到另一个屏幕
-    RightButtonDragForMoveAppWatcher = hs.eventtap.new(
-        {
-            hs.eventtap.event.types.rightMouseDragged,
-            -- hs.eventtap.event.types.rightMouseUp,
-            -- hs.eventtap.event.types.rightMouseDown,
-        },
-        rightButtonDragEventFunc
-    )
-    RightButtonDragForMoveAppWatcher:start()
-
-    RightButtonUpWatcher = hs.eventtap.new(
-        {
-            hs.eventtap.event.types.rightMouseUp,
-        },
-        function(event)
-            if not IsRightDrag then
-                StopThenStartWithFunc(RightButtonDownWatcher, function()
-                    hs.eventtap.event.newMouseEvent(
-                        hs.eventtap.event.types.rightMouseDown,
-                        hs.mouse.absolutePosition()
-                    ):post()
-                end)
-            end
-            return false
-        end
-    )
-    RightButtonUpWatcher:start()
-
-    RightButtonDownWatcher = hs.eventtap.new(
-        {
-            hs.eventtap.event.types.rightMouseDown,
-        },
-        function(event)
-            IsRightDrag = false
-            return true
-        end
-    )
-    RightButtonDownWatcher:start()
 end
 
 return mouseButton
