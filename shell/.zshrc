@@ -91,6 +91,8 @@ local alias_pairs=(
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
     # tmux && zellij
     "tm tmux" "ta tmux attach -t" "tn tmux new -s" "ze zellij"
+    # cookiecutter config
+    "ccgh cookiecutter gh:qujihan/ccpt -c"
 )
 
 alias_set() {
