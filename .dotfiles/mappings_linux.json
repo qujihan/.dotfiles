@@ -5,5 +5,7 @@
     "tmux/.tmux.conf": "~/.tmux.conf",
     "vim/.vimrc": "~/.vimrc",
     "shell/.hushlogin": "~/.hushlogin",
-    "shell/.zshrc": "~/.zshrc"
+    "shell/.zshrc": "~/.zshrc",
+    "gdb/.gdbinit": "~/.gdbinit",
+    "lldb/.lldbinit": "~/.lldbinit"
 }
