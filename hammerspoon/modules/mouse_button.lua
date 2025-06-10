@@ -1,7 +1,5 @@
 local mouseButton = {}
 
-local threshold = 5
-local coefficient = 2
 local offset = 3
 
 -- ctrl
@@ -27,38 +25,6 @@ end
 -- 向下滚动
 local function ScroolDown(direction)
     return (direction < 0)
-end
-
-local function CtrlWithRight()
-    hs.task.new("/usr/bin/osascript", nil,
-        { "-e", 'tell application "System Events" to key code 123 using control down' }):start()
-end
-
-local function CtrlWithLeft()
-    hs.task.new("/usr/bin/osascript", nil,
-        { "-e", 'tell application "System Events" to key code 124 using control down' }):start()
-end
-
-local function CtrlWithDown()
-    hs.task.new("/usr/bin/osascript", nil,
-        { "-e", 'tell application "System Events" to key code 125 using control down' }):start()
-end
-
-local function CtrlWithUp()
-    hs.task.new("/usr/bin/osascript", nil,
-        { "-e", 'tell application "System Events" to key code 126 using control down' }):start()
-end
-
-local function StopThenStartWithTime(Event)
-    Event:stop()
-    os.execute("sleep 0.15")
-    Event:start()
-end
-
-local function StopThenStartWithFunc(Event, func)
-    Event:stop()
-    func()
-    Event:start()
 end
 
 
@@ -97,31 +63,6 @@ local function middleButtonScrollEventFunc(event)
     return false
 end
 
-local function MiddleButtonDragEventFunc(event)
-    local dx = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaX)
-    local dy = event:getProperty(hs.eventtap.event.properties.mouseEventDeltaY)
-    if dx > threshold then
-        CtrlWithRight()
-    elseif dx < -threshold then
-        CtrlWithLeft()
-    elseif dy > threshold * coefficient then
-        CtrlWithDown()
-    elseif dy < -threshold * coefficient then
-        CtrlWithUp()
-    else
-        return false
-    end
-    StopThenStartWithTime(MiddleClickWatch)
-    return true
-end
-
-local function otherButtonEventFunc(event)
-    if event:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber) == 2 then
-        return MiddleButtonDragEventFunc(event)
-    end
-    return false
-end
-
 -- return true: 表示我这里处理了, 不要触发系统的按键了
 -- 表示信号到我这就结束了, 不接着往下传了
 -- return false: 表示我这里处理不了, 原来咋处理就咋处理吧
@@ -135,18 +76,6 @@ function mouseButton:init()
         middleButtonScrollEventFunc
     )
     ScrollWatch:start()
-
-    -- 当其他按键被点击以及拖拽时
-    -- 主要是滚轮键
-    MiddleClickWatch = hs.eventtap.new(
-        {
-            hs.eventtap.event.types.otherMouseDown,
-            hs.eventtap.event.types.otherMouseUp,
-            hs.eventtap.event.types.otherMouseDragged
-        },
-        otherButtonEventFunc
-    )
-    MiddleClickWatch:start()
 
     -- 左键被点击时触发事件: 切换为Rime输入法
     RIME_ID = "im.rime.inputmethod.Squirrel.Hans"
