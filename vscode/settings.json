@@ -42,6 +42,16 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition",
+                "editor.action.openLink"
+            ]
+        },
+        {
+            "before": [
                 "<leader>",
                 "w"
             ],
@@ -144,5 +154,5 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1.25,
+    "window.zoomLevel": 1.25
 }

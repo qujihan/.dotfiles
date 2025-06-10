@@ -12,6 +12,16 @@
 ; "vim.normalModeKeyBindingsNonRecursive": [
 ;     {
 ;         "before": [
+;             "g",
+;             "d"
+;         ],
+;         "commands": [
+;             "editor.action.revealDefinition",
+;             "editor.action.openLink"
+;         ]
+;     },
+;     {
+;         "before": [
 ;             "<leader>",
 ;             "w"
 ;         ],
@@ -19,7 +29,7 @@
 ;             "<leader>",
 ;             "<leader>",
 ;             "w"
-;         ],
+;         ]
 ;     },
 ;     {
 ;         "before": [
@@ -30,9 +40,8 @@
 ;             "<leader>",
 ;             "<leader>",
 ;             "b"
-;         ],
-;     }
-; ],
+;         ]
+; ]
 
 
 ; ╭──────────────────────────────────────────────────────────────────╮
@@ -54,10 +63,24 @@ nmap <Leader>lr editor.action.rename
 nmap <Leader>lf editor.action.formatDocument
 nmap <Leader>la editor.action.quickFix
 vmap <Leader>lf editor.action.formatSelection
-; gb adds another cursor on the next word it finds which is the same as the word under the cursor.
-; gd jump to definition
-; gh similar to mouse hover
+
+; Surround
+; ys <motion><desired>
+; ds <existing>
+; cs <existing><desired>
+; S <desired>
+
+; gb: default
+; gd: default
+; gh: default
+; gc: default
+; gq: default
+nmap g, workbench.action.editor.nextChange
+nmap g. workbench.action.editor.previousChange
+nmap gi editor.action.peekImplementation
 nmap gu editor.action.goToReferences
 nmap gU editor.action.goToReferences
-nmap [d editor.action.marker.prev
-nmap ]d editor.action.marker.next
+nmap g[ editor.action.marker.prev
+nmap g] editor.action.marker.next
+nmap d[ editor.action.marker.prevInFiles
+nmap d] editor.action.marker.nextInFiles

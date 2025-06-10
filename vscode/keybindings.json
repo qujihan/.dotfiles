@@ -4,7 +4,7 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
 */
 [
     /* 
-        Window Management 
+        Window Management
     */
     {
         "key": "alt+h",
