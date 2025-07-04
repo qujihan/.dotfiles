@@ -12,6 +12,9 @@ is_bytedance_macos() {
     is_macos || return false
     [[ $(echo "$(id -un)" | tr '[:upper:]' '[:lower:]') == *bytedance* ]]
 }
+is_bytedance_devbox() {
+    [[ -d "/data00" ]]
+}
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Zsh Plugin                                                                  │
@@ -39,7 +42,7 @@ zsh_plugins_source() {
 env_set() {
     export_path_if_exists /home/linuxbrew/.linuxbrew/bin # linux homebrew
     is_macos && export EDITOR=vim
-    ! is_macos && export LC_ALL="C.utf8"
+    # ! is_macos && export LC_ALL="C.utf8"
     command_exists fzf && source <(fzf --zsh)
     command_exists eza && export EZA_COLORS="di=37"
     command_exists starship && eval "$(starship init zsh)"
@@ -67,8 +70,10 @@ env_set() {
         export_path_if_exists ${HOME}/go/bin &&
         go env -w GO111MODULE=on &&
         go env -w GOSUMDB=sum.golang.google.cn &&
-        go env -w GOPROXY=https://goproxy.cn,direct &&
-        is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
+        go env -w GOPROXY=https://goproxy.cn,direct
+    
+    is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
+    is_bytedance_devbox && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮

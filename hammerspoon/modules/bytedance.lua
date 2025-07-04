@@ -1,5 +1,5 @@
 local bytedance_kinit = {}
-local command = "kinit --keychain qujihan@BYTEDANCE.COM"
+local command = "kinit --keychain qujihan.qjh@BYTEDANCE.COM"
 
 function bytedance_kinit:init()
     local KinitOnwakeTask = hs.caffeinate.watcher.new(
