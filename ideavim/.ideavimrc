@@ -49,9 +49,9 @@ nmap <leader>lr :action RenameElement<CR>
 nmap <leader>lf :action ReformatCode<CR>
 nmap <leader>la :action ShowIntentionActions<CR>
 " gb :not find
-" gh :not find
+nmap gi :action GotoImplementation<CR>
+nmap gh :action ShowHoverInfo<CR>
 nmap gd :action GotoDeclaration<CR>
-nmap gh :action ShowErrorDescription<CR>
 nmap gu :action ShowUsages<CR>
 nmap gU :action FindUsages<CR>
 nmap [d :action GotoPreviousError<CR>
