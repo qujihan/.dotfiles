@@ -34,6 +34,28 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "key": "alt+e",
         "command": "workbench.view.explorer"
     },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.togglePanel",
+        "when": "terminal.active"
+    },
+    {
+        "key": "shift shift",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "alt alt",
+        "command": "workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl ctrl",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
     /*
         FileExplorer
     */
@@ -86,22 +108,6 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "key": "r",
         "command": "renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-    },
-    /*
-        Terminal
-    */
-    {
-        "key": "ctrl+t",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    /*
-        For windows(autohotkey close window)
-    */
-    {
-        "key": "ctrl+w",
-        "command": "-extension.vim_ctrl+w",
-        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
     },
     /*
         Pin Viewer

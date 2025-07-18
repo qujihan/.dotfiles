@@ -2,6 +2,7 @@
     /*
         Workbench
     */
+    "workbench.editor.navigationScope": "editorGroup", // for ctrl+o/ctrl+i in vim
     "workbench.startupEditor": "none",
     // "workbench.editor.enablePreview": false,
     "workbench.editor.wrapTabs": true, // 多行显示Tabs
@@ -37,9 +38,25 @@
     "vim.sneak": true,
     "vim.easymotion": true,
     "vim.foldfix": true,
-    "vim.scroll": 5,
+    "vim.scroll": 8,
     "vim.timeout": 2000,
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-o>"
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
+        },
+        {
+            "before": [
+                "<C-i>"
+            ],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
         {
             "before": [
                 "g",
@@ -154,5 +171,12 @@
         "remoteBranches"
     ],
     "update.mode": "none",
-    "window.zoomLevel": 1.25
+    "extensions.supportUntrustedWorkspaces": {
+        "byted-ide.dev-environment-manager": {
+            "supported": true
+        }
+    },
+    "remote.SSH.defaultExtensions": [
+        "byted-ide.gallery"
+    ]
 }

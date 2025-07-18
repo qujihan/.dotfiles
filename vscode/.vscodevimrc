@@ -1,48 +1,4 @@
 ; VSCode Setting
-; 
-; "vim.useSystemClipboard": true,
-; "vim.leader": "<space>",
-; "vim.vimrc.enable": true,
-; "vim.surround": true,
-; "vim.sneak": true,
-; "vim.easymotion": true,
-; "vim.foldfix": true,
-; "vim.scroll": 5,
-; "vim.timeout": 2000,
-; "vim.normalModeKeyBindingsNonRecursive": [
-;     {
-;         "before": [
-;             "g",
-;             "d"
-;         ],
-;         "commands": [
-;             "editor.action.revealDefinition",
-;             "editor.action.openLink"
-;         ]
-;     },
-;     {
-;         "before": [
-;             "<leader>",
-;             "w"
-;         ],
-;         "after": [
-;             "<leader>",
-;             "<leader>",
-;             "w"
-;         ]
-;     },
-;     {
-;         "before": [
-;             "<leader>",
-;             "b"
-;         ],
-;         "after": [
-;             "<leader>",
-;             "<leader>",
-;             "b"
-;         ]
-; ]
-
 
 ; ╭──────────────────────────────────────────────────────────────────╮
 ; │  Keymaps (another keymaps at keybindings.json)                   │
@@ -50,13 +6,6 @@
 ; Basic
 nmap j gj
 nmap k gk
-
-; Set Windows Keymaps
-nmap <C-f> actions.find
-
-nmap <Leader><Leader>a workbench.action.toggleActivityBarVisibility
-nmap <Leader><Leader>l workbench.action.toggleSidebarVisibility
-nmap <Leader><Leader>t workbench.action.togglePanel
 
 ; Set LSP Keymaps
 nmap <Leader>lr editor.action.rename
