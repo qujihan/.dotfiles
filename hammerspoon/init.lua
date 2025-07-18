@@ -7,14 +7,22 @@ ModuleMap = {
   ["modules.keymaps"] = true,
   ["modules.bing_daily"] = true,
   ["modules.mouse_button"] = true,
-  ["modules.bytedance"] = false,
 }
-if string.find(string.lower(hs.execute("id -un"):gsub("\n", "")), "bytedance") then
-  ModuleMap["modules.bytedance"] = true
-end
-for name, enabled in pairs(ModuleMap) do
-  if enabled then
+
+BytedanceModule = {
+  ["modules.bytedance"] = true,
+}
+
+local function loadAndInitModuleMap(Map)
+  for name in pairs(Map) do
     Module = require(name)
     Module:init()
   end
 end
+
+if string.match(string.lower(hs.execute("id -un"):gsub("\n", "")), "bytedance") then
+  hs.notify.new({ title = "Bytedance", informativeText = "Bytedance Init Start" }):send()
+  loadAndInitModuleMap(BytedanceModule)
+end
+
+loadAndInitModuleMap(ModuleMap)

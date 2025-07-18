@@ -14,6 +14,7 @@ function bytedance_kinit:init()
     local KinitTimerTask = hs.timer.doEvery(
         1 * 60 * 60 * 3, -- 3 hours
         function()
+            hs.notify.new({ title = "Kinit", informativeText = "bytedance Kinit" }):send()
             hs.execute(command)
         end
     )
