@@ -1,4 +1,5 @@
 {
+    "window.zoomLevel": 1,
     /*
         Workbench
     */
@@ -26,6 +27,7 @@
     ],
     "terminal.integrated.enableMultiLinePasteWarning": "always",
     "terminal.integrated.fontFamily": "Maple Mono NF CN",
+
     "terminal.integrated.initialHint": true,
     // "terminal.integrated.defaultLocation": "editor",
     /*
