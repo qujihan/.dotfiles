@@ -1,4 +1,4 @@
-latest update: 2025/4/28-6:13:05
+latest update: 2025/8/21-13:48:07
   
 brew install 
 bat
@@ -15,14 +15,17 @@ hugo
 iperf3
 jq
 loc
+mysql
 ninja
 protobuf
 redis
 rustup
 starship
 tlrc
+tmux
 typst
 uv
+vcpkg
 viddy
 zellij
 zsh-autocomplete
@@ -32,25 +35,24 @@ zsh-syntax-highlighting
   
 brew install --cask
 alacritty
-drawio
+clion
+datagrip
 easydict
-font-cascadia-mono-nf
-font-fira-code-nerd-font
+font-lora
 font-lxgw-wenkai
 font-maple-mono-nf-cn
-font-noto-sans-cjk
-font-noto-serif-cjk
+font-noto-sans-cjk-sc
+font-noto-serif-cjk-sc
+goland
 hammerspoon
-iina
-inkscape
-kap
-maccy
+keka
 microsoft-edge
 orbstack
-pronotes
+postman
+pycharm
 snipaste
-squirrel
-tencent-lemon
+squirrel-app
+stats
 visual-studio-code
 windows-app
 zotero
