@@ -10,6 +10,8 @@ ModuleMap = {
 }
 
 BytedanceModule = {
+  ["modules.keymaps"] = true,
+  ["modules.mouse_button"] = true,
   ["modules.bytedance"] = true,
 }
 
@@ -23,6 +25,6 @@ end
 if string.match(string.lower(hs.execute("id -un"):gsub("\n", "")), "bytedance") then
   hs.notify.new({ title = "Bytedance", informativeText = "Bytedance Init Start" }):send()
   loadAndInitModuleMap(BytedanceModule)
+else
+  loadAndInitModuleMap(ModuleMap)
 end
-
-loadAndInitModuleMap(ModuleMap)

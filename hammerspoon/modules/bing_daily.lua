@@ -1,7 +1,7 @@
 local obj={}
 
 obj.__index = obj
-obj.uhd_resolution = true
+obj.uhd_resolution = false
 
 local function curl_callback(exitCode, stdOut, stdErr)
     if exitCode == 0 then
