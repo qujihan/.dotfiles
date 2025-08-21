@@ -2,11 +2,11 @@
   {
     "context": "Terminal || Editor || Zed || Workspace",
     "bindings": {
-      "alt-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-,": "pane::ActivatePrevItem",
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-j": "workspace::ActivatePaneDown",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-,": "pane::ActivatePreviousItem",
       "alt-.": "pane::ActivateNextItem",
       "ctrl-j": "terminal_panel::ToggleFocus"
     }
@@ -31,8 +31,7 @@
       "h": "project_panel::CollapseSelectedEntry",
       "l": "project_panel::ExpandSelectedEntry",
       "o": "project_panel::OpenPermanent",
-      "p": "project_panel::Open",
-      "x": "project_panel::RevealInFinder"
+      "p": "project_panel::Open"
     }
   }
 ]
