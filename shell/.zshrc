@@ -60,13 +60,13 @@ env_set() {
     # rust tsinghua proxy
     # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup &&
     # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup &&
-    command_exists rustup && # install rust by rustup, and rustup installed by homebrew
+    ! is_bytedance_macos && command_exists rustup && # install rust by rustup, and rustup installed by homebrew
         source <(rustup completions zsh) &&
         export_path_if_exists $(brew --prefix)/opt/rustup/bin &&
         export_path_if_exists ${HOME}/.cargo/bin
     source_if_exists ${HOME}/.cargo/env # install rust by rust homepage
 
-    command_exists go &&
+    ! is_bytedance_macos && command_exists go &&
         export_path_if_exists ${HOME}/go/bin &&
         go env -w GO111MODULE=on &&
         go env -w GOSUMDB=sum.golang.google.cn &&
@@ -94,8 +94,8 @@ local alias_pairs=(
     "man tldr" "watch viddy" "cloc loc" "df duf" "tree eza --tree" "cat bat" "top btm -b" "diff difft"
     # program language
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
-    # tmux && zellij
-    "tm tmux" "ta tmux attach -t" "tn tmux new -s" "ze zellij"
+    # tmux
+    "tx tmux" "ta tmux attach -t" "tn tmux new -s"
     # cookiecutter config
     "ccgh cookiecutter gh:qujihan/ccpt -c"
 )
@@ -113,6 +113,7 @@ alias_set() {
     alias cmakec="cmake --build build"
     # config
     is_macos && alias dotc="cd ${HOME}/.dotfiles && code ${HOME}/.dotfiles"
+    is_macos && alias dotz="cd ${HOME}/.dotfiles && zed ${HOME}/.dotfiles"
     is_macos && alias rimec="cd ${HOME}/Library/Rime && code ${HOME}/Library/Rime"
     # env
     is_macos && alias epath='echo $PATH | tr ":" "\n" | sort'
