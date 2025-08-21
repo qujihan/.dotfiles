@@ -11,6 +11,7 @@
     br = branch
     ck = checkout
     re = rebase
+    cp = cherry-pick
     lo = log --date=format-local:'%Y/%m/%d %H:%M:%S' --pretty=format:'%Cred%h%Creset %Cgreen%an%Creset %Cblue%ad%Creset %s' 
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     # 用于触发流水线
@@ -18,8 +19,6 @@
 [core]
     editor=vim
     quotepath=false
+	excludesfile = ~/.gitignore_global
 [pull]
     rebase = true
-# for work config
-[includeIf "gitdir:~/workspace/"]
-    path = .gitconfig-work
