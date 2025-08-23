@@ -1,9 +1,11 @@
-latest update: 2025/8/21-13:48:07
+latest update: 2025/8/23-19:26:24
   
 brew install 
 bat
 bottom
 cmake
+conan
+cookiecutter
 difftastic
 direnv
 duf
@@ -16,7 +18,9 @@ iperf3
 jq
 loc
 mysql
+neovim
 ninja
+node
 protobuf
 redis
 rustup
@@ -28,28 +32,30 @@ uv
 vcpkg
 viddy
 zellij
+zig
 zsh-autocomplete
 zsh-autopair
 zsh-autosuggestions
 zsh-syntax-highlighting
   
 brew install --cask
+affinity-designer
+affinity-photo
 alacritty
-clion
-datagrip
 easydict
 font-lora
 font-lxgw-wenkai
 font-maple-mono-nf-cn
-font-noto-sans-cjk-sc
-font-noto-serif-cjk-sc
-goland
+font-noto-sans-cjk
+font-noto-serif-cjk
 hammerspoon
-keka
+iina
+kap
 microsoft-edge
+moonlight
+obsidian
 orbstack
 postman
-pycharm
 snipaste
 squirrel-app
 stats
