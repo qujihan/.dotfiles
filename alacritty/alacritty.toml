@@ -2,14 +2,15 @@
 dimensions = { columns = 120, lines = 35 }
 padding = { x = 10, y = 10 }
 decorations = "full"
-opacity = 0.9
+opacity = 0.7
+blur = true
 startup_mode = "Windowed"
 title = "Alacritty"
 dynamic_title = false
 option_as_alt = "Both"
 
 [scrolling]
-history = 10000
+history = 100000
 multiplier = 3
 
 [font]
@@ -17,7 +18,7 @@ normal = { family = "Maple Mono NF CN" }
 bold = { family = "Maple Mono NF CN", style = "Bold" }
 italic = { family = "Maple Mono NF CN", style = "Italic" }
 bold_italic = { family = "Maple Mono NF CN", style = "Bold Italic" }
-size = 15
+size = 13
 
 [cursor]
 style = { shape = "Block", blinking = "On" }
@@ -28,8 +29,9 @@ hide_when_typing = false
 [general]
 live_config_reload = true
 # import = ["~/.config/alacritty/themes/hyper.toml"]
-import = ["~/.config/alacritty/themes/iterm.toml"]
+# import = ["~/.config/alacritty/themes/iterm.toml"]
 # import = ["~/.config/alacritty/themes/github_dark_default.toml"]
+import = ["~/.config/alacritty/themes/catppuccin.toml"]
 
 # [[keyboard.bindings]]
 # action = "ToggleViMode"
