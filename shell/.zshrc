@@ -7,6 +7,7 @@ BYTEDANCE_SCRIPT_PATH="${HOME}/.bytedance"
 is_macos() { [[ "$OSTYPE" == "darwin"* ]]; }
 source_if_exists() { [ -f "$1" ] && source "$1"; }
 export_path_if_exists() { [ -d "$1" ] && export PATH="$PATH:$1"; }
+add_export_if_exists() { [ -d "$2" ] && export "$1"="$2" }
 command_exists() { command -v "$1" &>/dev/null; }
 is_bytedance_macos() {
     is_macos || return false
@@ -22,7 +23,10 @@ is_bytedance_devbox() {
 # apt install -y zsh-syntax-highlighting zsh-autosuggestions
 # brew install zsh-syntax-highlighting zsh-autopair zsh-autosuggestions zsh-autocomplete
 zsh_plugins_source() {
-    command_exists brew && PLUGIN_DIR=$(brew --prefix) || {command_exists apt && PLUGIN_DIR="/usr" || return}
+    command_exists brew && PLUGIN_DIR=$(brew --prefix) || {
+        command_exists apt && PLUGIN_DIR="/usr" || 
+        return
+    }
 
     # zsh-syntax-highlighting
     source_if_exists "${PLUGIN_DIR}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
@@ -50,7 +54,9 @@ env_set() {
     command_exists kubectl && source <(kubectl completion zsh)
     command_exists helm && source <(helm completion zsh)
     command_exists direnv && eval "$(direnv hook zsh)"
-    command_exists brew &&
+    command_exists vcpkg && add_export_if_exists "VCPKG_ROOT" ${HOME}/vcpkg 
+
+    ! is_bytedance_macos && command_exists brew &&
         export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api" &&
         export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles" &&
         export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git" &&
@@ -112,8 +118,8 @@ alias_set() {
     alias cmakeb="cmake -B build -S."
     alias cmakec="cmake --build build"
     # config
-    is_macos && alias dotc="cd ${HOME}/.dotfiles && code ${HOME}/.dotfiles"
-    is_macos && alias dotz="cd ${HOME}/.dotfiles && zed ${HOME}/.dotfiles"
+    is_macos && alias dotc="code ${HOME}/.dotfiles"
+    is_macos && alias dotz="zed ${HOME}/.dotfiles"
     is_macos && alias rimec="cd ${HOME}/Library/Rime && code ${HOME}/Library/Rime"
     # env
     is_macos && alias epath='echo $PATH | tr ":" "\n" | sort'
@@ -131,3 +137,7 @@ shell_set() {
 }
 
 shell_set
+
+autoload bashcompinit
+bashcompinit
+source /Users/qujihan/vcpkg/scripts/vcpkg_completion.zsh
