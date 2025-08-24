@@ -95,13 +95,17 @@ fi
 #│  Alias                                                                       │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 local alias_pairs=(
+    # 
+    "ee exit" "ss source ~/.zshrc"
     # facility utils
-    "ee exit" "ls eza --icons" "la ls -a --icons" "ll ls -l" "lla ls -a -l"
-    "man tldr" "watch viddy" "cloc loc" "df duf" "tree eza --tree" "cat bat" "top btm -b" "diff difft"
+    "ls eza --icons" "la ls -a --icons" "ll ls -l" "lla ls -a -l" "tree eza --tree" 
+    "watch viddy" "cloc loc" "cat bat" "top btm -b" "diff difft" "du dust"
     # program language
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
     # tmux
     "tx tmux" "ta tmux attach -t" "tn tmux new -s"
+    # file manager
+    "yy yazi"
     # cookiecutter config
     "ccgh cookiecutter gh:qujihan/ccpt -c"
 )

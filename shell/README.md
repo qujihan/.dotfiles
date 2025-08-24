@@ -26,5 +26,11 @@ direnv reload
 direnv status
 ```
 
+## bat
+在使用 bat 代替 cat 后, 会遇到拷贝纯文本(没有行号以及git记录的情况)的问题, 可以使用`bat --plain`(`bat -p`)来解决
+
+## tldr 
+添加每半天更新一次 tldr 的数据
+
 ## tmux
 [Tmux](../tmux/README.md)
