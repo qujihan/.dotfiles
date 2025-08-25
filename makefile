@@ -1,7 +1,7 @@
 .PHONY: brew download install uninstall
 
 brew:
-	@sh tool/brew.sh
+	@sh script/brew.sh && diff brew_install* > brew_diff.md
 
 download_win:
 	@echo "TODO"
