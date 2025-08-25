@@ -141,7 +141,3 @@ shell_set() {
 }
 
 shell_set
-
-autoload bashcompinit
-bashcompinit
-source /Users/qujihan/vcpkg/scripts/vcpkg_completion.zsh
