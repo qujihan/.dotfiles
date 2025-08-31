@@ -54,6 +54,7 @@ env_set() {
     command_exists kubectl && source <(kubectl completion zsh)
     command_exists helm && source <(helm completion zsh)
     command_exists direnv && eval "$(direnv hook zsh)"
+    command_exists influx && eval "$(influx completion zsh)"
     command_exists vcpkg && add_export_if_exists "VCPKG_ROOT" ${HOME}/vcpkg 
 
     ! is_bytedance_macos && command_exists brew &&
@@ -100,6 +101,7 @@ local alias_pairs=(
     # facility utils
     "ls eza --icons" "la ls -a --icons" "ll ls -l" "lla ls -a -l" "tree eza --tree" 
     "watch viddy" "cloc loc" "cat bat" "top btm -b" "diff difft" "du dust"
+    "find fd"
     # program language
     "python python3" "pip pip3" "cb cargo build" "cr cargo run" "gb go build" "gr go run"
     # tmux
