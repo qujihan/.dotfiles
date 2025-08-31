@@ -148,12 +148,12 @@ function keymaps:init()
 
 
 	-- ctrl + shift + cmd + wasd/c 窗口布局
-	hs.hotkey.bind({ 'ctrl', 'shift', 'cmd' }, 'w', baseMove(0, 0, 1, 0.5))
-	hs.hotkey.bind({ 'ctrl', 'shift', 'cmd' }, 'a', baseMove(0, 0, 0.5, 1))
-	hs.hotkey.bind({ 'ctrl', 'shift', 'cmd' }, 's', baseMove(0, 0.5, 1, 0.5))
-	hs.hotkey.bind({ 'ctrl', 'shift', 'cmd' }, 'd', baseMove(0.5, 0, 0.5, 1))
+	hs.hotkey.bind({ 'ctrl', 'shift' }, 'w', baseMove(0, 0, 1, 0.5))
+	hs.hotkey.bind({ 'ctrl', 'shift' }, 'a', baseMove(0, 0, 0.5, 1))
+	hs.hotkey.bind({ 'ctrl', 'shift' }, 's', baseMove(0, 0.5, 1, 0.5))
+	hs.hotkey.bind({ 'ctrl', 'shift' }, 'd', baseMove(0.5, 0, 0.5, 1))
 
-	hs.hotkey.bind({ 'ctrl', 'shift', 'cmd' }, 'c', baseMove(0.2, 0.1, 0.7, 0.8))
+	hs.hotkey.bind({ 'ctrl', 'shift' }, 'c', baseMove(0.2, 0.1, 0.7, 0.8))
 
 	-- alt + wasd 移动窗口
 	hs.hotkey.bind({ "alt" }, 'w', function() moveWindowToDirection("up") end)
