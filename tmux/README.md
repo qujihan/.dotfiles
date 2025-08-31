@@ -3,6 +3,8 @@
 
 Leader表示前导键, 默认为ctrl+b, 表示先按Leader键, 然后按其他键. 
 
+另外如果有 url, 需要按住cmd + shift再点击才可以打开
+
 # Shell中建议配置
 ```shell
 alias tm="tmux"
