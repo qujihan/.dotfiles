@@ -67,7 +67,7 @@ env_set() {
     # rust tsinghua proxy
     # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup &&
     # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup &&
-    ! is_bytedance_macos && command_exists rustup && # install rust by rustup, and rustup installed by homebrew
+    command_exists rustup && # install rust by rustup, and rustup installed by homebrew
         source <(rustup completions zsh) &&
         export_path_if_exists $(brew --prefix)/opt/rustup/bin &&
         export_path_if_exists ${HOME}/.cargo/bin
