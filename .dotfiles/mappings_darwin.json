@@ -1,5 +1,6 @@
 {
     "alacritty": "~/.config/alacritty",
+    "ghostty/.config":"~/.config/ghostty/config",
     "git/.gitconfig": "~/.gitconfig",
     "git/.gitconfig-work": "~/.gitconfig-work",
     "hammerspoon": "~/.hammerspoon",
