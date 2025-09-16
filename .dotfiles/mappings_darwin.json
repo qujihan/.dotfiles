@@ -14,7 +14,6 @@
     "vscode/.vscodevimrc": "~/.vscodevimrc",
     "zed/settings.json": "~/.config/zed/settings.json",
     "zed/keymap.json": "~/.config/zed/keymap.json",
-    "zellij/config.kdl": "~/.config/zellij/config.kdl",
     "shell/.hushlogin": "~/.hushlogin",
     "shell/.zshrc": "~/.zshrc",
     "lldb/.lldbinit": "~/.lldbinit"
