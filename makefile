@@ -1,4 +1,6 @@
-.PHONY: brew download install uninstall
+.PHONY: all brew download install uninstall
+
+all: download link
 
 brew:
 	@sh script/brew.sh && diff brew_install* > brew_diff.md

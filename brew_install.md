@@ -1,4 +1,4 @@
-latest update: 2025/8/23-19:26:24
+latest update: 2025/9/17-0:39:29
   
 brew install 
 bat
@@ -13,14 +13,12 @@ eza
 fzf
 go
 helm
-hugo
 iperf3
 jq
 loc
 mysql
 neovim
 ninja
-node
 protobuf
 redis
 rustup
@@ -29,9 +27,7 @@ tlrc
 tmux
 typst
 uv
-vcpkg
 viddy
-zellij
 zig
 zsh-autocomplete
 zsh-autopair
@@ -39,15 +35,13 @@ zsh-autosuggestions
 zsh-syntax-highlighting
   
 brew install --cask
-affinity-designer
-affinity-photo
 alacritty
-easydict
 font-lora
 font-lxgw-wenkai
 font-maple-mono-nf-cn
 font-noto-sans-cjk
 font-noto-serif-cjk
+ghostty
 hammerspoon
 iina
 kap
