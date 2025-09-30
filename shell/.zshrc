@@ -1,5 +1,9 @@
 #!/bin/zsh
 BYTEDANCE_SCRIPT_PATH="${HOME}/.bytedance"
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  Alias Function                                                              │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+docker_start_and_exec(){docker start "$1"; docker exec -it "$1" zsh;}
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Util Function                                                               │
@@ -130,13 +134,30 @@ alias_set() {
     # env
     is_macos && alias epath='echo $PATH | tr ":" "\n" | sort'
     is_macos && alias essh="cat ${HOME}/.ssh/config"
+    # docker 
+    command_exists docker && alias de="docker_start_and_exec"
 }
+
+
+#╭──────────────────────────────────────────────────────────────────────────────╮
+#│  User Define Completions                                                     │
+#╰──────────────────────────────────────────────────────────────────────────────╯
+_docker_start_and_exec(){ 
+    local c=($(docker ps -a --format '{{.Names}}' 2>/dev/null));
+    _arguments "1:pod_name:($c)"; 
+}
+
+all_completions(){
+    command_exists docker && compdef _docker_start_and_exec docker_start_and_exec
+}
+
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 shell_set() {
     autoload -Uz compinit && compinit -u
+    all_completions    
     env_set
     zsh_plugins_source
     alias_set
