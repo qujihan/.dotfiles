@@ -2,7 +2,7 @@
     "alacritty": "~/.config/alacritty",
     "ghostty/.config":"~/.config/ghostty/config",
     "git/.gitconfig": "~/.gitconfig",
-    "git/.gitconfig-work": "~/.gitconfig-work",
+    "git/.gitignore_global": "~/.gitignore_global",
     "hammerspoon": "~/.hammerspoon",
     "ideavim/.ideavimrc": "~/.ideavimrc",
     "starship/starship.toml": "~/.config/starship.toml",

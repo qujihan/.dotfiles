@@ -1,6 +1,7 @@
 {
     "alacritty": "~/AppData/Roaming/alacritty",
     "git/.gitconfig": "~/.gitconfig",
+    "git/.gitignore_global": "~/.gitignore_global",
     "ideavim/.ideavimrc": "~/.ideavimrc",
     "starship/starship.toml": "~/.config/starship.toml",
     "vim/.vimrc": "~/.vimrc",
