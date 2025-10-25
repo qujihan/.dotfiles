@@ -5,14 +5,13 @@ package.path = hs.configdir .. '/?.lua;' ..
 
 ModuleMap = {
   ["modules.keymaps"] = true,
-  ["modules.bing_daily"] = true,
+  -- ["modules.bing_daily"] = true,
   ["modules.mouse_button"] = true,
 }
 
 BytedanceModule = {
   ["modules.keymaps"] = true,
   ["modules.mouse_button"] = true,
-  ["modules.bytedance"] = true,
 }
 
 local function loadAndInitModuleMap(Map)

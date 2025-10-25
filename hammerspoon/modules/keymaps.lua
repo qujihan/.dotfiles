@@ -156,10 +156,10 @@ function keymaps:init()
 	hs.hotkey.bind({ 'ctrl', 'shift' }, 'c', baseMove(0.2, 0.1, 0.7, 0.8))
 
 	-- alt + wasd 移动窗口
-	hs.hotkey.bind({ "alt" }, 'w', function() moveWindowToDirection("up") end)
-	hs.hotkey.bind({ "alt" }, 'a', function() moveWindowToDirection("left") end)
-	hs.hotkey.bind({ "alt" }, 's', function() moveWindowToDirection("down") end)
-	hs.hotkey.bind({ "alt" }, 'd', function() moveWindowToDirection("right") end)
+	hs.hotkey.bind({ 'ctrl', 'alt' }, 'w', function() moveWindowToDirection("up") end)
+	hs.hotkey.bind({ 'ctrl', 'alt' }, 'a', function() moveWindowToDirection("left") end)
+	hs.hotkey.bind({ 'ctrl', 'alt' }, 's', function() moveWindowToDirection("down") end)
+	hs.hotkey.bind({ 'ctrl', 'alt' }, 'd', function() moveWindowToDirection("right") end)
 
 
 	-- ctrl + 0: 句首
