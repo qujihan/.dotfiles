@@ -11,6 +11,7 @@ docker_start_and_exec(){docker start "$1"; docker exec -it "$1" zsh;}
 is_macos() { [[ "$OSTYPE" == "darwin"* ]]; }
 source_if_exists() { [ -f "$1" ] && source "$1"; }
 export_path_if_exists() { [ -d "$1" ] && export PATH="$PATH:$1"; }
+fpath_path_if_existx() { [ -d "$1" ] && fpath=("$1 $fpath"); }
 add_export_if_exists() { [ -d "$2" ] && export "$1"="$2" }
 command_exists() { command -v "$1" &>/dev/null; }
 is_bytedance_macos() {
@@ -51,16 +52,6 @@ env_set() {
     export_path_if_exists /home/linuxbrew/.linuxbrew/bin # linux homebrew
     is_macos && export EDITOR=vim
     # ! is_macos && export LC_ALL="C.utf8"
-    command_exists fzf && source <(fzf --zsh)
-    command_exists eza && export EZA_COLORS="di=37"
-    command_exists starship && eval "$(starship init zsh)"
-    command_exists docker && source <(docker completion zsh)
-    command_exists kubectl && source <(kubectl completion zsh)
-    command_exists helm && source <(helm completion zsh)
-    command_exists direnv && eval "$(direnv hook zsh)"
-    command_exists influx && eval "$(influx completion zsh)"
-    command_exists vcpkg && add_export_if_exists "VCPKG_ROOT" ${HOME}/vcpkg 
-
     ! is_bytedance_macos && command_exists brew &&
         export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api" &&
         export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles" &&
@@ -69,13 +60,9 @@ env_set() {
         export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
 
     # rust tsinghua proxy
-    # export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup &&
-    # export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup &&
-    command_exists rustup && # install rust by rustup, and rustup installed by homebrew
-        source <(rustup completions zsh) &&
-        export_path_if_exists $(brew --prefix)/opt/rustup/bin &&
-        export_path_if_exists ${HOME}/.cargo/bin
+    export_path_if_exists ${HOME}/.cargo/bin 
     source_if_exists ${HOME}/.cargo/env # install rust by rust homepage
+    command_exists brew && export_path_if_exists $(brew --prefix)/opt/rustup/bin
 
     ! is_bytedance_macos && command_exists go &&
         export_path_if_exists ${HOME}/go/bin &&
@@ -85,6 +72,9 @@ env_set() {
     
     is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
     is_bytedance_devbox && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
+
+    command_exists eza && export EZA_COLORS="di=37"
+    command_exists direnv && eval "$(direnv hook zsh)"
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
@@ -149,6 +139,14 @@ _docker_start_and_exec(){
 
 all_completions(){
     command_exists docker && compdef _docker_start_and_exec docker_start_and_exec
+    # command_exists brew && fpath_path_if_existx $(brew --prefix)/share/zsh/site-functions/_brew
+    command_exists starship && eval "$(starship init zsh)"
+    command_exists fzf && source <(fzf --zsh)
+    command_exists asdf && source <(asdf completion zsh)
+    command_exists docker && source <(docker completion zsh)
+    command_exists kubectl && source <(kubectl completion zsh)
+    command_exists helm && source <(helm completion zsh)
+    command_exists rustup && source <(rustup completions zsh)
 }
 
 
@@ -156,9 +154,10 @@ all_completions(){
 #│  Config                                                                      │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 shell_set() {
+    # fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
     autoload -Uz compinit && compinit -u
-    all_completions    
     env_set
+    all_completions    
     zsh_plugins_source
     alias_set
 }
