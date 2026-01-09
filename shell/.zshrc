@@ -104,6 +104,8 @@ local alias_pairs=(
     "yy yazi"
     # cookiecutter config
     "ccgh cookiecutter gh:qujihan/ccpt -c"
+    # k9s
+    "kk k9s"
 )
 
 alias_set() {
