@@ -33,5 +33,11 @@
       "o": "project_panel::OpenPermanent",
       "p": "project_panel::Open"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-t": "terminal_panel::Toggle"
+    }
   }
 ]
