@@ -3,6 +3,7 @@
     "ghostty/.config":"~/.config/ghostty/config",
     "git/.gitconfig": "~/.gitconfig",
     "git/.gitignore-global": "~/.gitignore-global",
+    "git/.gitconfig-personal":"~/.gitconfig-personal",
     "hammerspoon": "~/.hammerspoon",
     "ideavim/.ideavimrc": "~/.ideavimrc",
     "starship/starship.toml": "~/.config/starship.toml",

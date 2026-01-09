@@ -1,6 +1,7 @@
 {
     "git/.gitconfig": "~/.gitconfig",
     "git/.gitignore-global": "~/.gitignore-global",
+    "git/.gitconfig-personal":"~/.gitconfig-personal",
     "starship/starship.toml": "~/.config/starship.toml",
     "tmux/.tmux.conf": "~/.tmux.conf",
     "vim/.vimrc": "~/.vimrc",
