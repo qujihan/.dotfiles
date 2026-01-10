@@ -1,4 +1,4 @@
-latest update: 2025/9/17-0:39:29
+latest update: 2026/1/11-1:49:11
   
 brew install 
 bat
@@ -12,15 +12,10 @@ duf
 eza
 fzf
 go
-helm
 iperf3
 jq
 loc
-mysql
-neovim
 ninja
-protobuf
-redis
 rustup
 starship
 tlrc
@@ -28,20 +23,20 @@ tmux
 typst
 uv
 viddy
-zig
 zsh-autocomplete
 zsh-autopair
 zsh-autosuggestions
 zsh-syntax-highlighting
   
 brew install --cask
-alacritty
+bettermouse
 font-lora
 font-lxgw-wenkai
 font-maple-mono-nf-cn
 font-noto-sans-cjk
 font-noto-serif-cjk
 ghostty
+google-chrome
 hammerspoon
 iina
 kap
@@ -49,10 +44,10 @@ microsoft-edge
 moonlight
 obsidian
 orbstack
-postman
 snipaste
 squirrel-app
 stats
 visual-studio-code
 windows-app
+zed
 zotero
