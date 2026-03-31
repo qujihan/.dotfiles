@@ -1,6 +1,6 @@
 {
     "alacritty": "~/.config/alacritty",
-    "ghostty":"~/.config/ghostty",
+    "ghostty/.config":"~/.config/ghostty/config",
     "git/.gitconfig": "~/.gitconfig",
     "git/.gitignore-global": "~/.gitignore-global",
     "git/.gitconfig-personal":"~/.gitconfig-personal",
