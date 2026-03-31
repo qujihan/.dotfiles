@@ -1,5 +1,25 @@
 {
   "plugins": {
+    "mason.nvim": {
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
+    "mini.cmdline": {
+      "rev": "c1e0c33cab44805dde0cc74f66456557a340bd6e",
+      "src": "https://github.com/nvim-mini/mini.cmdline"
+    },
+    "mini.completion": {
+      "rev": "4f94cafdeef02bf3ef9997cd6862658801caa22c",
+      "src": "https://github.com/nvim-mini/mini.completion"
+    },
+    "mini.files": {
+      "rev": "b4796e09eb103f9f2d1e00aa2dab3753b879b17b",
+      "src": "https://github.com/nvim-mini/mini.files"
+    },
+    "mini.icons": {
+      "rev": "5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "mini.nvim": {
       "rev": "af5f75c9ce572a4d1f0c77d6fb4ea764d16c1b3c",
       "src": "https://github.com/nvim-mini/mini.nvim"
@@ -8,9 +28,17 @@
       "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
+    "mini.snippets": {
+      "rev": "c7a5fd5e767dcc732940f59f2a83c64ea7346a3e",
+      "src": "https://github.com/nvim-mini/mini.snippets"
+    },
     "mini.splitjoin": {
       "rev": "8112e794cbb022b9d4b7af60b64e9896930f1697",
       "src": "https://github.com/nvim-mini/mini.splitjoin"
+    },
+    "mini.surround": {
+      "rev": "d205d1741d1fcc1f3117b4e839bf00f74ad72fa2",
+      "src": "https://github.com/nvim-mini/mini.surround"
     },
     "nvim-lspconfig": {
       "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
