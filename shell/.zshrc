@@ -106,6 +106,12 @@ local alias_pairs=(
     "ccgh cookiecutter gh:qujihan/ccpt -c"
     # k9s
     "kk k9s"
+    # nvim 
+    "vim nvim" 
+    # trae
+    "tt trae-cn"
+    # flush hosts cache
+    "ff sudo dscacheutil -flushcache"
 )
 
 alias_set() {
