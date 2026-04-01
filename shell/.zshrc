@@ -65,10 +65,11 @@ env_set() {
     command_exists brew && export_path_if_exists $(brew --prefix)/opt/rustup/bin
 
     ! is_bytedance_macos && command_exists go &&
-        export_path_if_exists ${HOME}/go/bin &&
         go env -w GO111MODULE=on &&
         go env -w GOSUMDB=sum.golang.google.cn &&
         go env -w GOPROXY=https://goproxy.cn,direct
+    
+    command_exists go && export_path_if_exists ${HOME}/go/bin
     
     is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
     is_bytedance_devbox && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
