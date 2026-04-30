@@ -135,6 +135,9 @@ alias_set() {
     is_macos && alias essh="cat ${HOME}/.ssh/config"
     # docker 
     command_exists docker && alias de="docker_start_and_exec"
+
+    # envrc
+    alias envrc="ln -s ${HOME}/envrc/.envrc ."
 }
 
 
