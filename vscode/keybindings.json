@@ -44,10 +44,10 @@ https://code.visualstudio.com/api/references/when-clause-contexts#available-cont
         "command": "workbench.action.togglePanel",
         "when": "terminal.active"
     },
-    {
-        "key": "shift shift",
-        "command": "workbench.action.quickOpen"
-    },
+    // {
+    //     "key": "shift shift",
+    //     "command": "workbench.action.quickOpen"
+    // },
     {
         "key": "alt alt",
         "command": "workbench.action.showCommands"
