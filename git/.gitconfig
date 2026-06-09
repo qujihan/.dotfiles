@@ -22,6 +22,6 @@
 [core]
     editor=vim
     quotepath=false
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore-global
 [pull]
     rebase = true
