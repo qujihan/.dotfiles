@@ -50,7 +50,9 @@ zsh_plugins_source() {
 #╰──────────────────────────────────────────────────────────────────────────────╯
 env_set() {
     export_path_if_exists /home/linuxbrew/.linuxbrew/bin # linux homebrew
-    is_macos && export EDITOR=vim
+    # 覆盖父进程/launchd 注入的 EDITOR/VISUAL，保持为空
+    export EDITOR="" VISUAL=""
+    # is_macos && export EDITOR=vim
     # ! is_macos && export LC_ALL="C.utf8"
     ! is_bytedance_macos && command_exists brew &&
         export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api" &&
