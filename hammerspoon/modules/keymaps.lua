@@ -13,6 +13,12 @@ local function remap(mods, key, pressFn)
 	hs.hotkey.bind(mods, key, pressFn, nil, pressFn)
 end
 
+local function openApp(key, appName)
+	remap({ 'cmd', 'shift' }, key, function()
+		hs.application.launchOrFocus(appName)
+	end)
+end
+
 local function baseMove(x, y, w, h)
 	return function()
 		local win = hs.window.focusedWindow()
@@ -148,18 +154,18 @@ function keymaps:init()
 
 
 	-- ctrl + shift + cmd + wasd/c 窗口布局
-	hs.hotkey.bind({ 'ctrl', 'shift' }, 'w', baseMove(0, 0, 1, 0.5))
-	hs.hotkey.bind({ 'ctrl', 'shift' }, 'a', baseMove(0, 0, 0.5, 1))
-	hs.hotkey.bind({ 'ctrl', 'shift' }, 's', baseMove(0, 0.5, 1, 0.5))
-	hs.hotkey.bind({ 'ctrl', 'shift' }, 'd', baseMove(0.5, 0, 0.5, 1))
+	-- hs.hotkey.bind({ 'ctrl', 'shift' }, 'w', baseMove(0, 0, 1, 0.5))
+	-- hs.hotkey.bind({ 'ctrl', 'shift' }, 'a', baseMove(0, 0, 0.5, 1))
+	-- hs.hotkey.bind({ 'ctrl', 'shift' }, 's', baseMove(0, 0.5, 1, 0.5))
+	-- hs.hotkey.bind({ 'ctrl', 'shift' }, 'd', baseMove(0.5, 0, 0.5, 1))
 
-	hs.hotkey.bind({ 'ctrl', 'shift' }, 'c', baseMove(0.2, 0.1, 0.7, 0.8))
+	-- hs.hotkey.bind({ 'ctrl', 'shift' }, 'c', baseMove(0.2, 0.1, 0.7, 0.8))
 
 	-- alt + wasd 移动窗口
-	hs.hotkey.bind({ 'ctrl', 'alt' }, 'w', function() moveWindowToDirection("up") end)
-	hs.hotkey.bind({ 'ctrl', 'alt' }, 'a', function() moveWindowToDirection("left") end)
-	hs.hotkey.bind({ 'ctrl', 'alt' }, 's', function() moveWindowToDirection("down") end)
-	hs.hotkey.bind({ 'ctrl', 'alt' }, 'd', function() moveWindowToDirection("right") end)
+	-- hs.hotkey.bind({ 'ctrl', 'alt' }, 'w', function() moveWindowToDirection("up") end)
+	-- hs.hotkey.bind({ 'ctrl', 'alt' }, 'a', function() moveWindowToDirection("left") end)
+	-- hs.hotkey.bind({ 'ctrl', 'alt' }, 's', function() moveWindowToDirection("down") end)
+	-- hs.hotkey.bind({ 'ctrl', 'alt' }, 'd', function() moveWindowToDirection("right") end)
 
 
 	-- ctrl + 0: 句首
@@ -167,10 +173,13 @@ function keymaps:init()
 	remap({ 'ctrl' }, '0', pressFn({ 'cmd' }, 'left'))
 	remap({ 'ctrl', 'shift' }, '4', pressFn({ 'cmd' }, 'right'))
 
-	-- ctrl + shift + esc 打开活动监视器
-	remap({ 'ctrl', 'shift' }, 'escape', function()
-		hs.application.launchOrFocus("/System/Applications/Utilities/Activity Monitor.app")
-	end)
+
+	openApp('escape', "Activity Monitor.app")
+	openApp('s', "Ghostty.app")
+	openApp('w', "WeChat.app")
+	openApp('e', "Lark.app")
+	openApp('a', "Codex.app")
+	openApp('c', "Google Chrome.app")
 end
 
 return keymaps
