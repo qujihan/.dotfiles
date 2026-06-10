@@ -108,7 +108,8 @@ local alias_pairs=(
     # cookiecutter config
     "ccgh cookiecutter gh:qujihan/ccpt -c"
     # k9s
-    "kk k9s"
+    "kk k9s --headless"
+    "kknh k9s --no-headless"
     # nvim 
     "vim nvim" 
     # trae
