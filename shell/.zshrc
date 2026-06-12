@@ -94,7 +94,9 @@ fi
 #╰──────────────────────────────────────────────────────────────────────────────╯
 local alias_pairs=(
     # 
-    "ee exit" "ss source ~/.zshrc"
+    "ee exit"
+    "ss source ~/.zshrc"
+    "cle clear"
     # facility utils
     "ls eza --icons" "la ls -a --icons" "ll ls -l" "lla ls -a -l" "tree eza --tree" 
     "watch viddy" "cloc loc" "cat bat" "top btm -b" "diff difft" "du dust"
@@ -116,6 +118,10 @@ local alias_pairs=(
     "tt trae-cn"
     # flush hosts cache
     "ff sudo dscacheutil -flushcache"
+    # cpp
+    "cmakeb cmake -B build -S ." "cmakec cmake --build build"
+    # envrc
+    "envrc ln -s ${HOME}/envrc/.envrc ."
 )
 
 alias_set() {
@@ -126,9 +132,6 @@ alias_set() {
         command_exists "$command" && alias "$alias_left"="$alias_right"
     done
 
-    # c/cpp
-    alias cmakeb="cmake -B build -S."
-    alias cmakec="cmake --build build"
     # config
     is_macos && alias dotc="code ${HOME}/.dotfiles"
     is_macos && alias dotz="zed ${HOME}/.dotfiles"
@@ -138,9 +141,6 @@ alias_set() {
     is_macos && alias essh="cat ${HOME}/.ssh/config"
     # docker 
     command_exists docker && alias de="docker_start_and_exec"
-
-    # envrc
-    alias envrc="ln -s ${HOME}/envrc/.envrc ."
 }
 
 
