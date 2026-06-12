@@ -114,6 +114,8 @@ local alias_pairs=(
     "kknh k9s --no-headless"
     # nvim 
     "vim nvim" 
+    # lazygit
+    "lg lazygit"
     # trae
     "tt trae-cn"
     # flush hosts cache
@@ -141,6 +143,8 @@ alias_set() {
     is_macos && alias essh="cat ${HOME}/.ssh/config"
     # docker 
     command_exists docker && alias de="docker_start_and_exec"
+    # update config
+    alias update="cd ${HOME}/.dotfiles && git pull && cd -"
 }
 
 
