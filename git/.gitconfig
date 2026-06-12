@@ -25,3 +25,5 @@
 	excludesfile = ~/.gitignore-global
 [pull]
     rebase = true
+[safe]
+	directory = *
