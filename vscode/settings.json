@@ -27,7 +27,6 @@
     ],
     "terminal.integrated.enableMultiLinePasteWarning": "always",
     "terminal.integrated.fontFamily": "Maple Mono NF CN",
-
     "terminal.integrated.initialHint": true,
     // "terminal.integrated.defaultLocation": "editor",
     /*
@@ -152,33 +151,5 @@
     /*
         Zig
     */
-    "zig.zls.enabled": "on",
-    /*
-        Copilot
-    */
-    "github.copilot.editor.enableAutoCompletions": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
-    /*
-        Gitlens
-    */
-    "gitlens.graph.minimap.additionalTypes": [
-        "localBranches",
-        "stashes",
-        "tags",
-        "remoteBranches"
-    ],
-    "update.mode": "none",
-    "extensions.supportUntrustedWorkspaces": {
-        "byted-ide.dev-environment-manager": {
-            "supported": true
-        }
-    },
-    "remote.SSH.defaultExtensions": [
-        "byted-ide.gallery"
-    ]
+    "zig.zls.enabled": "on"
 }
