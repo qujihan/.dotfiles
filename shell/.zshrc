@@ -50,6 +50,8 @@ zsh_plugins_source() {
 #╰──────────────────────────────────────────────────────────────────────────────╯
 env_set() {
     export_path_if_exists /home/linuxbrew/.linuxbrew/bin # linux homebrew
+    export_path_if_exists ${HOME}/.local/bin
+
     # 覆盖父进程/launchd 注入的 EDITOR/VISUAL，保持为空
     export EDITOR="" VISUAL=""
     # is_macos && export EDITOR=vim
@@ -111,7 +113,6 @@ local alias_pairs=(
     "ccgh cookiecutter gh:qujihan/ccpt -c"
     # k9s
     "kk k9s --headless"
-    "kknh k9s --no-headless"
     # nvim 
     "vim nvim" 
     # lazygit
