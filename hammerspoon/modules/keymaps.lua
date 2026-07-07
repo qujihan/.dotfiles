@@ -1,4 +1,5 @@
 local keymaps = {}
+local spaces = require('hs.spaces')
 
 local function pressFn(mods, key)
 	if key == nil then
@@ -173,6 +174,10 @@ function keymaps:init()
 	remap({ 'ctrl' }, '0', pressFn({ 'cmd' }, 'left'))
 	remap({ 'ctrl', 'shift' }, '4', pressFn({ 'cmd' }, 'right'))
 
+	-- cmd + shift + d: 显示当前 Space 的桌面
+	-- hs.hotkey.bind({ 'cmd', 'shift' }, 'd', function()
+	-- 	spaces.toggleShowDesktop()
+	-- end)
 
 	openApp('escape', "Activity Monitor.app")
 	openApp('q', "Codex.app")
