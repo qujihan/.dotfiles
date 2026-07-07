@@ -125,6 +125,8 @@ local alias_pairs=(
     "cmakeb cmake -B build -S ." "cmakec cmake --build build"
     # envrc
     "envrc ln -s ${HOME}/envrc/.envrc ."
+    # wt
+    "wts wt switch"
 )
 
 alias_set() {
@@ -167,6 +169,7 @@ all_completions(){
     command_exists kubectl && source <(kubectl completion zsh)
     command_exists helm && source <(helm completion zsh)
     command_exists rustup && source <(rustup completions zsh)
+    command_exists wt && eval "$(command wt config shell init zsh)"
 }
 
 
