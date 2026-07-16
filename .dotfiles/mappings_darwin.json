@@ -16,6 +16,7 @@
     "zed/settings.json": "~/.config/zed/settings.json",
     "zed/keymap.json": "~/.config/zed/keymap.json",
     "shell/.hushlogin": "~/.hushlogin",
+    "shell/.zshenv": "~/.zshenv",
     "shell/.zshrc": "~/.zshrc",
     "lldb/.lldbinit": "~/.lldbinit",
     "nvim/":"~/.config/nvim"

@@ -83,15 +83,6 @@ env_set() {
 }
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
-#│  Define Function                                                             │
-#╰──────────────────────────────────────────────────────────────────────────────╯
-if is_macos; then
-    local proxy_ip="127.0.0.1" && local proxy_port="7897" && local url=${proxy_ip}:${proxy_port}
-    proxy() { export https_proxy=${url} && export http_proxy=${url} && export all_proxy=${url}; }
-    unproxy() { unset https_proxy && unset http_proxy && unset all_proxy; }
-fi
-
-#╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Alias                                                                       │
 #╰──────────────────────────────────────────────────────────────────────────────╯
 local alias_pairs=(
