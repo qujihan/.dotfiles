@@ -1,5 +1,4 @@
 #!/bin/zsh
-BYTEDANCE_SCRIPT_PATH="${HOME}/.bytedance"
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Alias Function                                                              │
 #╰──────────────────────────────────────────────────────────────────────────────╯
@@ -14,13 +13,6 @@ export_path_if_exists() { [ -d "$1" ] && export PATH="$PATH:$1"; }
 fpath_path_if_existx() { [ -d "$1" ] && fpath=("$1 $fpath"); }
 add_export_if_exists() { [ -d "$2" ] && export "$1"="$2" }
 command_exists() { command -v "$1" &>/dev/null; }
-is_bytedance_macos() {
-    is_macos || return false
-    [[ $(echo "$(id -un)" | tr '[:upper:]' '[:lower:]') == *bytedance* ]]
-}
-is_bytedance_devbox() {
-    [[ -d "/data00" ]]
-}
 
 #╭──────────────────────────────────────────────────────────────────────────────╮
 #│  Zsh Plugin                                                                  │
@@ -56,28 +48,29 @@ env_set() {
     export EDITOR="" VISUAL=""
     # is_macos && export EDITOR=vim
     # ! is_macos && export LC_ALL="C.utf8"
-    ! is_bytedance_macos && command_exists brew &&
-        export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api" &&
-        export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles" &&
-        export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git" &&
-        export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git" &&
-        export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+    if [[ "$dotfiles_environment" == "$DOTFILES_PERSONAL" ]]; then
+        if command_exists brew; then
+            export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+            export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+            export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+            export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+            export HOMEBREW_PIP_INDEX_URL="https://pypi.tuna.tsinghua.edu.cn/simple"
+        fi
+
+        if command_exists go; then
+            go env -w GO111MODULE=on
+            go env -w GOSUMDB=sum.golang.google.cn
+            go env -w GOPROXY=https://goproxy.cn,direct
+        fi
+    fi
 
     # rust tsinghua proxy
     export_path_if_exists ${HOME}/.cargo/bin 
     source_if_exists ${HOME}/.cargo/env # install rust by rust homepage
     command_exists brew && export_path_if_exists $(brew --prefix)/opt/rustup/bin
 
-    ! is_bytedance_macos && command_exists go &&
-        go env -w GO111MODULE=on &&
-        go env -w GOSUMDB=sum.golang.google.cn &&
-        go env -w GOPROXY=https://goproxy.cn,direct
-    
     command_exists go && export_path_if_exists ${HOME}/go/bin
     
-    is_bytedance_macos && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
-    is_bytedance_devbox && source_if_exists ${BYTEDANCE_SCRIPT_PATH}
-
     command_exists eza && export EZA_COLORS="di=37"
     command_exists direnv && eval "$(direnv hook zsh)"
 }
