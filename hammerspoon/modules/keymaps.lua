@@ -180,7 +180,7 @@ function keymaps:init()
 	-- end)
 
 	openApp('escape', "Activity Monitor.app")
-	openApp('q', "Codex.app")
+	openApp('q', "ChatGPT.app")
 	openApp('s', "Ghostty.app")
 	openApp('w', "WeChat.app")
 	openApp('e', "Lark.app")
