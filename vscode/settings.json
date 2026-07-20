@@ -151,5 +151,7 @@
     /*
         Zig
     */
-    "zig.zls.enabled": "on"
+    "zig.zls.enabled": "on",
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4o-mini"
 }

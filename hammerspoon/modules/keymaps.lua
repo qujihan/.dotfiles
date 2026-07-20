@@ -20,6 +20,12 @@ local function openApp(key, appName)
 	end)
 end
 
+local function openAppByBundleID(key, bundleID)
+	remap({ 'cmd', 'shift' }, key, function()
+		hs.application.launchOrFocusByBundleID(bundleID)
+	end)
+end
+
 local function baseMove(x, y, w, h)
 	return function()
 		local win = hs.window.focusedWindow()
@@ -179,13 +185,14 @@ function keymaps:init()
 	-- 	spaces.toggleShowDesktop()
 	-- end)
 
+	openAppByBundleID('q', "com.openai.codex")
+	openAppByBundleID('s', "com.mitchellh.ghostty")
+	openAppByBundleID('w', "com.tencent.xinWeChat")
+	openAppByBundleID('c', "com.google.Chrome")
 	openApp('escape', "Activity Monitor.app")
 	openApp('q', "ChatGPT.app")
-	openApp('s', "Ghostty.app")
-	openApp('w', "WeChat.app")
 	openApp('e', "Lark.app")
 	openApp('a', "Mira.app")
-	openApp('c', "Google Chrome.app")
 end
 
 return keymaps
