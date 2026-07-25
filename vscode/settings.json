@@ -1,5 +1,5 @@
 {
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0.1,
     /*
         Workbench
     */
@@ -14,6 +14,7 @@
     /*
         Editor 
     */
+    "editor.accessibilitySupport": "on",
     "editor.largeFileOptimizations": false, // 大文件优化
     "editor.minimap.enabled": false, // 缩略图
     "editor.cursorSmoothCaretAnimation": "on", // 平滑移动
@@ -152,6 +153,14 @@
         Zig
     */
     "zig.zls.enabled": "on",
-    "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:gpt-4o-mini"
+    /*
+        SSH 
+    */
+    "remote.SSH.useExecServer": false,
+    "remote.SSH.localServerDownload": "always",
+    /*
+        AI
+    */
+    "chatgpt.localeOverride": "zh-CN",
+    "chatgpt.openOnStartup": true
 }
