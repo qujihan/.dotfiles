@@ -8,9 +8,9 @@
   "tabs": {
     "git_status": true
   },
-  "ui_font_family": "Maple Mono NF CN",
+  // "ui_font_family": "Maple Mono NF CN",
   "ui_font_size": 12,
   "buffer_font_family": "Maple Mono NF CN",
-  "buffer_font_size": 12,
+  "buffer_font_size": 15,
   "soft_wrap": "editor_width"
 }
