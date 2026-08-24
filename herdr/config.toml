@@ -4,5 +4,5 @@ status_indicators = "dots"
 
 [keys]
 rename_workspace = "prefix+ctrl+r"
-navigate_workspace_up = "k"
-navigate_workspace_down = "j"
+navigate_workspace_up = "ctrl+k"
+navigate_workspace_down = "ctrl+j"
