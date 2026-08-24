@@ -19,5 +19,6 @@
     "shell/.zshenv": "~/.zshenv",
     "shell/.zshrc": "~/.zshrc",
     "lldb/.lldbinit": "~/.lldbinit",
-    "nvim/":"~/.config/nvim"
+    "nvim/":"~/.config/nvim",
+    "herdr/config.toml":"~/.config/herdr/config.toml"
 }
