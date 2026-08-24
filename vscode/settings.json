@@ -14,7 +14,7 @@
     /*
         Editor 
     */
-    "editor.accessibilitySupport": "on",
+    "editor.accessibilitySupport": "off",
     "editor.largeFileOptimizations": false, // 大文件优化
     "editor.minimap.enabled": false, // 缩略图
     "editor.cursorSmoothCaretAnimation": "on", // 平滑移动
@@ -26,10 +26,14 @@
     "editor.rulers": [
         120
     ],
+    /*
+        Terminal
+    */
     "terminal.integrated.enableMultiLinePasteWarning": "always",
     "terminal.integrated.fontFamily": "Maple Mono NF CN",
     "terminal.integrated.initialHint": true,
     // "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.shellIntegration.enabled": false,
     /*
         VSCodeVim
     */
@@ -162,5 +166,12 @@
         AI
     */
     "chatgpt.localeOverride": "zh-CN",
-    "chatgpt.openOnStartup": true
+    "chatgpt.openOnStartup": false,
+    "security.promptForRemoteFileProtocolHandling": false,
+    "github.copilot.editor.enableCodeActions": false,
+    "github.copilot.enable": {
+        "*": false,
+    },
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "workbench.notifications.position": "top-right"
 }
