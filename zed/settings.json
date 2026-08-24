@@ -1,4 +1,7 @@
 {
+  "default_open_behavior": "new_window",
+  "cli_default_open_behavior": "new_window",
+  "ui_font_family": ".ZedMono",
   "vim_mode": true,
   "theme": {
     "mode": "system",
