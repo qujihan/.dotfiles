@@ -1,5 +1,8 @@
 local keymaps = {}
 local spaces = require('hs.spaces')
+local hotkeys = {}
+local scopedHotkeys = {}
+local appWatcher = nil
 
 local function pressFn(mods, key)
 	if key == nil then
@@ -7,11 +10,73 @@ local function pressFn(mods, key)
 		mods = {}
 	end
 
-	return function() hs.eventtap.keyStroke(mods, key, 1000) end
+	return function()
+		local app = hs.application.frontmostApplication()
+		hs.eventtap.keyStroke(mods, key, 1000, app)
+	end
 end
 
-local function remap(mods, key, pressFn)
-	hs.hotkey.bind(mods, key, pressFn, nil, pressFn)
+local function appIsInList(app, appList)
+	if not app or not appList then return false end
+
+	local appName = app:name()
+	local bundleID = app:bundleID()
+	for _, identifier in ipairs(appList) do
+		if identifier == appName or identifier == bundleID then
+			return true
+		end
+	end
+
+	return false
+end
+
+local function shouldEnableHotkey(app, appWhitelist, appBlacklist)
+	-- 黑名单优先：同一个应用同时出现在两个名单时禁用。
+	if appIsInList(app, appBlacklist) then return false end
+	if appWhitelist ~= nil then return appIsInList(app, appWhitelist) end
+	return true
+end
+
+local function updateScopedHotkeys(app)
+	app = app or hs.application.frontmostApplication()
+	for _, binding in ipairs(scopedHotkeys) do
+		if shouldEnableHotkey(app, binding.appWhitelist, binding.appBlacklist) then
+			binding.hotkey:enable()
+		else
+			binding.hotkey:disable()
+		end
+	end
+end
+
+local function ensureAppWatcher()
+	if appWatcher then return end
+
+	appWatcher = hs.application.watcher.new(function(_, eventType, app)
+		if eventType == hs.application.watcher.activated then
+			updateScopedHotkeys(app)
+		end
+	end)
+	appWatcher:start()
+end
+
+-- appWhitelist/appBlacklist 可以传应用名或 bundle ID 数组。
+-- 两者都是 nil 时全局启用；黑名单的优先级高于白名单。
+local function remap(mods, key, pressFn, appWhitelist, appBlacklist)
+	local hotkey = hs.hotkey.new(mods, key, pressFn, nil, pressFn)
+	table.insert(hotkeys, hotkey)
+
+	if appWhitelist == nil and appBlacklist == nil then
+		hotkey:enable()
+		return
+	end
+
+	table.insert(scopedHotkeys, {
+		hotkey = hotkey,
+		appWhitelist = appWhitelist,
+		appBlacklist = appBlacklist,
+	})
+	ensureAppWatcher()
+	updateScopedHotkeys()
 end
 
 local function openApp(key, appName)
@@ -119,45 +184,50 @@ end
 
 function keymaps:init()
 	-- vim 模式
-	remap({ 'ctrl' }, 'h', pressFn('left'))
-	remap({ 'ctrl' }, 'j', pressFn('down'))
-	remap({ 'ctrl' }, 'k', pressFn('up'))
-	remap({ 'ctrl' }, 'l', pressFn('right'))
+	local vimModeBlacklist = {
+		'com.mitchellh.ghostty',
+		'com.microsoft.VSCode',
+		'dev.zed.Zed',
+	}
+	remap({ 'ctrl' }, 'h', pressFn('left'), nil, vimModeBlacklist)
+	remap({ 'ctrl' }, 'j', pressFn('down'), nil, vimModeBlacklist)
+	remap({ 'ctrl' }, 'k', pressFn('up'), nil, vimModeBlacklist)
+	remap({ 'ctrl' }, 'l', pressFn('right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'shift' }, 'h', pressFn({ 'shift' }, 'left'))
-	remap({ 'ctrl', 'shift' }, 'j', pressFn({ 'shift' }, 'down'))
-	remap({ 'ctrl', 'shift' }, 'k', pressFn({ 'shift' }, 'up'))
-	remap({ 'ctrl', 'shift' }, 'l', pressFn({ 'shift' }, 'right'))
+	remap({ 'ctrl', 'shift' }, 'h', pressFn({ 'shift' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift' }, 'j', pressFn({ 'shift' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift' }, 'k', pressFn({ 'shift' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift' }, 'l', pressFn({ 'shift' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'cmd' }, 'h', pressFn({ 'cmd' }, 'left'))
-	remap({ 'ctrl', 'cmd' }, 'j', pressFn({ 'cmd' }, 'down'))
-	remap({ 'ctrl', 'cmd' }, 'k', pressFn({ 'cmd' }, 'up'))
-	remap({ 'ctrl', 'cmd' }, 'l', pressFn({ 'cmd' }, 'right'))
+	remap({ 'ctrl', 'cmd' }, 'h', pressFn({ 'cmd' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd' }, 'j', pressFn({ 'cmd' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd' }, 'k', pressFn({ 'cmd' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd' }, 'l', pressFn({ 'cmd' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'alt' }, 'h', pressFn({ 'alt' }, 'left'))
-	remap({ 'ctrl', 'alt' }, 'j', pressFn({ 'alt' }, 'down'))
-	remap({ 'ctrl', 'alt' }, 'k', pressFn({ 'alt' }, 'up'))
-	remap({ 'ctrl', 'alt' }, 'l', pressFn({ 'alt' }, 'right'))
+	remap({ 'ctrl', 'alt' }, 'h', pressFn({ 'alt' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'alt' }, 'j', pressFn({ 'alt' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'alt' }, 'k', pressFn({ 'alt' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'alt' }, 'l', pressFn({ 'alt' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'shift', 'cmd' }, 'h', pressFn({ 'shift', 'cmd' }, 'left'))
-	remap({ 'ctrl', 'shift', 'cmd' }, 'j', pressFn({ 'shift', 'cmd' }, 'down'))
-	remap({ 'ctrl', 'shift', 'cmd' }, 'k', pressFn({ 'shift', 'cmd' }, 'up'))
-	remap({ 'ctrl', 'shift', 'cmd' }, 'l', pressFn({ 'shift', 'cmd' }, 'right'))
+	remap({ 'ctrl', 'shift', 'cmd' }, 'h', pressFn({ 'shift', 'cmd' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'cmd' }, 'j', pressFn({ 'shift', 'cmd' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'cmd' }, 'k', pressFn({ 'shift', 'cmd' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'cmd' }, 'l', pressFn({ 'shift', 'cmd' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'shift', 'alt' }, 'h', pressFn({ 'shift', 'alt' }, 'left'))
-	remap({ 'ctrl', 'shift', 'alt' }, 'j', pressFn({ 'shift', 'alt' }, 'down'))
-	remap({ 'ctrl', 'shift', 'alt' }, 'k', pressFn({ 'shift', 'alt' }, 'up'))
-	remap({ 'ctrl', 'shift', 'alt' }, 'l', pressFn({ 'shift', 'alt' }, 'right'))
+	remap({ 'ctrl', 'shift', 'alt' }, 'h', pressFn({ 'shift', 'alt' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'alt' }, 'j', pressFn({ 'shift', 'alt' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'alt' }, 'k', pressFn({ 'shift', 'alt' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'shift', 'alt' }, 'l', pressFn({ 'shift', 'alt' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'cmd', 'alt' }, 'h', pressFn({ 'cmd', 'alt' }, 'left'))
-	remap({ 'ctrl', 'cmd', 'alt' }, 'j', pressFn({ 'cmd', 'alt' }, 'down'))
-	remap({ 'ctrl', 'cmd', 'alt' }, 'k', pressFn({ 'cmd', 'alt' }, 'up'))
-	remap({ 'ctrl', 'cmd', 'alt' }, 'l', pressFn({ 'cmd', 'alt' }, 'right'))
+	remap({ 'ctrl', 'cmd', 'alt' }, 'h', pressFn({ 'cmd', 'alt' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt' }, 'j', pressFn({ 'cmd', 'alt' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt' }, 'k', pressFn({ 'cmd', 'alt' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt' }, 'l', pressFn({ 'cmd', 'alt' }, 'right'), nil, vimModeBlacklist)
 
-	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'h', pressFn({ 'cmd', 'alt', 'shift' }, 'left'))
-	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'j', pressFn({ 'cmd', 'alt', 'shift' }, 'down'))
-	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'k', pressFn({ 'cmd', 'alt', 'shift' }, 'up'))
-	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'l', pressFn({ 'cmd', 'alt', 'shift' }, 'right'))
+	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'h', pressFn({ 'cmd', 'alt', 'shift' }, 'left'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'j', pressFn({ 'cmd', 'alt', 'shift' }, 'down'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'k', pressFn({ 'cmd', 'alt', 'shift' }, 'up'), nil, vimModeBlacklist)
+	remap({ 'ctrl', 'cmd', 'alt', 'shift' }, 'l', pressFn({ 'cmd', 'alt', 'shift' }, 'right'), nil, vimModeBlacklist)
 
 
 	-- ctrl + shift + cmd + wasd/c 窗口布局
@@ -189,10 +259,10 @@ function keymaps:init()
 	openAppByBundleID('s', "com.mitchellh.ghostty")
 	openAppByBundleID('w', "com.tencent.xinWeChat")
 	openAppByBundleID('c', "com.google.Chrome")
+	openAppByBundleID('a', "com.bytedance.aime.electron")
 	openApp('escape', "Activity Monitor.app")
 	openApp('q', "ChatGPT.app")
 	openApp('e', "Lark.app")
-	openApp('a', "Mira.app")
 end
 
 return keymaps
