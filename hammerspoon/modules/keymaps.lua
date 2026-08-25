@@ -1,8 +1,10 @@
 local keymaps = {}
 local spaces = require('hs.spaces')
 local hotkeys = {}
-local scopedHotkeys = {}
-local appWatcher = nil
+local scopedBindings = {}
+local scopedEventTap = nil
+local swallowedKeyUps = {}
+local modifierNames = { 'cmd', 'ctrl', 'alt', 'shift', 'fn' }
 
 local function pressFn(mods, key)
 	if key == nil then
@@ -11,8 +13,7 @@ local function pressFn(mods, key)
 	end
 
 	return function()
-		local app = hs.application.frontmostApplication()
-		hs.eventtap.keyStroke(mods, key, 1000, app)
+		hs.eventtap.keyStroke(mods, key, 1000)
 	end
 end
 
@@ -37,46 +38,98 @@ local function shouldEnableHotkey(app, appWhitelist, appBlacklist)
 	return true
 end
 
-local function updateScopedHotkeys(app)
-	app = app or hs.application.frontmostApplication()
-	for _, binding in ipairs(scopedHotkeys) do
-		if shouldEnableHotkey(app, binding.appWhitelist, binding.appBlacklist) then
-			binding.hotkey:enable()
-		else
-			binding.hotkey:disable()
-		end
+local function focusedApplication()
+	local ok, focusedAppElement = pcall(function()
+		return hs.axuielement.systemWideElement():attributeValue('AXFocusedApplication')
+	end)
+	if ok and focusedAppElement then
+		local pid = focusedAppElement:pid()
+		local app = pid and hs.application.applicationForPID(pid)
+		if app then return app end
 	end
+
+	return hs.application.frontmostApplication()
 end
 
-local function ensureAppWatcher()
-	if appWatcher then return end
+local function modifierSet(mods)
+	local result = {}
+	for _, modifier in ipairs(mods) do
+		result[modifier] = true
+	end
+	return result
+end
 
-	appWatcher = hs.application.watcher.new(function(_, eventType, app)
-		if eventType == hs.application.watcher.activated then
-			updateScopedHotkeys(app)
+local function modifiersMatch(expected, actual)
+	for _, modifier in ipairs(modifierNames) do
+		if (expected[modifier] == true) ~= (actual[modifier] == true) then
+			return false
 		end
+	end
+	return true
+end
+
+local function ensureScopedEventTap()
+	if scopedEventTap then return end
+
+	scopedEventTap = hs.eventtap.new({
+		hs.eventtap.event.types.keyDown,
+		hs.eventtap.event.types.keyUp,
+	}, function(event)
+		local keyCode = event:getKeyCode()
+
+		if event:getType() == hs.eventtap.event.types.keyUp then
+			if swallowedKeyUps[keyCode] then
+				swallowedKeyUps[keyCode] = nil
+				return true
+			end
+			return false
+		end
+
+		local bindings = scopedBindings[keyCode]
+		if not bindings then return false end
+
+		local flags = event:getFlags()
+		-- 后注册的相同快捷键优先，与 hs.hotkey 的行为一致。
+		for index = #bindings, 1, -1 do
+			local binding = bindings[index]
+			if modifiersMatch(binding.modifiers, flags) then
+				local isEnabled = shouldEnableHotkey(
+					focusedApplication(),
+					binding.appWhitelist,
+					binding.appBlacklist
+				)
+				if not isEnabled then return false end
+
+				swallowedKeyUps[keyCode] = true
+				binding.pressFn()
+				return true
+			end
+		end
+
+		return false
 	end)
-	appWatcher:start()
+	scopedEventTap:start()
 end
 
 -- appWhitelist/appBlacklist 可以传应用名或 bundle ID 数组。
 -- 两者都是 nil 时全局启用；黑名单的优先级高于白名单。
 local function remap(mods, key, pressFn, appWhitelist, appBlacklist)
-	local hotkey = hs.hotkey.new(mods, key, pressFn, nil, pressFn)
-	table.insert(hotkeys, hotkey)
-
 	if appWhitelist == nil and appBlacklist == nil then
+		local hotkey = hs.hotkey.new(mods, key, pressFn, nil, pressFn)
+		table.insert(hotkeys, hotkey)
 		hotkey:enable()
 		return
 	end
 
-	table.insert(scopedHotkeys, {
-		hotkey = hotkey,
+	local keyCode = assert(hs.keycodes.map[key], 'Unknown key: ' .. tostring(key))
+	scopedBindings[keyCode] = scopedBindings[keyCode] or {}
+	table.insert(scopedBindings[keyCode], {
+		modifiers = modifierSet(mods),
+		pressFn = pressFn,
 		appWhitelist = appWhitelist,
 		appBlacklist = appBlacklist,
 	})
-	ensureAppWatcher()
-	updateScopedHotkeys()
+	ensureScopedEventTap()
 end
 
 local function openApp(key, appName)
@@ -185,9 +238,7 @@ end
 function keymaps:init()
 	-- vim 模式
 	local vimModeBlacklist = {
-		'com.mitchellh.ghostty',
-		'com.microsoft.VSCode',
-		'dev.zed.Zed',
+		-- 'com.mitchellh.ghostty',
 	}
 	remap({ 'ctrl' }, 'h', pressFn('left'), nil, vimModeBlacklist)
 	remap({ 'ctrl' }, 'j', pressFn('down'), nil, vimModeBlacklist)
